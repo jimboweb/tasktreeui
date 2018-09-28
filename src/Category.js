@@ -1,11 +1,13 @@
-import React;
+import React from "react";
 import './App.css';
 
 
-function category(props){
+function Category(props){
     return(
         <div className="category" id={props.id}>
 
         </div>
     );
 }
+
+export default Category;

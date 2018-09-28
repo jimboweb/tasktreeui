@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/react": "^16.4.14",
     "express": "^4.16.3",
     "express-favicon": "^2.0.1",
     "path": "^0.12.7",
