@@ -21,6 +21,7 @@ class CategoryList extends Component {
     render() {
         return (
             <div className="categoryList" id="categoryRoot">
+                xAccessToken = {this.props.xAccessToken}
             </div>
         );
     }

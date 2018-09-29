@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import formUtil from 'src/formUtil'
+import formUtil from 'util/formUtil'
 import CategoryList from 'src/CategoryList';
+import LoginForm from 'src/LoginForm';
 
-class user extends Component {
+class User extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -18,7 +19,13 @@ class user extends Component {
     }
 
     render(){
-        //TODO 180925: mount cagegoryList
+        if(this.state.xAccessToken){
+            <div id='userRoot'>
+                <CategoryList xAccessToken = {this.state.xAccessToken}/>
+            </div>
+        } else {
+            <LoginForm login = {this.login}/>
+        }
     }
 
     login(username, password){
@@ -55,3 +62,5 @@ class user extends Component {
 
 
 }
+
+export default User;
