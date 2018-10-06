@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import formUtil from 'util/formUtil'
-import CategoryList from 'src/CategoryList';
-import LoginForm from 'src/LoginForm';
+import formUtil from './util/formUtil'
+import CategoryList from './CategoryList';
+import LoginForm from './LoginForm';
 
 class User extends Component {
     constructor(props){
@@ -20,11 +20,11 @@ class User extends Component {
 
     render(){
         if(this.state.xAccessToken){
-            <div id='userRoot'>
+          return(  <div id='userRoot'>
                 <CategoryList xAccessToken = {this.state.xAccessToken}/>
-            </div>
+            </div>)
         } else {
-            <LoginForm login = {this.login}/>
+           return (<LoginForm login = {this.login}/>)
         }
     }
 

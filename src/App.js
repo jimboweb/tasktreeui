@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import User from 'src/User'
+import User from './User'
 
 class App extends Component {
   render() {
@@ -10,5 +10,7 @@ class App extends Component {
     );
   }
 }
+
+//TODO: missing a build step: new version not updating
 
 export default App;

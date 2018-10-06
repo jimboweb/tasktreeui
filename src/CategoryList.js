@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Category from 'src/Category';
+import Category from './Category';
 
 class CategoryList extends Component {
     constructor(props) {
@@ -8,7 +8,7 @@ class CategoryList extends Component {
         this.state = {
             components: [],
             fetchOptions: {
-                method: get
+                method: 'get'
             },
             headers: new Headers({
                 'x-access-token': this.props['xAccessToken']
