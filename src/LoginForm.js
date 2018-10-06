@@ -26,11 +26,23 @@ class LoginForm extends Component {
             <form id={this.props.id}>
                 <label>
                     Username:
-                    <input type='text' name='username' id='usernameInput' value={this.state.username}/>
+                    <input
+                        type='text'
+                        name='username'
+                        id='usernameInput'
+                        value={this.state.username}
+                        onChange = {this.handleChange}
+                    />
                 </label>
                 <label>
                     Password:
-                    <input type='password' name='password' id='passwordInput' value={this.state.password}/>
+                    <input
+                        type='password'
+                        name='password'
+                        id='passwordInput'
+                        value={this.state.password}
+                        onChange = {this.handleChange}
+                    />
                 </label>
             </form>
         )
