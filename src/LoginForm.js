@@ -24,6 +24,7 @@ class LoginForm extends Component {
     render(){
         return(
             <form id={this.props.id}>
+                Here's a change
                 <label>
                     Username:
                     <input
