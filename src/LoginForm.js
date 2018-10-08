@@ -13,9 +13,7 @@ class LoginForm extends Component {
     }
 
     handleChange(event) {
-        console.log('handleChange running');
-        console.log('event: ' + JSON.stringify(event));
-        this.setState({value: event.target.value});
+        this.setState({[event.target.name]: event.target.value});
     }
 
     handleSubmit(event) {
