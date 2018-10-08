@@ -18,27 +18,21 @@ class User extends Component {
 
     }
 
-    render(){
-        if(this.state.xAccessToken){
-          return(  <div id='userRoot'>
-                <CategoryList xAccessToken = {this.state.xAccessToken}/>
-            </div>)
-        } else {
-           return (<LoginForm login = {this.login}/>)
-        }
-    }
-
     login(username, password){
         const headers = new Headers(
             {
-                'Content-Type': "application/x-www-form-urlencoded"
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Origin':this.apiUrl
 
             }
         )
+
         const data = {
             username:username,
             password:password
         }
+
+        //FIXME 191008: can't add headers
 
         const request = new Request (
             this.apiUrl,
@@ -46,7 +40,13 @@ class User extends Component {
                 method: "post",
                 mode: "cors",
                 redirect: "follow",
-                headers:headers,
+                headers:
+                    {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Access-Control-Allow-Origin':this.apiUrl
+
+                    }
+                ,
                 body: formUtil.composeXWwwFormUrlEncoded(data)
             }
         );
@@ -58,6 +58,17 @@ class User extends Component {
                 }
             )
 
+    }
+
+
+    render(){
+        if(this.state.xAccessToken){
+          return(  <div id='userRoot'>
+                <CategoryList xAccessToken = {this.state.xAccessToken}/>
+            </div>)
+        } else {
+           return (<LoginForm login = {this.login} apiUrl = {this.state.apiUrl}/>)
+        }
     }
 
 

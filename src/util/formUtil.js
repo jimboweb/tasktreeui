@@ -1,8 +1,9 @@
 
 var formUtil = {
     composeXWwwFormUrlEncoded: function(obj){
-        const searchParams = Object.keys(obj.params).map((key) => {
-            return encodeURIComponent(key) + '=' + encodeURIComponent(obj.params[key]);
+        //FIXME: obj.params is not a thing. what should it be?
+        const searchParams = Object.keys(obj).map((key) => {
+            return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
         }).join('&');
     }
 }
