@@ -24,7 +24,7 @@ class LoginForm extends Component {
     render(){
         return(
             <form id={this.props.id}>
-                Here's one more change
+                Enter your username and password
                 <label>
                     Username:
                     <input
@@ -45,6 +45,13 @@ class LoginForm extends Component {
                         onChange = {this.handleChange}
                     />
                 </label>
+                <input
+                    type='submit'
+                    name = 'submit'
+                    id='submitInput'
+                    value = 'submit'
+                    onChange={this.handleSubmit}
+                    />
             </form>
         )
     }
