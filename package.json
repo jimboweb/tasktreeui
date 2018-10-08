@@ -14,11 +14,11 @@
     "path": "^0.12.7",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "1.1.5",
+    "react-scripts": "^1.1.5",
     "serve": "^10.0.2"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
