@@ -9,7 +9,8 @@ class User extends Component {
         this.state={
             username: undefined,
             xAccessToken: undefined,
-            apiUrl: "https://insolent-preclude.herokuapp.com"
+            apiUrl: "https://insolent-preclude.herokuapp.com",
+            uiUrl: 'http://localhost:8080'
         }
     }
 
@@ -18,14 +19,20 @@ class User extends Component {
 
     }
 
+    //TODO 181009: add the cross-origin stuff to all the routes in the api
+
     login(username, password){
         const headers = new Headers(
             {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Access-Control-Allow-Origin':this.apiUrl
+                'Content-Type': 'application/x-www-form-urlencoded'
 
             }
         )
+
+        console.log("the headers are:");
+        for (var pair of headers.entries()) {
+            console.log(pair[0]+ ': '+ pair[1]);
+        }
 
         const data = {
             username:username,
@@ -40,13 +47,7 @@ class User extends Component {
                 method: "post",
                 mode: "cors",
                 redirect: "follow",
-                headers:
-                    {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Access-Control-Allow-Origin':this.apiUrl
-
-                    }
-                ,
+                headers:headers,
                 body: formUtil.composeXWwwFormUrlEncoded(data)
             }
         );
