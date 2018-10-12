@@ -12,6 +12,7 @@ class User extends Component {
             apiUrl: "https://insolent-preclude.herokuapp.com",
             uiUrl: 'http://localhost:8080'
         }
+        this.login=this.login.bind(this);
     }
 
     componentDidMount(){
@@ -19,9 +20,8 @@ class User extends Component {
 
     }
 
-    //TODO 181009: add the cross-origin stuff to all the routes in the api
 
-    login(username, password){
+    login(username, password, apiUrl){
         const headers = new Headers(
             {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -29,10 +29,10 @@ class User extends Component {
             }
         )
 
-        console.log("the headers are:");
-        for (var pair of headers.entries()) {
-            console.log(pair[0]+ ': '+ pair[1]);
-        }
+        // console.log("the headers are:");
+        // for (var pair of headers.entries()) {
+        //     console.log(pair[0]+ ': '+ pair[1]);
+        // }
 
         const data = {
             username:username,
@@ -42,7 +42,7 @@ class User extends Component {
         //FIXME 191008: can't add headers
 
         const request = new Request (
-            this.apiUrl,
+            apiUrl + '/account/login',
             {
                 method: "post",
                 mode: "cors",
@@ -55,11 +55,13 @@ class User extends Component {
         fetch(request)
             .then(
                 function (resp) {
-                    this.setState({username:username,xAccessToken:resp.token});
+                    //FIXME 181011: 'this' is not defined, even after I bind it. hmmm...
+                    this.setState({username:resp.username,xAccessToken:resp.token});
                 }
             )
 
     }
+
 
 
     render(){

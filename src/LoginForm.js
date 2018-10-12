@@ -17,7 +17,7 @@ class LoginForm extends Component {
     }
 
     handleSubmit(event) {
-        this.props.login(this.state.username,this.state.password);
+        this.props.login(this.state.username,this.state.password, this.props.apiUrl);
         event.preventDefault();
     }
 
