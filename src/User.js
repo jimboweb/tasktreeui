@@ -54,11 +54,16 @@ class User extends Component {
 
         fetch(request)
             .then(
-                function (resp) {
+                resp => {
                     //FIXME 181011: 'this' is not defined, even after I bind it. hmmm...
-                    this.setState({username:resp.username,xAccessToken:resp.token});
+                    return resp.json();
+                })
+            .then(
+                data=>{
+                    this.setState({xAccessToken:data.token});
                 }
             )
+
 
     }
 
