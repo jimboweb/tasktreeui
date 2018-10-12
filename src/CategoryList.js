@@ -13,15 +13,22 @@ class CategoryList extends Component {
             headers: new Headers({
                 'x-access-token': this.props['xAccessToken']
             })
+            categories:undefined;
         };
     }
 
 
 
     render() {
+        if(!this.state.categories){
+            //fetch categories
+            return(
+                <div>loading gif...</div>
+            )
+        } else {
         return (
             <div className="categoryList" id="categoryRoot">
-                xAccessToken = {this.props.xAccessToken}
+                //xAccessToken = {this.props.xAccessToken}
             </div>
         );
     }
