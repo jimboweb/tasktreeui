@@ -4,6 +4,8 @@ import CategoryList from './CategoryList';
 import LoginForm from './LoginForm';
 import fetchUtil from './util/fetchUtil';
 
+//TODO 181013: persist local storage like here: https://stackoverflow.com/questions/45111159/how-can-i-use-localstorage-to-maintain-state-after-a-page-refresh-in-react
+
 class User extends Component {
     constructor(props){
         super(props);
@@ -31,6 +33,7 @@ class User extends Component {
         );
         fetchUtil.postData(
             '/account/login',
+            null,
             data,
             responseData=>{
                 this.setState({xAccessToken:responseData.token});

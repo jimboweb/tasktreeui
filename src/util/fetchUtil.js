@@ -6,33 +6,37 @@ const apiUrl = "https://insolent-preclude.herokuapp.com";
 
 const fetchUtil = {
 
-    getData:(route, callback) => {
-        fetchUtil.fetchData(route, 'get', null, callback);
+    getData:(route, token, callback) => {
+        fetchUtil.fetchData(route, 'get', null, token, callback);
     },
 
-    postData: (route, data, callback) => {
-        fetchUtil.fetchData(route, 'post', data, callback);
+    postData: (route, token, data, callback) => {
+        fetchUtil.fetchData(route, 'post', token, data, callback);
     },
 
-    putData: (route, data, callback) => {
-        fetchUtil.fetchData(route, 'put', data, callback);
+    putData: (route, token, data, callback) => {
+        fetchUtil.fetchData(route, 'put', token, data, callback);
     },
 
-    deleteData: (route, data, callback) => {
-        fetchUtil.fetchData(route, 'delete', data, callback);
+    deleteData: (route, token, data, callback) => {
+        fetchUtil.fetchData(route, 'delete', token, data, callback);
     },
 
-    patchData: (route, data, callback) => {
-        fetchUtil.fetchData(route, 'patch', data, callback);
+    patchData: (route, token, data, callback) => {
+        fetchUtil.fetchData(route, 'patch', token, data, callback);
     },
 
-    fetchData : (route, method, data, callback) => {
+    fetchData : (route, method, token, data, callback) => {
         const headers = new Headers(
             {
                 'Content-Type': 'application/x-www-form-urlencoded'
 
             }
         );
+
+        if(token){
+            headers.set('x-access-token',token);
+        }
 
         let requestProps = {
             method: method,
@@ -47,13 +51,7 @@ const fetchUtil = {
 
         const request = new Request(
             apiUrl + route,
-            {
-                method: method,
-                mode: "cors",
-                redirect: "follow",
-                headers: headers,
-                body: data
-            }
+            requestProps
         );
 
         fetch(request)
@@ -65,5 +63,5 @@ const fetchUtil = {
                 respData=>{callback(respData)}
             );
     }
-}
+};
 export default fetchUtil;
