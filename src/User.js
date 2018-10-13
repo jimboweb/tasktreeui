@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import formUtil from './util/formUtil'
 import CategoryList from './CategoryList';
 import LoginForm from './LoginForm';
+import fetchUtil from './util/fetchUtil';
 
 class User extends Component {
     constructor(props){
@@ -21,48 +22,20 @@ class User extends Component {
     }
 
 
-    login(username, password, apiUrl){
-        const headers = new Headers(
+    login(username, password){
+        const data = formUtil.composeXWwwFormUrlEncoded(
             {
-                'Content-Type': 'application/x-www-form-urlencoded'
-
-            }
-        )
-
-        // console.log("the headers are:");
-        // for (var pair of headers.entries()) {
-        //     console.log(pair[0]+ ': '+ pair[1]);
-        // }
-
-        const data = {
-            username:username,
-            password:password
-        }
-
-        //FIXME 191008: can't add headers
-
-        const request = new Request (
-            apiUrl + '/account/login',
-            {
-                method: "post",
-                mode: "cors",
-                redirect: "follow",
-                headers:headers,
-                body: formUtil.composeXWwwFormUrlEncoded(data)
+                username:username,
+                password:password
             }
         );
-
-        fetch(request)
-            .then(
-                resp => {
-                    //FIXME 181011: 'this' is not defined, even after I bind it. hmmm...
-                    return resp.json();
-                })
-            .then(
-                data=>{
-                    this.setState({xAccessToken:data.token});
-                }
-            )
+        fetchUtil.postData(
+            '/account/login',
+            data,
+            responseData=>{
+                this.setState({xAccessToken:responseData.token});
+            }
+        );
 
 
     }

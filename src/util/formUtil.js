@@ -1,5 +1,5 @@
 
-var formUtil = {
+const formUtil = {
     composeXWwwFormUrlEncoded: function(obj){
         //FIXME: obj.params is not a thing. what should it be?
         return Object.keys(obj).map((key) => {
