@@ -2,12 +2,18 @@ import formUtil from './formUtil'
 
 
 
-const apiUrl = "https://insolent-preclude.herokuapp.com";
+
 
 const fetchUtil = {
 
+    getApiUrl:()=>{
+      return "http://localhost:3434";
+      //return "https://insolent-preclude.herokuapp.com";
+    },
+    //apiUrl = "https://insolent-preclude.herokuapp.com";
+
     getData:(route, token, callback) => {
-        fetchUtil.fetchData(route, 'get', null, token, callback);
+        fetchUtil.fetchData(route, 'get', token, null, callback);
     },
 
     postData: (route, token, data, callback) => {
@@ -40,9 +46,9 @@ const fetchUtil = {
 
         let requestProps = {
             method: method,
-            mode: "cors",
+            mode: 'cors',
             redirect: "follow",
-            headers: headers,
+            headers: headers
         };
 
         if(method!=='get' && data){
@@ -50,7 +56,7 @@ const fetchUtil = {
         }
 
         const request = new Request(
-            apiUrl + route,
+            fetchUtil.getApiUrl() + route,
             requestProps
         );
 
@@ -58,10 +64,14 @@ const fetchUtil = {
             .then(
                 resp => {
                     return resp.json();
+                },
+                err=> {
+                    throw "error: " + err;
                 })
             .then(
                 respData=>{callback(respData)}
             );
     }
+
 };
 export default fetchUtil;
