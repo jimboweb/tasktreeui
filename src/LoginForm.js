@@ -50,7 +50,7 @@ class LoginForm extends Component {
                     name = 'submit'
                     id='submitInput'
                     value = 'submit'
-                    onChange={this.handleSubmit}
+                    onClick={this.handleSubmit}
                     />
             </form>
         )

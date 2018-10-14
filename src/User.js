@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import formUtil from './util/formUtil'
 import CategoryList from './CategoryList';
 import LoginForm from './LoginForm';
+import fetchUtil from './util/fetchUtil';
+
+//TODO 181013: persist local storage like here: https://stackoverflow.com/questions/45111159/how-can-i-use-localstorage-to-maintain-state-after-a-page-refresh-in-react
 
 class User extends Component {
     constructor(props){
@@ -9,8 +12,10 @@ class User extends Component {
         this.state={
             username: undefined,
             xAccessToken: undefined,
-            apiUrl: "https://insolent-preclude.herokuapp.com"
+            apiUrl: "https://insolent-preclude.herokuapp.com",
+            uiUrl: 'http://localhost:8080'
         }
+        this.login=this.login.bind(this);
     }
 
     componentDidMount(){
@@ -18,46 +23,36 @@ class User extends Component {
 
     }
 
+
+    login(username, password){
+        const data = formUtil.composeXWwwFormUrlEncoded(
+            {
+                username:username,
+                password:password
+            }
+        );
+        fetchUtil.postData(
+            '/account/login',
+            null,
+            data,
+            responseData=>{
+                this.setState({xAccessToken:responseData.token});
+            }
+        );
+
+
+    }
+
+
+
     render(){
         if(this.state.xAccessToken){
           return(  <div id='userRoot'>
                 <CategoryList xAccessToken = {this.state.xAccessToken}/>
             </div>)
         } else {
-           return (<LoginForm login = {this.login}/>)
+           return (<LoginForm login = {this.login} apiUrl = {this.state.apiUrl}/>)
         }
-    }
-
-    login(username, password){
-        const headers = new Headers(
-            {
-                'Content-Type': "application/x-www-form-urlencoded"
-
-            }
-        )
-        const data = {
-            username:username,
-            password:password
-        }
-
-        const request = new Request (
-            this.apiUrl,
-            {
-                method: "post",
-                mode: "cors",
-                redirect: "follow",
-                headers:headers,
-                body: formUtil.composeXWwwFormUrlEncoded(data)
-            }
-        );
-
-        fetch(request)
-            .then(
-                function (resp) {
-                    this.setState({username:username,xAccessToken:resp.token});
-                }
-            )
-
     }
 
 
