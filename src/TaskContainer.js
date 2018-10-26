@@ -2,17 +2,18 @@ import React, {Component} from 'react';
 import './App.css';
 import DisplayStates from './util/DisplayStates'
 import Task from "./Task.java";
+import TaskInput from "./TaskInput";
 
 class TaskContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            displayState:DisplayStates.COLLAPSED;
+            displayState:DisplayStates.COLLAPSED
         };
     }
 
     expandCollapse(displayState){
-        displayState===DisplayStates.COLLAPSED:
+        displayState===DisplayStates.COLLAPSED?
         this.setState({displayStates:DisplayStates.EXPANDED})
         : this.setState({displayStates:DisplayStates.EXPANDED});
     }
@@ -24,11 +25,11 @@ class TaskContainer extends Component {
 
 
     render() {
-        if(this.state.displayState!=DisplayStates.INPUT){
+        return (
+            this.state.displayState!==DisplayStates.INPUT?
             <Task data={this.props.data} buttonAction = {this.expandCollapse}/>
-        } else {
-            <TaskInput data={this.props.data}/>
-        }
+            :<TaskInput data={this.props.data}/>
+        )
     }
 }
 

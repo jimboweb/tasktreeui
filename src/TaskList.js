@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import fetchUtil from './util/fetchUtil';
-import Category from './Category';
 import TaskContainer from "./TaskContainer";
 
 class TaskList extends Component {
@@ -20,7 +18,7 @@ class TaskList extends Component {
 
     render() {
         return (
-            <div className="TaskList" id={props.catId+"Tasks"}>
+            <div className="TaskList" id={this.props.catId+"Tasks"}>
                 {
                     this.props.data.map(
                         tsk=>{

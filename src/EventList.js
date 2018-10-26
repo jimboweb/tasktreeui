@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import Event from "./Event.java";
 
 class EventList extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class EventList extends Component {
 
     render() {
         return (
-            <div className='eventList' id={props.catId + 'EventList'}>
+            <div className='eventList' id={this.props.catId + 'EventList'}>
                 {
                     this.props.data.map(
                         evt => {
