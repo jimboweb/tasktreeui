@@ -12,7 +12,7 @@ function Task(props) {
             {this.props.displayState === DisplayStates.EXPANDED ? '-' : '+'}
         </button>
         <div className='dataWrapper'>
-            <h4>{props.data.name}</h4>
+            <h4>{this.props.data.name}</h4>
             <div className={this.props.displayState === DisplayStates.EXPANDED ? 'expanded' : 'collapsed'}>
                 <div className='property'>
                     Description : {this.props.data.description}
@@ -38,7 +38,7 @@ function Task(props) {
                             <h5>SubTasks:</h5>
                             <TaskList data = {this.props.data.subTasks} />
                         </div>
-                        :'';
+                        :''
                 }
                 {
                     this.props.data.events?
@@ -46,7 +46,7 @@ function Task(props) {
                             <h5>Events:</h5>
                             <EventList data = {this.props.data.events} />
                         </div>
-                        :'';
+                        :''
                 }
                 {
                     this.props.data.prqTasks?
@@ -54,7 +54,7 @@ function Task(props) {
                             <h5>Prerequisite Tasks:</h5>
                             <TaskList data = {this.props.data.prqTasks} />
                         </div>
-                        :'';
+                        :''
                 }
                 {
                     this.props.data.prqEvents?
@@ -62,7 +62,7 @@ function Task(props) {
                             <h5>Prerequisite Events:</h5>
                             <EventList data = {this.props.data.prqEvents} />
                         </div>
-                        :'';
+                        :''
                 }
                 {
                     this.props.data.notes?
@@ -70,7 +70,7 @@ function Task(props) {
                             <h5>Notes:</h5>
                             <NoteList data = {this.props.data.notes} />
                         </div>
-                        :'';
+                        :''
                 }
             </div>
         </div>

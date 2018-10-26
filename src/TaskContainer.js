@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import DisplayStates from './util/DisplayStates'
-import Task from "./Task.java";
+import Task from "./Task";
 import TaskInput from "./TaskInput";
 
 class TaskContainer extends Component {
