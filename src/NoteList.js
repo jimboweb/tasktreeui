@@ -9,6 +9,7 @@ class NoteList extends Component {
 
 
     render() {
+        return <div></div>
     }
 }
 
