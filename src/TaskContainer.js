@@ -12,22 +12,22 @@ class TaskContainer extends Component {
         };
     }
 
-    expandCollapse(displayState){
-        displayState===DisplayStates.COLLAPSED?
-        this.setState({displayStates:DisplayStates.EXPANDED})
-        : this.setState({displayStates:DisplayStates.EXPANDED});
+    expandCollapse=()=>{
+        this.state.displayState===DisplayStates.COLLAPSED?
+        this.setState({displayState:DisplayStates.EXPANDED})
+        : this.setState({displayState:DisplayStates.COLLAPSED});
     }
 
 
-    input(){
-        this.setState({displayStates:DisplayStates.INPUT});
+    input=()=>{
+        this.setState({displayState:DisplayStates.INPUT});
     }
 
 
     render() {
         return (
             this.state.displayState!==DisplayStates.INPUT?
-            <Task data={this.props.data} buttonAction = {this.expandCollapse}/>
+            <Task data={this.props.data} buttonAction = {this.expandCollapse} displayState = {this.state.displayState}/>
             :<TaskInput data={this.props.data}/>
         )
     }
