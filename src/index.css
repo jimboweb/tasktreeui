@@ -7,3 +7,24 @@ body {
 label {
   display: block;
 }
+
+.category{
+
+}
+
+.task {
+  display: flex;
+}
+
+.collapser {
+  flex-basis: auto;
+  width: 30px;
+}
+
+.expanded {
+  display: block;
+}
+
+.collapsed {
+  display: none;
+}
