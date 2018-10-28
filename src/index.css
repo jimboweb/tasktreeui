@@ -8,17 +8,42 @@ label {
   display: block;
 }
 
+.dataWrapper > h4 {
+  margin: 10px 0 5px 5px;
+}
+
+.dataWrapper > div{
+  margin: 0 0 10px 10px;
+}
+
+.category > h3 {
+  margin: 10px 0 0 5px;
+}
+
+.category > div {
+  margin: 10px 0 0 10px;
+}
+
+button {
+  margin: 10px 10px 5px 0;
+}
+
 .category{
 
 }
 
 .task {
   display: flex;
+  align-items: flex-start;
 }
 
 .collapser {
   flex-basis: auto;
-  width: 30px;
+  width: 20px;
+}
+
+.collapser > button{
+  width:15px;
 }
 
 .expanded {

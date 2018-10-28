@@ -3,6 +3,7 @@ import './App.css';
 import DisplayStates from './util/DisplayStates'
 import Task from "./Task";
 import TaskInput from "./TaskInput";
+import fetchUtil from './util/fetchUtil';
 
 class TaskContainer extends Component {
     constructor(props) {
@@ -21,6 +22,10 @@ class TaskContainer extends Component {
 
     input=()=>{
         this.setState({displayState:DisplayStates.INPUT});
+    }
+
+    update=(data)=>{
+        // fetchUtil.postData()
     }
 
 

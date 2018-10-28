@@ -10,7 +10,9 @@ class TaskInput extends Component {
 
     render() {
         return (
-            <div></div>
+            <div className = "taskInput">
+
+            </div>
         )
     }
 }

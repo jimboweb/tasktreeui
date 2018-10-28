@@ -7,10 +7,14 @@ import NoteList from "./NoteList";
 
 
 function Task(props) {
+
+
     return <div className='task ' id={props.data._id}>
-        <button className='collapser' onClick={props.buttonAction}>
-            {props.displayState === DisplayStates.EXPANDED ? '-' : '+'}
-        </button>
+        <div className='collapser'>
+            <button onClick={props.buttonAction}>
+                {props.displayState === DisplayStates.EXPANDED ? '-' : '+'}
+            </button>
+        </div>
         <div className='dataWrapper'>
             <h4>{props.data.name}</h4>
             <div className={props.displayState === DisplayStates.EXPANDED ? 'expanded' : 'collapsed'}>
