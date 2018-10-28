@@ -7,8 +7,8 @@ import formUtil from './formUtil'
 const fetchUtil = {
 
     getApiUrl:()=>{
-      return "http://localhost:3434";
-      //return "https://insolent-preclude.herokuapp.com";
+      //return "http://localhost:3434";
+      return "https://insolent-preclude.herokuapp.com";
     },
     //apiUrl = "https://insolent-preclude.herokuapp.com";
 
