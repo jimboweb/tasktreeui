@@ -3,6 +3,7 @@ import formUtil from './util/formUtil'
 import CategoryList from './CategoryList';
 import LoginForm from './LoginForm';
 import fetchUtil from './util/fetchUtil';
+import {UserProvider} from './UserContext';
 
 //TODO 181013: persist local storage like here: https://stackoverflow.com/questions/45111159/how-can-i-use-localstorage-to-maintain-state-after-a-page-refresh-in-react
 //TODO 181028: put username and xAccessToken in context so I can use it from anywhere
@@ -17,7 +18,7 @@ class User extends Component {
             xAccessToken: undefined,
             apiUrl: "https://insolent-preclude.herokuapp.com",
             uiUrl: 'http://localhost:8080'
-        }
+        };
         this.login=this.login.bind(this);
     }
 
@@ -49,9 +50,12 @@ class User extends Component {
 
     render(){
         if(this.state.xAccessToken){
-          return(  <div id='userRoot'>
-                <CategoryList xAccessToken = {this.state.xAccessToken}/>
-            </div>)
+          return(
+              <div id='userRoot'>
+                  <UserProvider username = {this.state.username} xAccessToken = {this.state.xAccessToken}>
+                    <CategoryList xAccessToken = {this.state.xAccessToken}/>
+                  </UserProvider>
+              </div>)
         } else {
            return (<LoginForm login = {this.login} apiUrl = {this.state.apiUrl}/>)
         }
