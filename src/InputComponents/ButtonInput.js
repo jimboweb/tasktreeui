@@ -9,8 +9,8 @@ function ButtonInput(props) {
                 {props.inputName}:
                 <input
                     type='button'
-                    name={props.inputName.toLowerCase()}
-                     onClick = {props.handleClick}
+                    name={props.name.toLowerCase()}
+                     onClick = {props.handlers.handleSubmit}
                     {...this.props.attributes}
                 />
             </label>

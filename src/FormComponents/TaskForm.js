@@ -1,20 +1,29 @@
 import React, {Component} from 'react';
 import '../App.css';
-import InputTypes from './util/formEnums'
+import InputTypes from './util/formEnums';
+import FormBuilder from './FormBuilder';
 
 class TaskForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             task:{},
-            submitFields: [
-                {name:'name', type:InputTypes.TEXT},
-                {name: 'description', type:InputTypes.TEXT},
-                {name:'deadline',type:InputTypes.DATE},
-                {name:'startDate',type:InputTypes.DATE},
-                {name:'external',type:InputTypes.CHECKBOX},
-                {name:'estTime',type:InputTypes.NUMBER}
-            ]
+            inputFields: [
+                {props: {name:'name'}, type:InputTypes.TEXT},
+                {props: {name: 'description'}, type:InputTypes.TEXT},
+                {props: {name:'deadline'},type:InputTypes.DATE},
+                {props:{name:'startDate'},type:InputTypes.DATE},
+                {props: {name:'external'},type:InputTypes.CHECKBOX},
+                {props: {name:'estTime'},type:InputTypes.NUMBER}
+            ],
+            handlers : {
+                handleCheck : this.handleCheck,
+                handleCancel: this.handleCancel,
+                handleReset: this.handleReset,
+                handleSubmit:this.handleSubmit,
+                handleChange:this.handleChange
+
+            };
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -49,14 +58,16 @@ class TaskForm extends Component {
     }
 
 
-    render() {
-        return (
-            <div className = "taskInput" id ={this.props.id}>
-                <form>
 
-                </form>
-            </div>
-        )
+
+    render() {
+
+        return <div className="taskInput" id={this.props.id}>
+            <FormBuilder
+                inputs={this.state.inputFields}
+                handlers = handlers;
+            />
+        </div>
     }
 }
 

@@ -6,12 +6,12 @@ function TextInput(props) {
     return (
         <fragment>
             <label>
-                {props.inputName}:
+                {props.name}:
                 <input
                     type='text'
-                    name={props.inputName.toLowerCase()}
+                    name={props.name.toLowerCase()}
                     value={props.value}
-                    onChange = {props.handleChange}
+                    onChange = {props.handlers.handleChange}
                     {...this.props.attributes}
                 />
             </label>

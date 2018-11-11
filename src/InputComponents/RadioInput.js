@@ -6,11 +6,11 @@ function RadioInput(props) {
     return (
         <fragment>
             <label>
-                {props.inputName}:
+                {props.name}:
                 <input
                     type='radio'
-                    name={props.inputName.toLowerCase()}
-                     onClick = {props.handleChange}
+                    name={props.name.toLowerCase()}
+                     onClick = {props.handlers.handleChange}
                     {...this.props.attributes}
                 />
             </label>

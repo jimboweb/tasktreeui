@@ -23,7 +23,7 @@ const inputTypes = Object.freeze({
     NUMBER: NumberInput,
     TIMEINTERVAL: TimeIntervalInput
 });
-//TODO 181110: make a StandardForm object that creates form inputs for each of these types
+//TODO 181110: make a StandardForm object that creates form inputFields for each of these types
 //TODO 181110: put that in the TaskForm section
 
 export const InputTypes = inputTypes;

@@ -6,11 +6,11 @@ function ResetInput(props) {
     return (
         <fragment>
             <label>
-                {props.inputName}:
+                {props.name}:
                 <input
                     type='reset'
-                    name={props.inputName.toLowerCase()}
-                     onClick = {props.handleReset}
+                    name={props.name.toLowerCase()}
+                     onClick = {props.handlers.handleReset}
                     {...this.props.attributes}
                 />
             </label>

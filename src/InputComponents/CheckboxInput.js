@@ -6,12 +6,12 @@ function CheckboxInput(props) {
     return (
         <fragment>
             <label>
-                {props.inputName}:
+                {props.name}:
                 <input
                     type='checkbox'
-                    name={props.inputName.toLowerCase()}
+                    name={props.name.toLowerCase()}
                     value={props.value}
-                    onChange = {props.handleCheck}
+                    onChange = {props.handlers.handleCheck}
                     {...this.props.attributes}
                 />
             </label>

@@ -6,11 +6,11 @@ function SubmitInput(props) {
     return (
         <fragment>
             <label>
-                {props.inputName}:
+                {props.name}:
                 <input
                     type='submit'
-                    name={props.inputName.toLowerCase()}
-                     onClick = {props.handleSubmit}
+                    name={props.name.toLowerCase()}
+                     onClick = {props.handlers.handleSubmit}
                     {...this.props.attributes}
                 />
             </label>
