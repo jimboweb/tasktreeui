@@ -1,14 +1,14 @@
 import React from "react";
-import './App.css';
+import '../App.css';
 
 
-function TextInput(props) {
+function TimeIntervalInput(props) {
     return (
         <fragment>
             <label>
                 {props.inputName}:
                 <input
-                    type='text'
+                    type='number'
                     name={props.inputName.toLowerCase()}
                     value={props.value}
                     onChange = {props.handleChange}
@@ -19,4 +19,4 @@ function TextInput(props) {
     );
 }
 
-export default TextInput;
+export default TimeIntervalInput;

@@ -1,23 +1,29 @@
-import TextInput from '../TextInput';
-import PasswordInput from '../PasswordInput'
-import ResetInput from '../ResetInput'
-import CheckboxInput from '../CheckboxInput'
+import TextInput from '../InputComponents/TextInput';
+import PasswordInput from '../InputComponents/PasswordInput';
+import ResetInput from '../InputComponents/ResetInput';
+import CheckboxInput from '../InputComponents/CheckboxInput';
+import SubmitInput from '../InputComponents/SubmitInput';
+import RadioInput from '../InputComponents/RadioInput';
+import BButtonInput from '../InputComponents/ButtonInput';
+import DateInput from "../InputComponents/DateInput";
+import EmailInput from '../InputComponents/EmailInput';
+import NumberInput from '../InputComponents/NumberInput';
+import TimeIntervalInput from '../InputComponents/TimeIntervalInput'
+
 const inputTypes = Object.freeze({
     TEXT: TextInput,
     PASSWORD: PasswordInput,
-    SUBMIT: 'submit',
+    SUBMIT: SubmitInput,
     RESET: ResetInput,
-    RADIO:'radio',
+    RADIO: RadioInput,
     CHECKBOX: CheckboxInput,
-    BUTTON: 'button',
-    DATE: 'date',
-    EMAIL: 'email',
-    NUMBER: 'number',
-    TIMEINTERVAL: 'time'
+    BUTTON: BButtonInput,
+    DATE: DateInput,
+    EMAIL: EmailInput,
+    NUMBER: NumberInput,
+    TIMEINTERVAL: TimeIntervalInput
 });
-//TODO 181110: make the rest of these object
-//TODO 181110: import them and match them to the type
 //TODO 181110: make a StandardForm object that creates form inputs for each of these types
-//TODO 181110: put that in the TaskInput section
+//TODO 181110: put that in the TaskForm section
 
 export const InputTypes = inputTypes;

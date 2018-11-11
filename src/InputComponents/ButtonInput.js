@@ -1,17 +1,16 @@
 import React from "react";
-import './App.css';
+import '../App.css';
 
 
-function CheckboxInput(props) {
+function ButtonInput(props) {
     return (
         <fragment>
             <label>
                 {props.inputName}:
                 <input
-                    type='checkbox'
+                    type='button'
                     name={props.inputName.toLowerCase()}
-                    value={props.value}
-                    onChange = {props.handleCheck}
+                     onClick = {props.handleClick}
                     {...this.props.attributes}
                 />
             </label>
@@ -19,4 +18,4 @@ function CheckboxInput(props) {
     );
 }
 
-export default CheckboxInput;
+export default ButtonInput;

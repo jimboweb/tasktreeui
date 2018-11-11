@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import formUtil from './util/formUtil'
-import CategoryList from './CategoryList';
-import LoginForm from './LoginForm';
+import CategoryList from './ListComponents/CategoryList';
+import LoginForm from './FormComponents/LoginForm';
 import fetchUtil from './util/fetchUtil';
 import {UserProvider} from './UserContext';
 

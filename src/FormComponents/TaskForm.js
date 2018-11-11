@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './App.css';
+import '../App.css';
 import InputTypes from './util/formEnums'
 
-class TaskInput extends Component {
+class TaskForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -60,4 +60,4 @@ class TaskInput extends Component {
     }
 }
 
-export default TaskInput;
+export default TaskForm;

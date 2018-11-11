@@ -1,5 +1,5 @@
 import React from "react";
-import './App.css';
+import '../App.css';
 import TaskList from "./TaskList";
 import EventList from "./EventList";
 

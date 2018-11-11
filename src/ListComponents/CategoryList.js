@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 import fetchUtil from './util/fetchUtil';
-import Category from './Category';
+import Category from './BranchComponents/Category';
 
 class CategoryList extends Component {
     constructor(props) {
