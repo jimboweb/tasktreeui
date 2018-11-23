@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import TaskContainer from "./TaskContainer";
+import TaskContainer from '../ContainerComponents/TaskContainer';
 
 class TaskList extends Component {
     constructor(props) {

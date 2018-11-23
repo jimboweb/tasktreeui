@@ -7,7 +7,6 @@ class TaskForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            task:{},
             inputFields: [
                 {props: {name:'name'}, type:InputTypes.TEXT},
                 {props: {name: 'description'}, type:InputTypes.TEXT},
@@ -23,7 +22,7 @@ class TaskForm extends Component {
                 handleSubmit:this.handleSubmit,
                 handleChange:this.handleChange
 
-            };
+            }
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -65,7 +64,8 @@ class TaskForm extends Component {
         return <div className="taskInput" id={this.props.id}>
             <FormBuilder
                 inputs={this.state.inputFields}
-                handlers = handlers;
+                handlers = handlers
+                task = props.task
             />
         </div>
     }

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import '../App.css';
-import DisplayStates from './util/DisplayStates'
-import Task from "./BranchComponents/Task";
-import TaskForm from "./FormComponents/TaskForm";
-import fetchUtil from './util/fetchUtil';
+import DisplayStates from '../util/DisplayStates'
+import Task from "../BranchComponents/Task";
+import TaskForm from "../FormComponents/TaskForm";
+import fetchUtil from '../util/fetchUtil';
 
 class TaskContainer extends Component {
     constructor(props) {
@@ -22,18 +22,18 @@ class TaskContainer extends Component {
 
     input=()=>{
         this.setState({displayState:DisplayStates.INPUT});
-    }
+    };
 
     update=(data)=>{
         // fetchUtil.postData()
-    }
+    };
 
 
     render() {
         return (
             this.state.displayState!==DisplayStates.INPUT?
             <Task data={this.props.data} buttonAction = {this.expandCollapse} displayState = {this.state.displayState}/>
-            :<TaskForm data={this.props.data}/>
+            :<TaskForm task={this.props.data}/>
         )
     }
 }

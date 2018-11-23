@@ -14,7 +14,8 @@ class FormBuilder extends Component {
                 this.props.inputFields.map(input=>{
                     const propsWithKeyAndHandlers = Object.assign({
                         key:"" + this.props.id + input.name,
-                        handlers:this.props.handlers}
+                        handlers:this.props.handlers,
+                        value: this.props.task[input.name]}
                         ,input.props);
                     input.content?
                         React.createElement(input.type, propsWithKeyAndHandlers,input.content):
