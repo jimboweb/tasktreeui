@@ -1,7 +1,7 @@
 import React from "react";
 import '../App.css';
-import TaskList from "./TaskList";
-import EventList from "./EventList";
+import TaskList from "../ListComponents/TaskList";
+import EventList from "../ListComponents/EventList";
 
 
 function Category(props){

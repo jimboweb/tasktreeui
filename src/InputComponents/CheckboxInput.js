@@ -4,7 +4,7 @@ import '../App.css';
 
 function CheckboxInput(props) {
     return (
-        <fragment>
+        <React.Fragment>
             <label>
                 {props.name}:
                 <input
@@ -15,7 +15,7 @@ function CheckboxInput(props) {
                     {...this.props.attributes}
                 />
             </label>
-        </fragment>
+        </React.Fragment>
     );
 }
 

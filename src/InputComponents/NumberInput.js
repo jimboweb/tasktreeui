@@ -4,7 +4,7 @@ import '../App.css';
 
 function NumberInput(props) {
     return (
-        <fragment>
+        <React.Fragment>
             <label>
                 {props.name}:
                 <input
@@ -15,7 +15,7 @@ function NumberInput(props) {
                     {...this.props.attributes}
                 />
             </label>
-        </fragment>
+        </React.Fragment>
     );
 }
 

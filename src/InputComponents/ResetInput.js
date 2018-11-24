@@ -4,7 +4,7 @@ import '../App.css';
 
 function ResetInput(props) {
     return (
-        <fragment>
+        <React.Fragment>
             <label>
                 {props.name}:
                 <input
@@ -14,7 +14,7 @@ function ResetInput(props) {
                     {...this.props.attributes}
                 />
             </label>
-        </fragment>
+        </React.Fragment>
     );
 }
 

@@ -4,7 +4,7 @@ import '../App.css';
 
 function ButtonInput(props) {
     return (
-        <fragment>
+        <React.Fragment>
             <label>
                 {props.inputName}:
                 <input
@@ -14,7 +14,7 @@ function ButtonInput(props) {
                     {...this.props.attributes}
                 />
             </label>
-        </fragment>
+        </React.Fragment>
     );
 }
 

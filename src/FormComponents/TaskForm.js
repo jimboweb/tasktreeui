@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
-import InputTypes from './util/formEnums';
+import InputTypes from '../Enums/InputTypes';
 import FormBuilder from './FormBuilder';
 
 class TaskForm extends Component {
@@ -8,12 +8,12 @@ class TaskForm extends Component {
         super(props);
         this.state = {
             inputFields: [
-                {props: {name:'name'}, type:InputTypes.TEXT},
-                {props: {name: 'description'}, type:InputTypes.TEXT},
-                {props: {name:'deadline'},type:InputTypes.DATE},
-                {props:{name:'startDate'},type:InputTypes.DATE},
-                {props: {name:'external'},type:InputTypes.CHECKBOX},
-                {props: {name:'estTime'},type:InputTypes.NUMBER}
+                {props: {name:'name', type:InputTypes.TEXT}},
+                {props: {name: 'description', type:InputTypes.TEXT}},
+                {props: {name:'deadline',type:InputTypes.DATE}},
+                {props:{name:'startDate',type:InputTypes.DATE}},
+                {props: {name:'external',type:InputTypes.CHECKBOX}},
+                {props: {name:'estTime',type:InputTypes.NUMBER}}
             ],
             handlers : {
                 handleCheck : this.handleCheck,
@@ -52,10 +52,9 @@ class TaskForm extends Component {
 
     }
 
-    handleCheck(){
+    handleCheck(event){
         this.setState({[event.target.name]: event.target.checked});
     }
-
 
 
 
@@ -63,9 +62,9 @@ class TaskForm extends Component {
 
         return <div className="taskInput" id={this.props.id}>
             <FormBuilder
-                inputs={this.state.inputFields}
-                handlers = handlers
-                task = props.task
+                inputFields={this.state.inputFields}
+                handlers = {this.state.handlers}
+                task = {this.props.task}
             />
         </div>
     }

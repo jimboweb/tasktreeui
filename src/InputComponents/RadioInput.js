@@ -4,7 +4,7 @@ import '../App.css';
 
 function RadioInput(props) {
     return (
-        <fragment>
+        <React.Fragment>
             <label>
                 {props.name}:
                 <input
@@ -14,7 +14,7 @@ function RadioInput(props) {
                     {...this.props.attributes}
                 />
             </label>
-        </fragment>
+        </React.Fragment>
     );
 }
 

@@ -1,11 +1,11 @@
 import React from "react";
 import '../App.css';
-import DisplayStates from './util/DisplayStates'
-import TaskList from "./TaskList";
-import EventList from "./EventList";
-import NoteList from "./NoteList";
+import DisplayStates from '../Enums/DisplayStates'
+import TaskList from "../ListComponents/TaskList";
+import EventList from "../ListComponents/EventList";
+import NoteList from "../ListComponents/NoteList";
 
-
+//TODO 181122: create an edit button that changes displayStates to input
 function Task(props) {
 
 
@@ -15,6 +15,7 @@ function Task(props) {
                 {props.displayState === DisplayStates.EXPANDED ? '-' : '+'}
             </button>
         </div>
+
         <div className='dataWrapper'>
             <h4>{props.data.name}</h4>
             <div className={props.displayState === DisplayStates.EXPANDED ? 'expanded' : 'collapsed'}>
@@ -77,6 +78,11 @@ function Task(props) {
                         :''
                 }
             </div>
+        </div>
+        <div className='editButton'>
+            <button onClick={props.editAction}>
+                <img src='../img/edit.svg' />
+            </button>
         </div>
     </div>
 }

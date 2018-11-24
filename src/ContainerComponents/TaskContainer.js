@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import '../App.css';
-import DisplayStates from '../util/DisplayStates'
+import DisplayStates from '../Enums/DisplayStates'
 import Task from "../BranchComponents/Task";
 import TaskForm from "../FormComponents/TaskForm";
-import fetchUtil from '../util/fetchUtil';
 
 class TaskContainer extends Component {
     constructor(props) {
@@ -32,7 +31,7 @@ class TaskContainer extends Component {
     render() {
         return (
             this.state.displayState!==DisplayStates.INPUT?
-            <Task data={this.props.data} buttonAction = {this.expandCollapse} displayState = {this.state.displayState}/>
+            <Task data={this.props.data} buttonAction = {this.expandCollapse} editAction = {this.input} displayState = {this.state.displayState}/>
             :<TaskForm task={this.props.data}/>
         )
     }
