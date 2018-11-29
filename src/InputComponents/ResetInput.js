@@ -11,7 +11,7 @@ function ResetInput(props) {
                     type='reset'
                     name={props.name.toLowerCase()}
                      onClick = {props.handlers.handleReset}
-                    {...this.props.attributes}
+                    {...props.attributes}
                 />
             </label>
         </React.Fragment>

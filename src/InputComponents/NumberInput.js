@@ -12,7 +12,7 @@ function NumberInput(props) {
                     name={props.name.toLowerCase()}
                     value={props.value}
                     onChange = {props.handlers.handleChange}
-                    {...this.props.attributes}
+                    {...props.attributes}
                 />
             </label>
         </React.Fragment>

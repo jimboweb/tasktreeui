@@ -12,7 +12,7 @@ function CheckboxInput(props) {
                     name={props.name.toLowerCase()}
                     value={props.value}
                     onChange = {props.handlers.handleCheck}
-                    {...this.props.attributes}
+                    {...props.attributes}
                 />
             </label>
         </React.Fragment>

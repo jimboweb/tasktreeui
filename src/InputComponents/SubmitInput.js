@@ -11,7 +11,7 @@ function SubmitInput(props) {
                     type='submit'
                     name={props.name.toLowerCase()}
                      onClick = {props.handlers.handleSubmit}
-                    {...this.props.attributes}
+                    {...props.attributes}
                 />
             </label>
         </React.Fragment>
