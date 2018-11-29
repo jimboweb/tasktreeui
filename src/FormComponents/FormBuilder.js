@@ -1,15 +1,4 @@
 import React, {Component} from 'react';
-import TextInput from '../InputComponents/TextInput';
-import PasswordInput from '../InputComponents/PasswordInput';
-import ResetInput from '../InputComponents/ResetInput';
-import CheckboxInput from '../InputComponents/CheckboxInput';
-import SubmitInput from '../InputComponents/SubmitInput';
-import RadioInput from '../InputComponents/RadioInput';
-import ButtonInput from '../InputComponents/ButtonInput';
-import DateInput from "../InputComponents/DateInput";
-import EmailInput from '../InputComponents/EmailInput';
-import NumberInput from '../InputComponents/NumberInput';
-import TimeIntervalInput from '../InputComponents/TimeIntervalInput'
 import '../App.css';
 
 class FormBuilder extends Component {
@@ -29,9 +18,9 @@ class FormBuilder extends Component {
                         handlers:this.props.handlers,
                         value: this.props.task[input.props.name]}
                         ,input.props);
-                    input.content?
-                        React.createElement(input.props.type, propsWithKeyAndHandlers,input.content):
-                        React.createElement(input.props.type, propsWithKeyAndHandlers);
+                    return input.content?
+                        React.createElement(input.type, propsWithKeyAndHandlers,input.content):
+                        React.createElement(input.type, propsWithKeyAndHandlers);
                 })
             }
         </form>

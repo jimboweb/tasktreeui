@@ -8,12 +8,12 @@ class TaskForm extends Component {
         super(props);
         this.state = {
             inputFields: [
-                {props: {name:'name', type:InputTypes.TEXT}},
-                {props: {name: 'description', type:InputTypes.TEXT}},
-                {props: {name:'deadline',type:InputTypes.DATE}},
-                {props:{name:'startDate',type:InputTypes.DATE}},
-                {props: {name:'external',type:InputTypes.CHECKBOX}},
-                {props: {name:'estTime',type:InputTypes.NUMBER}}
+                {props: {name:'name', },type:InputTypes.TEXT},
+                {props: {name: 'description'}, type:InputTypes.TEXT},
+                {props: {name:'deadline'},type:InputTypes.DATE},
+                {props:{name:'startDate'},type:InputTypes.DATE},
+                {props: {name:'external'},type:InputTypes.CHECKBOX},
+                {props: {name:'estTime'},type:InputTypes.NUMBER}
             ],
             handlers : {
                 handleCheck : this.handleCheck,
