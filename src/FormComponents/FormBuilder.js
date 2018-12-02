@@ -5,7 +5,10 @@ class FormBuilder extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+
+
     }
+
 
 //FIXME 181124: createElement just not working need a different way. Map to an array of components?
     render() {
@@ -13,14 +16,13 @@ class FormBuilder extends Component {
             {
 
                 this.props.inputFields.map(input=>{
-                    const propsWithKeyAndHandlers = Object.assign({
+                    const propsWithKey = Object.assign({
                         key:"" + this.props.task._id + input.props.name,
-                        handlers:this.props.handlers,
                         value: this.props.task[input.props.name]}
                         ,input.props);
                     return input.content?
-                        React.createElement(input.type, propsWithKeyAndHandlers,input.content):
-                        React.createElement(input.type, propsWithKeyAndHandlers);
+                        React.createElement(input.type, propsWithKey,input.content):
+                        React.createElement(input.type, propsWithKey);
                 })
             }
         </form>

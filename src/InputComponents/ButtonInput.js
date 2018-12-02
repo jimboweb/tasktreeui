@@ -1,21 +1,33 @@
-import React from "react";
+import React, {Component} from "react";
 import '../App.css';
 
 
-function ButtonInput(props) {
-    return (
-        <React.Fragment>
-            <label>
-                {props.inputName}:
-                <input
-                    type='button'
-                    name={props.name.toLowerCase()}
-                     onClick = {props.handlers.handleSubmit}
-                    {...props.attributes}
-                />
-            </label>
-        </React.Fragment>
-    );
+class ButtonInput extends Component {
+
+    constructor(props){
+        super(props);
+    }
+
+    handleClick(event){
+
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <label>
+                    {props.inputName}:
+                    <input
+                        type='button'
+                        name={props.name.toLowerCase()}
+                        onClick={this.handleClick.bind(this)}
+                        {...props.attributes}
+                    />
+                </label>
+            </React.Fragment>
+        );
+    }
 }
 
 export default ButtonInput;
