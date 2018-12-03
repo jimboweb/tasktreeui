@@ -9,7 +9,7 @@ class ButtonInput extends Component {
     }
 
     handleClick(event){
-
+        this.props.action();
         event.preventDefault();
     }
 
