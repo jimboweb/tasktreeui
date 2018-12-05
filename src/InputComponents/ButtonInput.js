@@ -16,15 +16,12 @@ class ButtonInput extends Component {
     render() {
         return (
             <React.Fragment>
-                <label>
-                    {props.inputName}:
-                    <input
+                     <input
                         type='button'
                         name={props.name.toLowerCase()}
                         onClick={this.handleClick.bind(this)}
                         {...props.attributes}
                     />
-                </label>
             </React.Fragment>
         );
     }

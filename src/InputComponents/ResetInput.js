@@ -1,21 +1,32 @@
-import React from "react";
+import React, {Component} from "react";
 import '../App.css';
 
 
-function ResetInput(props) {
-    return (
-        <React.Fragment>
-            <label>
-                {props.name}:
-                <input
-                    type='reset'
-                    name={props.name.toLowerCase()}
-                     onClick = {props.handlers.handleReset}
-                    {...props.attributes}
-                />
-            </label>
-        </React.Fragment>
-    );
+class ResetInput extends Component {
+
+    constructor(props){
+        super(props);
+
+    }
+
+    handleClick(event){
+        this.props.action();
+        event.preventDefault();
+    }
+
+
+    render() {
+        return (
+            <React.Fragment>
+                     <input
+                        type='reset'
+                        name={this.props.name.toLowerCase()}
+                        onClick={this.handleClick.bind(this)}
+                        {...this.props.attributes}
+                    />
+            </React.Fragment>
+        );
+    }
 }
 
 export default ResetInput;

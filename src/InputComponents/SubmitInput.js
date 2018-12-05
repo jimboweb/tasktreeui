@@ -1,21 +1,33 @@
-import React from "react";
+import React, {Component} from "react";
 import '../App.css';
 
 
-function SubmitInput(props) {
-    return (
-        <React.Fragment>
-            <label>
-                {props.name}:
-                <input
-                    type='submit'
-                    name={props.name.toLowerCase()}
-                     onClick = {props.handlers.handleSubmit}
-                    {...props.attributes}
-                />
-            </label>
-        </React.Fragment>
-    );
+class SubmitInput extends Component{
+
+    constructor(props){
+        super(props);
+
+    }
+
+    handleClick(event){
+        this.props.action();
+        event.preventDefault();
+    }
+
+
+
+    render() {
+        return (
+            <React.Fragment>
+                    <input
+                        type='submit'
+                        name={this.props.name.toLowerCase()}
+                        onClick={this.handleClick.bind(this)}
+                        {...this.props.attributes}
+                    />
+             </React.Fragment>
+        );
+    }
 }
 
 export default SubmitInput;
