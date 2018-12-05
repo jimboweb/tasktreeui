@@ -8,56 +8,18 @@ class TaskForm extends Component {
         super(props);
         this.state = {
             inputFields: [
-                {props: {name:'name', },type:InputTypes.TEXT},
-                {props: {name: 'description'}, type:InputTypes.TEXT},
-                {props: {name:'deadline'},type:InputTypes.DATE},
-                {props:{name:'startDate'},type:InputTypes.DATE},
-                {props: {name:'external'},type:InputTypes.CHECKBOX},
-                {props: {name:'estTime'},type:InputTypes.NUMBER}
+                {props: {name: 'name',}, type: InputTypes.TEXT},
+                {props: {name: 'description'}, type: InputTypes.TEXT},
+                {props: {name: 'deadline'}, type: InputTypes.DATE},
+                {props: {name: 'startDate'}, type: InputTypes.DATE},
+                {props: {name: 'external'}, type: InputTypes.CHECKBOX},
+                {props: {name: 'estTime'}, type: InputTypes.NUMBER},
+                {props: {name: 'Done'}, type: InputTypes.SUBMIT, action: {/*TODO 181205: submit form action here*/}}
             ],
-            handlers : {
-                handleCheck : this.handleCheck,
-                handleCancel: this.handleCancel,
-                handleReset: this.handleReset,
-                handleSubmit:this.handleSubmit,
-                handleChange:this.handleChange
+         };
 
-            }
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleReset = this.handleReset.bind(this);
-        this.handleCancel = this.handleCancel.bind(this);
-        this.handleCheck = this.handleCheck.bind(this)
-    }
-
-    handleChange(event) {
-        this.setState({[event.target.name]: event.target.value});
-    }
-
-    handleSubmit(event) {
-        this.props.submit(this.state.task);
-        event.preventDefault();
-    }
-
-    handleReset(event) {
-        this.props.reset(this.state.task);
-        event.preventDefault();
-    }
-
-    handleCancel(event){
-        this.props.cancel(this.state.task);
-        event.preventDefault();
 
     }
-
-    handleCheck(event){
-        this.setState({[event.target.name]: event.target.checked});
-    }
-
-
-
     render() {
 
         return <div className="taskInput" id={this.props.id}>

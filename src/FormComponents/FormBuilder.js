@@ -10,9 +10,9 @@ class FormBuilder extends Component {
     }
 
 
-//FIXME 181124: createElement just not working need a different way. Map to an array of components?
+
     render() {
-        return <form id={this.props.id}>
+         return <form id={this.props.id}>
             {
 
                 this.props.inputFields.map(input=>{
