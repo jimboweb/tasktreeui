@@ -52,7 +52,7 @@ class User extends Component {
         if(this.state.xAccessToken){
           return(
               <div id='userRoot'>
-                  <UserProvider username = {this.state.username} xAccessToken = {this.state.xAccessToken}>
+                  <UserProvider value = {this.state.xAccessToken}>
                     <CategoryList xAccessToken = {this.state.xAccessToken}/>
                   </UserProvider>
               </div>)
