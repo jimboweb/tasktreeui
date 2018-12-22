@@ -10,6 +10,7 @@ class SubmitInput extends Component{
     }
 
     handleClick(event){
+        //TODO 181221: have to put the arguments in the action here, or up in the TaskForm
         this.props.action();
         event.preventDefault();
     }

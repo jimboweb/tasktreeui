@@ -8,9 +8,10 @@ import fetchUtil from '../util/fetchUtil'
  * @param parentType: "Task" or "Category"
  * @param parentId: the id of the parent
  */
-class TaskApiCalls {
-    createTask = (task, parentType, parentId, token)=>{
+const TaskApiCalls = {
+    createTask: (task, parentType, parentId, token)=>{
         fetchUtil.postData(parentType +"/"+parentId,token,task);
-    };
+    }
 }
 
+export default TaskApiCalls

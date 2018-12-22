@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../App.css';
 import InputTypes from '../Enums/InputTypes';
 import FormBuilder from './FormBuilder';
+import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 
 class TaskForm extends Component {
     constructor(props) {
@@ -14,14 +15,19 @@ class TaskForm extends Component {
                 {props: {name: 'startDate'}, type: InputTypes.DATE},
                 {props: {name: 'external'}, type: InputTypes.CHECKBOX},
                 {props: {name: 'estTime'}, type: InputTypes.NUMBER},
-                {props: {name: 'Done'}, type: InputTypes.SUBMIT, action: {/*TODO 181205: submit form action here*/}}
+                //TODO 181221: I have to use the action in the form now. do I put the arguments here or there?
+                {props: {name: 'Done'}, type: InputTypes.SUBMIT, action: TaskApiCalls.createTask}
             ],
+
          };
 
 
-    }
-    render() {
 
+
+    }
+
+
+    render() {
         return <div className="taskInput" id={this.props.id}>
             <FormBuilder
                 inputFields={this.state.inputFields}

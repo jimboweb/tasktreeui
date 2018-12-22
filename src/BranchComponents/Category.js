@@ -11,7 +11,7 @@ function Category(props){
                 {props.data.name}
             </h2>
             <h3>Tasks</h3>
-            <TaskList data = {props.data.children.tasks} catId={props.data._id}/>
+            <TaskList data = {props.data.children.tasks} catId={props.data._id} />
             <h3 >Events</h3>
             <EventList data={props.data.children.events} catId={props.data._id}/>
         </div>

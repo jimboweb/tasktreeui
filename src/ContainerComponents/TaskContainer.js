@@ -3,6 +3,7 @@ import '../App.css';
 import DisplayStates from '../Enums/DisplayStates'
 import Task from "../BranchComponents/Task";
 import TaskForm from "../FormComponents/TaskForm";
+import {UserConsumer} from "../UserContext";
 
 class TaskContainer extends Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class TaskContainer extends Component {
         return (
             this.state.displayState!==DisplayStates.INPUT?
             <Task data={this.props.data} buttonAction = {this.expandCollapse} editAction = {this.input} displayState = {this.state.displayState}/>
-            :<TaskForm task={this.props.data}/>
+            :<UserConsumer>{context=><TaskForm task={this.props.data} xAccessToken = {context}/>}</UserConsumer>
         )
     }
 }
