@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4871acbb-7a39-43b2-a7d2-fb46ac1e65cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../src/ApiCallFunctions/TaskApiCalls.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ApiCallFunctions/TaskApiCalls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/BranchComponents/Category.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/BranchComponents/Category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ContainerComponents/TaskContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ContainerComponents/TaskContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/BranchComponents/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/BranchComponents/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/FormComponents/TaskForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/FormComponents/TaskForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/InputComponents/SubmitInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/InputComponents/SubmitInput.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +55,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="121" y="63" width="1163" height="837" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Gulp" side_tool="true" />
@@ -70,7 +67,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32921812" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32921812" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

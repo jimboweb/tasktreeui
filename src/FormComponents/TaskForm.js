@@ -15,8 +15,9 @@ class TaskForm extends Component {
                 {props: {name: 'startDate'}, type: InputTypes.DATE},
                 {props: {name: 'external'}, type: InputTypes.CHECKBOX},
                 {props: {name: 'estTime'}, type: InputTypes.NUMBER},
-                //TODO 181221: I have to use the action in the form now. do I put the arguments here or there?
-                {props: {name: 'Done'}, type: InputTypes.SUBMIT, action: TaskApiCalls.createTask}
+                //TODO 181223: put arguments here. the data will be what's in the form, which I can get with
+                // getElementById or whatever. i guess the function has to be written down below.
+                {props: {name: 'Done', action: TaskApiCalls.createTask(/* */)}, type: InputTypes.SUBMIT}
             ],
 
          };
@@ -24,6 +25,12 @@ class TaskForm extends Component {
 
 
 
+    }
+
+    const submitAction=()=>{
+        //get the data in the form
+        //and I have to know the parent type
+        //call createTask or modifyTask, I have to know which one
     }
 
 

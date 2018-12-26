@@ -38,6 +38,7 @@ function Task(props) {
                     Estimated Time : {props.data.estTime}
                 </div>
                 {
+                    //TODO 181223: need to pass parent: task, action: modify
                     props.data.subTasks?
                         <div className='sublist'>
                             <h5>SubTasks:</h5>
