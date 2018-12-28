@@ -28,6 +28,7 @@ class TaskForm extends Component {
 
     }
 
+    //TODO 191228: update the new task in the tasklist state so it'll reload. use this specific syntax: Object.assign([], array, { [i]: newItem })
     submitAction=()=>{
         const form = document.getElementById("form"+this.props.id);
         const task = formUtil.formInputsToJsonObject(form);
