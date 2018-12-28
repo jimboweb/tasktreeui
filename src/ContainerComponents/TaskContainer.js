@@ -34,7 +34,7 @@ class TaskContainer extends Component {
         return (
             this.state.displayState!==DisplayStates.INPUT?
             <Task data={this.props.data} buttonAction = {this.expandCollapse} editAction = {this.input} displayState = {this.state.displayState}/>
-            :<UserConsumer>{context=><TaskForm task={this.props.data} xAccessToken = {context} newTask = {this.props.newTask}/>}</UserConsumer>
+            :<UserConsumer>{context=><TaskForm task={this.props.data} xAccessToken = {context} existingTask = {this.props.existingTask}/>}</UserConsumer>
         )
     }
 }

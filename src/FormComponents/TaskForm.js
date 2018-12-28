@@ -17,9 +17,7 @@ class TaskForm extends Component {
                 {props: {name: 'startDate'}, type: InputTypes.DATE},
                 {props: {name: 'external'}, type: InputTypes.CHECKBOX},
                 {props: {name: 'estTime'}, type: InputTypes.NUMBER},
-                //TODO 181223: put arguments here. the data will be what's in the form, which I can get with
-                // getElementById or whatever. i guess the function has to be written down below.
-                {props: {name: 'Done', action: TaskApiCalls.createTask(/* */)}, type: InputTypes.SUBMIT}
+                {props: {name: 'Done', action: this.submitAction}, type: InputTypes.SUBMIT}
             ],
 
 
@@ -30,11 +28,16 @@ class TaskForm extends Component {
 
     }
 
-    const submitAction=()=>{
+    submitAction=()=>{
         const form = document.getElementById("form"+this.props.id);
-        const parentType = this.props.task.parentType;
-        //and I have to know the parent type
-        //call createTask or modifyTask, I have to know which one
+        const task = formUtil.formInputsToJsonObject(form);
+        if(this.props.modify){
+            TaskApiCalls.modifyTask(task,this.props.xAccessToken)
+        } else {
+            const parentType = this.props.task.parentType;
+            const parentId = this.props.task.parent;
+            TaskApiCalls.createTask(task,parentType,parentId,this.props.xAccessToken);
+        }
     }
 
 

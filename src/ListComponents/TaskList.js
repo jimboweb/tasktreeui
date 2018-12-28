@@ -22,7 +22,7 @@ class TaskList extends Component {
                 {
                     this.props.data.map(
                         tsk=>{
-                            return <TaskContainer data = {tsk} newTask = {false}/>
+                            return <TaskContainer data = {tsk} modify = {true}/>
 
                         }
                     )
