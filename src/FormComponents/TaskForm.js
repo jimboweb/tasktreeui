@@ -32,11 +32,11 @@ class TaskForm extends Component {
         const form = document.getElementById("form"+this.props.id);
         const task = formUtil.formInputsToJsonObject(form);
         if(this.props.modify){
-            TaskApiCalls.modifyTask(task,this.props.xAccessToken)
+            TaskApiCalls.modifyTask(task,this.props.xAccessToken, resp=>console.log(resp));
         } else {
             const parentType = this.props.task.parentType;
             const parentId = this.props.task.parent;
-            TaskApiCalls.createTask(task,parentType,parentId,this.props.xAccessToken);
+            TaskApiCalls.createTask(task,parentType,parentId,this.props.xAccessToken, resp=>console.log(resp));
         }
     }
 

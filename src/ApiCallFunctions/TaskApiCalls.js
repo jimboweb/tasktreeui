@@ -9,8 +9,12 @@ import fetchUtil from '../util/fetchUtil'
  * @param parentId: the id of the parent
  */
 const TaskApiCalls = {
-    createTask: (task, parentType, parentId, token)=>fetchUtil.postData(parentType +"/"+parentId,token,task),
-    modifyTask: (task, token)=> fetchUtil.putData(task._id.toString(),token,task)
+    createTask: (task, parentType, parentId, token, callback)=>{
+        fetchUtil.postData(parentType +"/"+parentId,token,task,callback);
+    },
+    modifyTask: (task, token, callback)=> {
+        fetchUtil.putData(task._id.toString(),token,task,callback);
+    }
 }
 
 export default TaskApiCalls

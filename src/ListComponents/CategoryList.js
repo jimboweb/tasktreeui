@@ -22,7 +22,7 @@ class CategoryList extends Component {
     render() {
         if (!this.state.categories) {
             fetchUtil.getData(
-                '/category/',
+                'category/',
                 this.props.xAccessToken,
                 responseData => {
                     this.setState({categories:responseData})

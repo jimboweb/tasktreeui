@@ -7,7 +7,7 @@ class DateInput extends Component{
     constructor(props){
         super(props);
         this.state={
-            value:this.props.value
+            value:this.props.value.split('T')[0]
         }
     }
 
@@ -19,7 +19,7 @@ class DateInput extends Component{
         return (
             <React.Fragment>
                 <label>
-                    {this.props.name}:
+                    {this.props.name}::
                     <input
                         type='date'
                         name={this.props.name.toLowerCase()}

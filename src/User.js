@@ -35,7 +35,7 @@ class User extends Component {
             }
         );
         fetchUtil.postData(
-            '/account/login',
+            'account/login',
             null,
             data,
             responseData=>{
