@@ -18,9 +18,9 @@ class ButtonInput extends Component {
             <React.Fragment>
                      <input
                         type='button'
-                        name={props.name.toLowerCase()}
+                        name={this.props.name.toLowerCase()}
                         onClick={this.handleClick.bind(this)}
-                        {...props.attributes}
+                        {...this.props.attributes}
                     />
             </React.Fragment>
         );

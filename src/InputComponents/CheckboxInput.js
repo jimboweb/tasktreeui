@@ -7,7 +7,7 @@ class CheckboxInput extends Component{
     constructor(props){
         super(props);
         this.state = {
-            checked:this.props.checked?this.state.checked:false;
+            checked:this.props.checked?this.state.checked:false
         }
     }
 
@@ -20,11 +20,11 @@ class CheckboxInput extends Component{
         return (
             <React.Fragment>
                 <label>
-                    {props.name}:
+                    {this.props.name}:
                     <input
                         type='checkbox'
                         name={this.props.name.toLowerCase()}
-                        checked = {this.state.checked};
+                        checked = {this.state.checked}
                         onChange={this.handleCheck.bind(this)}
                         {...this.props.attributes}
                     />

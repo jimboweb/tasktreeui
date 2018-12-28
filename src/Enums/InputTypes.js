@@ -3,7 +3,6 @@ import PasswordInput from '../InputComponents/PasswordInput';
 import ResetInput from '../InputComponents/ResetInput';
 import CheckboxInput from '../InputComponents/CheckboxInput';
 import SubmitInput from '../InputComponents/SubmitInput';
-import RadioInput from '../InputComponents/RadioInput';
 import ButtonInput from '../InputComponents/ButtonInput';
 import DateInput from '../InputComponents/DateInput';
 import EmailInput from '../InputComponents/EmailInput';
@@ -15,7 +14,6 @@ const InputTypes = Object.freeze({
     PASSWORD: PasswordInput,
     SUBMIT: SubmitInput,
     RESET: ResetInput,
-    RADIO: RadioInput,
     CHECKBOX: CheckboxInput,
     BUTTON: ButtonInput,
     DATE: DateInput,

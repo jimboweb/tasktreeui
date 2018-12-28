@@ -25,7 +25,7 @@ class EmailInput extends Component {
                         name={this.props.name.toLowerCase()}
                         value={this.state.value}
                         onChange={this.handleChange.bind(this)}
-                        {...props.attributes}
+                        {...this.props.attributes}
                     />
                 </label>
             </React.Fragment>
