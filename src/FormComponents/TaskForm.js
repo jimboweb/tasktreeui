@@ -3,6 +3,8 @@ import '../App.css';
 import InputTypes from '../Enums/InputTypes';
 import FormBuilder from './FormBuilder';
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
+import formUtil from '../util/formUtil'
+import fetchUtil from '../util/fetchUtil'
 
 class TaskForm extends Component {
     constructor(props) {
@@ -20,6 +22,7 @@ class TaskForm extends Component {
                 {props: {name: 'Done', action: TaskApiCalls.createTask(/* */)}, type: InputTypes.SUBMIT}
             ],
 
+
          };
 
 
@@ -28,14 +31,15 @@ class TaskForm extends Component {
     }
 
     const submitAction=()=>{
-        //get the data in the form
+        const form = document.getElementById("form"+this.props.id);
+        const parentType = this.props.task.parentType;
         //and I have to know the parent type
         //call createTask or modifyTask, I have to know which one
     }
 
 
     render() {
-        return <div className="taskInput" id={this.props.id}>
+        return <div className="taskInput" id={"form"+this.props.id}>
             <FormBuilder
                 inputFields={this.state.inputFields}
                 handlers = {this.state.handlers}
