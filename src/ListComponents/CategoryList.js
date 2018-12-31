@@ -3,6 +3,12 @@ import '../App.css';
 import fetchUtil from '../util/fetchUtil';
 import Category from '../BranchComponents/Category';
 
+//TODO 181228: much bigger problem here passing everything down from the top like this
+//I have three options:
+// - put all the update functions in here and pass them down
+// - have each section retrieve its own element using separate http calls
+// - do everything either in the context or figure out redux
+
 class CategoryList extends Component {
     constructor(props) {
         super(props);

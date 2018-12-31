@@ -15,7 +15,9 @@ class TaskList extends Component {
         };
     }
 
-
+    //TODO 181228: create updateTask function here. maybe I can pass the index with the function in the props
+    //oh but they're in the props not the state...
+    //finally time for redux?
     render() {
         return (
             <div className="TaskList" id={this.props.catId+"Tasks"}>
