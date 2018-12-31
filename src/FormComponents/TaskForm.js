@@ -22,10 +22,6 @@ class TaskForm extends Component {
 
 
          };
-
-
-
-
     }
 
     submitAction=()=>{

@@ -26,8 +26,11 @@ class TaskList extends Component {
                 {
                     taskListData.map(
                         taskId => {
-                            return <TaskContainer id={taskId} xAccessToken = {this.props.xAccessToken}
-                            modifyListActions = {this.props.modifyListActions}/>
+                            return <TaskContainer
+                                id={taskId}
+                                xAccessToken = {this.props.xAccessToken}
+                                modifyListActions = {this.props.modifyListActions}
+                            />
                         }
                     )
                 }

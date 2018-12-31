@@ -11,9 +11,20 @@ function Category(props){
                 {props.data.name}
             </h2>
             <h3>Tasks</h3>
-            <TaskList data = {props.data.tasks} catId={props.data._id} modifyListActions = {props.modifyListActions}/>
+            <TaskList
+                data = {props.data.tasks}
+                catId={props.data._id}
+                modifyListActions = {props.modifyListActions}
+                xAccessToken = {props.xAccessToken}
+            />
             <h3 >Events</h3>
-            <EventList data={props.data.events} catId={props.data._id} modifyListActions = {props.modifyListActions} />
+            <EventList
+                data={props.data.events} catId={props.data._id}
+                modifyListActions = {props.modifyListActions}
+                catId={props.data._id}
+                xAccessToken = {props.xAccessToken}
+
+            />
         </div>
     );
 }
