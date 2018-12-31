@@ -8,6 +8,7 @@ import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 import LoadingGif from "../DisplayComponents/LoadingGif";
 import TaskObject from '../ObjectClasses/TaskObject'
 import ModifyListActions from "../util/ModifyListActions";
+import Category from "../BranchComponents/Category";
 
 
 class TaskContainer extends Component {
@@ -41,21 +42,27 @@ class TaskContainer extends Component {
         TaskApiCalls.modifyTask(modifiedTask,this.props.xAccessToken,(returnedTask) => this.setState({task: returnedTask}));
     };
 
-    modifyListActions = new ModifyListActions(
-        "TaskObject",
-        this.state.task._id,
-        this.props.xAccessToken,
-        this.update()
-        )
 
 
     render() {
         if (this.state.task) {
+            const modifyListActions = new ModifyListActions(
+                "TaskObject",
+                this.state.task._id,
+                this.props.xAccessToken,
+                this.update()
+            )
             return (
                 this.state.displayState === DisplayStates.INPUT ?
                     <TaskForm data={this.state.task} xAccessToken={this.props.xAccessToken} submitAction = {this.modify}/> :
-                    <TaskObject data={this.state.task} buttonAction={this.expandCollapse} editAction={this.input}
-                                displayState={this.state.displayState} xAccessToken = {this.props.xAccessToken}/>
+                    <Task
+                        data={this.state.task}
+                        buttonAction={this.expandCollapse}
+                        editAction={this.input}
+                        displayState={this.state.displayState}
+                        xAccessToken = {this.props.xAccessToken}
+                        modifyListActions = {modifyListActions}
+                    />
             )
         } else if(!this.props.id){
             return <TaskForm data={new TaskObject()} xAccessToken={this.props.xAccessToken}

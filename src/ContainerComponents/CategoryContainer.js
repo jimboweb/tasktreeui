@@ -43,21 +43,27 @@ class ComponentName extends Component {
             (returnedCategory)=>this.setState({category:returnedCategory}))
     };
 
-    modifyListActions = new ModifyListActions(
-        "Category",
-        this.state.category._id,
-        this.props.xAccessToken,
-        this.update()
-        )
 
 
     render() {
         if(this.state.category) {
+            const modifyListActions = new ModifyListActions(
+                "Category",
+                this.state.category._id,
+                this.props.xAccessToken,
+                this.update()
+            )
             return (
                 this.state.displayState === DisplayStates.INPUT ?
                     <CategoryForm data={this.props.data} submitAction = {this.modify}/> :
-                    <Category data={this.props.data} buttonAction={this.expandCollapse} editAction={this.input}
-                              displayState={this.state.displayState} modifyListActions = {this.modifyListActions}/>
+                    <Category
+                        data={this.state.category}
+                        buttonAction={this.expandCollapse}
+                        editAction={this.input}
+                        displayState={this.state.displayState}
+                        modifyListActions = {modifyListActions}
+                        xAccessToken = {this.props.xAccessToken}
+                    />
             )
         } else {
             this.update();

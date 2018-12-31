@@ -41,7 +41,7 @@ class CategoryList extends Component {
                         this.state.categories.map(
                             cat=>{
                                 return (
-                                    <CategoryContainer id = {cat._id}/>
+                                    <CategoryContainer id = {cat._id} xAccessToken = {this.props.xAccessToken}/>
                                 )
                             }
                         )
