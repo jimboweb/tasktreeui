@@ -2,25 +2,22 @@ import React, { Component } from 'react';
 import '../App.css';
 import fetchUtil from '../util/fetchUtil';
 import Category from '../BranchComponents/Category';
+import LoadingGif from "../DisplayComponents/LoadingGif";
+import CategoryContainer from "../ContainerComponents/CategoryContainer";
 
-//TODO 181228: much bigger problem here passing everything down from the top like this
-//I have three options:
-// - put all the update functions in here and pass them down
-// - have each section retrieve its own element using separate http calls
-// - do everything either in the context or figure out redux
+//TODO 181231: I want to change this so this component doesn't get the categories, the user component does. But I'll have to change the API to do that.
 
 class CategoryList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            components: [],
+            categories: undefined,
             fetchOptions: {
                 method: 'get'
             },
             headers: new Headers({
                 'x-access-token': this.props['xAccessToken']
             }),
-            categories: undefined
         };
     }
 
@@ -35,7 +32,7 @@ class CategoryList extends Component {
                 }
             );
             return (
-                <div>loading gif...</div>
+                <LoadingGif/>
             )
         } else {
             return (
@@ -44,7 +41,7 @@ class CategoryList extends Component {
                         this.state.categories.map(
                             cat=>{
                                 return (
-                                    <Category id = {cat._id} data = {cat}/>
+                                    <CategoryContainer id = {cat._id}/>
                                 )
                             }
                         )

@@ -5,7 +5,7 @@ import fetchUtil from '../util/fetchUtil'
 /**
  * Create a task
  * @param task: the task to create
- * @param parentType: "Task" or "Category"
+ * @param parentType: "TaskObject" or "Category"
  * @param parentId: the id of the parent
  */
 const TaskApiCalls = {
@@ -14,7 +14,19 @@ const TaskApiCalls = {
     },
     modifyTask: (task, token, callback)=> {
         fetchUtil.putData(task._id.toString(),token,task,callback);
-    }
+    },
+    getTask: (taskId,token,callback)=>{
+        const route = 'task/' + taskId;
+        fetchUtil.getData(
+        route,
+        token,
+        responseData => {
+            callback(responseData);
+        }
+
+);
+
+}
 }
 
 export default TaskApiCalls

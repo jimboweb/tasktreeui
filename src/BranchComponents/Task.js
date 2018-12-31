@@ -37,11 +37,10 @@ function Task(props) {
                     Estimated Time : {props.data.estTime}
                 </div>
                 {
-                    //TODO 181223: need to pass parent: task, action: modify
                     props.data.subTasks?
                         <div className='sublist'>
                             <h5>SubTasks:</h5>
-                            <TaskList data = {props.data.subTasks} modify = {true}/>
+                            <TaskList data = {props.data.subTasks} xAccessToken = {props.xAccessToken}/>
                         </div>
                         :''
                 }
@@ -49,7 +48,7 @@ function Task(props) {
                     props.data.events?
                         <div className='sublist'>
                             <h5>Events:</h5>
-                            <EventList data = {props.data.events} modify = {true}/>
+                            <EventList data = {props.data.events}  xAccessToken = {props.xAccessToken}/>
                         </div>
                         :''
                 }
@@ -57,7 +56,7 @@ function Task(props) {
                     props.data.prqTasks?
                         <div className='sublist'>
                             <h5>Prerequisite Tasks:</h5>
-                            <TaskList data = {props.data.prqTasks} modify = {true}/>
+                            <TaskList data = {props.data.prqTasks}  xAccessToken = {props.xAccessToken}/>
                         </div>
                         :''
                 }

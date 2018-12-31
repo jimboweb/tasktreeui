@@ -6,32 +6,33 @@ class TaskList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fetchOptions: {
-                method: 'get'
-            },
-            headers: new Headers({
-                'x-access-token': this.props['xAccessToken']
-            }),
+            addTask:false
         };
     }
 
-    //TODO 181228: create updateTask function here. maybe I can pass the index with the function in the props
-    //oh but they're in the props not the state...
-    //finally time for redux?
-    render() {
-        return (
-            <div className="TaskList" id={this.props.catId+"Tasks"}>
-                {
-                    this.props.data.map(
-                        tsk=>{
-                            return <TaskContainer data = {tsk} modify = {true}/>
+    addTask = ()=>this.setState({addTask:true});
+    //null taskId will create a new task
+    addNewTaskTrue=data=>{
+        return [...data, null];
+    }
 
+    render() {
+
+        const taskListData = this.addTask?
+            this.props.data:
+            this.props.data.addNewTaskTrue();
+        return (
+            <div className="TaskList" id={this.props.catId + "Tasks"}>
+                {
+                    taskListData.map(
+                        taskId => {
+                            return <TaskContainer id={taskId} xAccessToken = {this.props.xAccessToken}
+                            modifyListActions = {this.props.modifyListActions}/>
                         }
                     )
                 }
             </div>
         );
-
     }
 }
 
