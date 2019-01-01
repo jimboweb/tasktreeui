@@ -26,8 +26,9 @@ class TaskForm extends Component {
 
     submitAction=()=>{
         const form = document.getElementById("form"+this.props.id);
-        const task = formUtil.formInputsToJsonObject(form);
-        this.props.submitAction(task)
+        const formData = formUtil.formInputsToObject(form);
+        const taskJson = Object.assign(this.props.data,formData);
+        this.props.submitAction(taskJson)
 
     }
 
@@ -37,7 +38,7 @@ class TaskForm extends Component {
             <FormBuilder
                 inputFields={this.state.inputFields}
                 handlers = {this.state.handlers}
-                task = {this.props.task}
+                data = {this.props.data}
             />
         </div>
     }

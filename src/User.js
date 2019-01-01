@@ -6,7 +6,6 @@ import fetchUtil from './util/fetchUtil';
 import {UserProvider} from './UserContext';
 
 //TODO 181013: persist local storage like here: https://stackoverflow.com/questions/45111159/how-can-i-use-localstorage-to-maintain-state-after-a-page-refresh-in-react
-//TODO 181028: put username and xAccessToken in context so I can use it from anywhere
 class User extends Component {
 
    

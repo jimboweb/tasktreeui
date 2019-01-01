@@ -1,6 +1,6 @@
 import fetchUtil from '../util/fetchUtil'
 
-//TODO 181209: I have to get the token from somewhere.
+
 
 /**
  * Create a task
@@ -21,7 +21,8 @@ const TaskApiCalls = {
 
     },
     modifyCategory:(modifiedCategory,token,callback)=>{
-        fetchUtil.putData(modifiedCategory._id.toString(),token,modifiedCategory,callback);
+        const jsonString = JSON.stringify(modifiedCategory);
+        fetchUtil.putData(modifiedCategory._id.toString(),token,jsonString,callback);
     }
 }
 

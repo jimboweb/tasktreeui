@@ -1,6 +1,6 @@
 import fetchUtil from '../util/fetchUtil'
 
-//TODO 181209: I have to get the token from somewhere.
+
 
 /**
  * Create a task
@@ -10,10 +10,12 @@ import fetchUtil from '../util/fetchUtil'
  */
 const TaskApiCalls = {
     createTask: (task, parentType, parentId, token, callback)=>{
-        fetchUtil.postData(parentType +"/"+parentId,token,task,callback);
+        const jsonString = JSON.stringify(task);
+        fetchUtil.postData(parentType +"/"+parentId,token,jsonString,callback);
     },
     modifyTask: (task, token, callback)=> {
-        fetchUtil.putData(task._id.toString(),token,task,callback);
+        const jsonString = JSON.stringify(task);
+        fetchUtil.putData(task._id.toString(),token,jsonString,callback);
     },
     getTask: (taskId,token,callback)=>{
         const route = 'task/' + taskId;

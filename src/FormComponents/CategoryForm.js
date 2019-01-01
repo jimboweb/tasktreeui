@@ -3,7 +3,7 @@ import InputTypes from "../Enums/InputTypes";
 import formUtil from "../util/formUtil";
 import FormBuilder from "./FormBuilder";
 
-class ComponentName extends Component {
+class CategoryForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,8 +21,9 @@ class ComponentName extends Component {
 
     submitAction=()=>{
         const form = document.getElementById("form"+this.props.id);
-        const category = formUtil.formInputsToJsonObject(form);
-        this.props.submitAction(category)
+        const formData = formUtil.formInputsToObject(form);
+        const categoryJson = Object.assign(this.props.category, formData);
+        this.props.submitAction(categoryJson)
 
     }
 
@@ -32,11 +33,11 @@ class ComponentName extends Component {
             <FormBuilder
                 inputFields={this.state.inputFields}
                 handlers = {this.state.handlers}
-                category = {this.props.category}
+                data = {this.props.category}
             />
         </div>
     }
 
 }
 
-export default ComponentName;
+export default CategoryForm;

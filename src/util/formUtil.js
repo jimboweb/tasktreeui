@@ -6,13 +6,12 @@ const formUtil = {
         }).join('&');
     },
 
-    formInputsToJsonObject:(form)=>{
+    formInputsToObject:(form)=>{
         const inputs = Array.from(form.querySelectorAll("input"));
         let newObj = {};
         inputs.forEach((input)=>{
             newObj[input.name]=input.value;
         });
-        return JSON.stringify(newObj);
     }
 };
 

@@ -50,7 +50,7 @@ class TaskContainer extends Component {
                 "TaskObject",
                 this.state.task._id,
                 this.props.xAccessToken,
-                this.update()
+                this.update
             )
             return (
                 this.state.displayState === DisplayStates.INPUT ?

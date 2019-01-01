@@ -51,7 +51,7 @@ class ComponentName extends Component {
                 "Category",
                 this.state.category._id,
                 this.props.xAccessToken,
-                this.update()
+                this.update
             )
             return (
                 this.state.displayState === DisplayStates.INPUT ?
