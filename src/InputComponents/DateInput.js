@@ -7,7 +7,7 @@ class DateInput extends Component{
     constructor(props){
         super(props);
         this.state={
-            //fixme 181231: TypeError: Cannot read property 'split' of undefined - from loaded data
+
             value:this.props.value.split('T')[0]
         }
     }

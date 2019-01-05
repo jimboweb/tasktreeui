@@ -15,7 +15,7 @@ class User extends Component {
         this.state={
             username: undefined,
             xAccessToken: undefined,
-            apiUrl: "https://insolent-preclude.herokuapp.com",
+            apiUrl: "http://localhost:3434",//"https://insolent-preclude.herokuapp.com",
             uiUrl: 'http://localhost:8080'
         };
         this.login=this.login.bind(this);

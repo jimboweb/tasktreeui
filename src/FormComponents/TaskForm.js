@@ -24,6 +24,7 @@ class TaskForm extends Component {
          };
     }
 
+    //'external' is "on" when it should be "true"
     submitAction=()=>{
         const form = document.getElementById("form"+this.props.id);
         const formData = formUtil.formInputsToObject(form);

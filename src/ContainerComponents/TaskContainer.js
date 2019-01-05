@@ -3,12 +3,10 @@ import '../App.css';
 import DisplayStates from '../Enums/DisplayStates'
 import Task from "../BranchComponents/Task";
 import TaskForm from "../FormComponents/TaskForm";
-import {UserConsumer} from "../UserContext";
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 import LoadingGif from "../DisplayComponents/LoadingGif";
 import TaskObject from '../ObjectClasses/TaskObject'
 import ModifyListActions from "../util/ModifyListActions";
-import Category from "../BranchComponents/Category";
 
 
 class TaskContainer extends Component {
@@ -39,7 +37,10 @@ class TaskContainer extends Component {
     };
 
     modify =(modifiedTask) =>{
-        TaskApiCalls.modifyTask(modifiedTask,this.props.xAccessToken,(returnedTask) => this.setState({task: returnedTask}));
+        TaskApiCalls.modifyTask(modifiedTask,this.props.xAccessToken,(returnedTask) => {
+            this.setState({task: returnedTask})
+        }
+        );
     };
 
 

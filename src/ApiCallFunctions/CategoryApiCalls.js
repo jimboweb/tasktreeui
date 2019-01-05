@@ -22,7 +22,7 @@ const TaskApiCalls = {
     },
     modifyCategory:(modifiedCategory,token,callback)=>{
         const jsonString = JSON.stringify(modifiedCategory);
-        fetchUtil.putData(modifiedCategory._id.toString(),token,jsonString,callback);
+        fetchUtil.putData("category/" + modifiedCategory._id.toString(),token,jsonString,callback);
     }
 }
 

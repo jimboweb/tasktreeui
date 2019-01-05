@@ -14,8 +14,10 @@ const TaskApiCalls = {
         fetchUtil.postData(parentType +"/"+parentId,token,jsonString,callback);
     },
     modifyTask: (task, token, callback)=> {
+        //fixme 190104: the json is not getting passed correctly. somehow the whole json string is received as a key with an empty value: {...}:""
+        //compare to the call coming from postman
         const jsonString = JSON.stringify(task);
-        fetchUtil.putData(task._id.toString(),token,jsonString,callback);
+        fetchUtil.putData("task/" + task._id.toString(),token,jsonString,callback);
     },
     getTask: (taskId,token,callback)=>{
         const route = 'task/' + taskId;

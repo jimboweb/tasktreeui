@@ -10,8 +10,14 @@ const formUtil = {
         const inputs = Array.from(form.querySelectorAll("input"));
         let newObj = {};
         inputs.forEach((input)=>{
-            newObj[input.name]=input.value;
+            if(input.type==="checkbox") {
+                newObj[input.name]=(input.checked==="checked");
+            } else {
+                newObj[input.name] = input.value;
+
+            }
         });
+        return newObj;
     }
 };
 
