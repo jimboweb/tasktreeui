@@ -1,5 +1,5 @@
 import fetchUtil from '../util/fetchUtil'
-
+//todo 190105: create all the other apiCalls classes and all the methods
 
 
 /**
@@ -14,8 +14,6 @@ const TaskApiCalls = {
         fetchUtil.postData(parentType +"/"+parentId,token,jsonString,callback);
     },
     modifyTask: (task, token, callback)=> {
-        //fixme 190104: the json is not getting passed correctly. somehow the whole json string is received as a key with an empty value: {...}:""
-        //compare to the call coming from postman
         const jsonString = JSON.stringify(task);
         fetchUtil.putData("task/" + task._id.toString(),token,jsonString,callback);
     },

@@ -1,7 +1,7 @@
 import React from "react";
-import '../App.css';
 
 
+//todo 190105: make event component
 function Event(props) {
     return (
         <div>

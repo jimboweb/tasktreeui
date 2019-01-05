@@ -102,8 +102,8 @@ function Task(props) {
             </div>
         </div>
         <div className='editButton'>
-            <button onClick={props.editAction}>
-                <img src='../img/edit.svg' />
+            <button onClick={props.editAction} class ='inputButton'>
+                <img src='../src/img/edit.svg' />
             </button>
         </div>
     </div>

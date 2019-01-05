@@ -36,6 +36,7 @@ class TaskContainer extends Component {
             (returnedTask) => this.setState({task: returnedTask}))
     };
 
+    //fixme 190105: dosn't go back to display mode because I change the task state but not the displayState
     modify =(modifiedTask) =>{
         TaskApiCalls.modifyTask(modifiedTask,this.props.xAccessToken,(returnedTask) => {
             this.setState({task: returnedTask})

@@ -10,6 +10,8 @@ import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 import CategoryForm from "../FormComponents/CategoryForm";
 import ModifyListActions from "../util/ModifyListActions";
 
+//todo 190105: make all the update, add, modify methods in category, task, note
+
 class ComponentName extends Component {
     constructor(props) {
         super(props);

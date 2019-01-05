@@ -53,3 +53,12 @@ button {
 .collapsed {
   display: none;
 }
+
+.inputButton{
+  width:25px;
+  margin:10px;
+}
+
+.inputButton img{
+  width:15px;
+}
