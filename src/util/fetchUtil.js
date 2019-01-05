@@ -33,10 +33,11 @@ const fetchUtil = {
     },
 
     fetchData : (route, method, token, data, callback) => {
-        const headers = new Headers(
-            {
-                'Content-Type': 'application/x-www-form-urlencoded'
 
+
+        const headers = new Headers(
+            method==='get'?{}:{
+                'Content-Type': route==='account/login'?'application/x-www-form-urlencoded':'application/json'
             }
         );
 
