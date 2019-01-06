@@ -8,7 +8,7 @@ import Category from "../BranchComponents/Category";
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 import CategoryForm from "../FormComponents/CategoryForm";
-import ModifyListActions from "../util/ModifyListActions";
+import ModifyListActions from "../ListActions/ModifyListActions";
 
 //todo 190105: make all the update, add, modify methods in category, task, note
 

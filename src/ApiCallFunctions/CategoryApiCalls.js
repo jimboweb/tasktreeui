@@ -8,7 +8,7 @@ import fetchUtil from '../util/fetchUtil'
  * @param parentType: "TaskObject" or "Category"
  * @param parentId: the id of the parent
  */
-const TaskApiCalls = {
+const CategoryApiCalls = {
     getCategory: (id,token, callback)=>{
         const route = 'category/' + id;
         fetchUtil.getData(
@@ -26,4 +26,4 @@ const TaskApiCalls = {
     }
 }
 
-export default TaskApiCalls
+export default CategoryApiCalls

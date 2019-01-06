@@ -6,7 +6,8 @@ import TaskForm from "../FormComponents/TaskForm";
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 import LoadingGif from "../DisplayComponents/LoadingGif";
 import TaskObject from '../ObjectClasses/TaskObject'
-import ModifyListActions from "../util/ModifyListActions";
+import ModifyTaskListActions from "../ListActions/ModifyTaskListActions";
+
 
 
 class TaskContainer extends Component {
@@ -30,7 +31,7 @@ class TaskContainer extends Component {
     };
 
     update = () => {
-        TaskApiCalls.getTask(
+        TaskApiCalls.getObject(
             this.props.id,
             this.props.xAccessToken,
             (returnedTask) => this.setState({task: returnedTask}))
@@ -38,7 +39,7 @@ class TaskContainer extends Component {
 
     //fixme 190105: dosn't go back to display mode because I change the task state but not the displayState
     modify =(modifiedTask) =>{
-        TaskApiCalls.modifyTask(modifiedTask,this.props.xAccessToken,(returnedTask) => {
+        TaskApiCalls.modifyObject(modifiedTask,this.props.xAccessToken,(returnedTask) => {
             this.setState({task: returnedTask})
         }
         );
@@ -46,9 +47,11 @@ class TaskContainer extends Component {
 
 
 
+
+
     render() {
         if (this.state.task) {
-            const modifyListActions = new ModifyListActions(
+            const modifyListActions = new ModifyTaskListActions(
                 "TaskObject",
                 this.state.task._id,
                 this.props.xAccessToken,

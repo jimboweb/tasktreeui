@@ -24,7 +24,7 @@ const fetchUtil = {
         fetchUtil.fetchData(route, 'put', token, data, callback);
     },
 
-    deleteData: (route, token, data, callback) => {
+    deleteData: (route, token, callback) => {
         fetchUtil.fetchData(route, 'delete', token, data, callback);
     },
 
