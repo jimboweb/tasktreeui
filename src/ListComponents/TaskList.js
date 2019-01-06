@@ -18,7 +18,7 @@ class TaskList extends Component {
 
     render() {
 
-        const taskListData = this.addTask?
+        const taskListData = this.state.addTask?
             this.props.data:
             this.props.data.addNewTaskTrue();
         return (
