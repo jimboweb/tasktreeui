@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import DisplayStates from "../Enums/DisplayStates";
-import Task from "../BranchComponents/Task";
 import TaskForm from "../FormComponents/TaskForm";
 import fetchUtil from "../util/fetchUtil";
 import LoadingGif from "../DisplayComponents/LoadingGif";
@@ -8,16 +7,20 @@ import Category from "../BranchComponents/Category";
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 import CategoryForm from "../FormComponents/CategoryForm";
-import ModifyListActions from "../ListActions/ModifyListActions";
+
 
 //todo 190105: make all the update, add, modify methods in category, task, note
 
-class ComponentName extends Component {
+class ModifyCategoryListActions {
+}
+
+class CategoryContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             displayState:DisplayStates.COLLAPSED,
-            category: undefined
+            category: undefined,
+            categoryApiCalls: new CategoryApiCalls()
         };
     }
 
@@ -33,24 +36,23 @@ class ComponentName extends Component {
     };
 
     update=()=>{
-        CategoryApiCalls.getCategory(
+        this.categoryApiCalls.getCategory(
             this.props.id,
             this.props.xAccessToken,
             (returnedCategory)=>this.setState({category:returnedCategory}))
     };
     modify=(modifiedCategory)=> {
-        CategoryApiCalls.modifyCategory(
+        this.categoryApiCalls.modifyCategory(
             modifiedCategory,
             this.props.xAccessToken,
             (returnedCategory)=>this.setState({category:returnedCategory}))
     };
-
+    //todo 190118: need to create a delete button that creates a rebase/delete children modal
 
 
     render() {
         if(this.state.category) {
-            const modifyListActions = new ModifyListActions(
-                "Category",
+            const modifyListActions = new ModifyCategoryListActions(
                 this.state.category._id,
                 this.props.xAccessToken,
                 this.update
@@ -75,4 +77,4 @@ class ComponentName extends Component {
 
 }
 
-export default ComponentName;
+export default CategoryContainer;

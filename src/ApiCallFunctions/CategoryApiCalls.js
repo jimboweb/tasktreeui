@@ -1,4 +1,5 @@
 import fetchUtil from '../util/fetchUtil'
+import ApiCalls from './ApiCalls'
 
 
 
@@ -8,22 +9,23 @@ import fetchUtil from '../util/fetchUtil'
  * @param parentType: "TaskObject" or "Category"
  * @param parentId: the id of the parent
  */
-const CategoryApiCalls = {
-    getCategory: (id,token, callback)=>{
-        const route = 'category/' + id;
-        fetchUtil.getData(
-            route,
-            token,
-            responseData => {
-                callback(responseData);
-            }
-        );
-
-    },
-    modifyCategory:(modifiedCategory,token,callback)=>{
-        const jsonString = JSON.stringify(modifiedCategory);
-        fetchUtil.putData("category/" + modifiedCategory._id.toString(),token,jsonString,callback);
+class CategoryApiCalls extends ApiCalls {
+    constructor(){
+        super('category');
     }
+
+    getCategory= (id,token, callback)=>super.getObject(id, token,callback);
+    modifyCategory=(modifiedCategory,token,callback)=>super.modifyObject(modifiedCategory,token,callback);
+    //TODO 190118: need to change the delete because it needs to ask if children will be deleted or rebased
+    deleteCategory=(categoryId,token, callback)=>super.deleteObject(categoryId,token,callback);
+    addCategory=(category,token,callback)=>fetchUtil.postData(
+        //don't use ApiCalls because category is always child of root so no parentTyoe or parentId
+        "category/",
+        token,
+        category,
+        returnedData=>callback(returnedData)
+    )
+
 }
 
 export default CategoryApiCalls

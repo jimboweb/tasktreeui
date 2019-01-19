@@ -9,6 +9,7 @@ class NoteContainer extends Component {
 
 
     render() {
+        return <div></div>
     }
 }
 

@@ -1,8 +1,8 @@
 import ModifyListActions from "./ModifyListActions";
-import EventApiCalls from "../ApiCallFunctions/EventApiCalls";
+import CategoryApiCalls from "../ApiCallFunctions/CategoryApiCalls";
 
 class ModifyEventListActions extends ModifyListActions{
     constructor(parentId,token, setStateCallback){
-        super("event",parentId,token,EventApiCalls,setStateCallback);
+        super("category",parentId,token,CategoryApiCalls,setStateCallback);
     }
 }

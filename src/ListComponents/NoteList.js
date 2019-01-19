@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import '../App.css';
-import EventContainer from "../ContainerComponents/EventContainer";
+import NoteContainer from "../ContainerComponents/NoteContainer";
 
 class NoteList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            addNote: false;
-    };
+            addNote: false
+        };
     }
 
     addNote = ()=>this.setState({addNote:true});

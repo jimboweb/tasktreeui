@@ -8,7 +8,7 @@ class EventList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            addEvent: false;
+            addEvent: false
         };
     }
 

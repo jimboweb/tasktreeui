@@ -25,7 +25,7 @@ const fetchUtil = {
     },
 
     deleteData: (route, token, callback) => {
-        fetchUtil.fetchData(route, 'delete', token, data, callback);
+        fetchUtil.fetchData(route, 'delete', token, null, callback);
     },
 
     patchData: (route, token, data, callback) => {

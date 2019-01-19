@@ -37,13 +37,15 @@ class TaskContainer extends Component {
             (returnedTask) => this.setState({task: returnedTask}))
     };
 
-    //fixme 190105: dosn't go back to display mode because I change the task state but not the displayState
     modify =(modifiedTask) =>{
         TaskApiCalls.modifyObject(modifiedTask,this.props.xAccessToken,(returnedTask) => {
-            this.setState({task: returnedTask})
+            this.setState({task: returnedTask, displayState: DisplayStates.EXPANDED})
         }
         );
     };
+
+    //todo 190118: need to create a delete button that creates a rebase/delete children modal
+
 
 
 
