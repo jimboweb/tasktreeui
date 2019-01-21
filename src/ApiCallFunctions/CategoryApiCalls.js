@@ -14,10 +14,10 @@ class CategoryApiCalls extends ApiCalls {
         super('category');
     }
 
-    getCategory= (id,token, callback)=>super.getObject(id, token,callback);
-    modifyCategory=(modifiedCategory,token,callback)=>super.modifyObject(modifiedCategory,token,callback);
+    getCategory= (id,token, callback)=>this.getObject(id, token,callback);
+    modifyCategory=(modifiedCategory,token,callback)=>this.modifyObject(modifiedCategory,token,callback);
     //TODO 190118: need to change the delete because it needs to ask if children will be deleted or rebased
-    deleteCategory=(categoryId,token, callback)=>super.deleteObject(categoryId,token,callback);
+    deleteCategory=(categoryId,token, callback)=>this.deleteObject(categoryId,token,callback);
     addCategory=(category,token,callback)=>fetchUtil.postData(
         //don't use ApiCalls because category is always child of root so no parentTyoe or parentId
         "category/",

@@ -13,6 +13,7 @@ class ApiCalls {
      * @param parentId: the id of the parent
      * @param token: xAccessToken
      * @param callback to do after obj is created
+     * @returns {*|void}
      */
     createObject = (obj, parentType, parentId, token, callback)=>{
         const jsonString = JSON.stringify(obj);
@@ -27,6 +28,7 @@ class ApiCalls {
      * @param obj: the modified version of obj
      * @param token: xAccessToken
      * @param callback to do after obj is created
+     * @returns {*|void}
      */
 
     modifyObject= (obj, token, callback)=> {
@@ -43,6 +45,7 @@ class ApiCalls {
      * @param objId: the id to get
      * @param token: xAccessToken
      * @param callback to do after task is created
+     * @returns {*|void}
      */
 
     getObject= (objId, token, callback)=>{
@@ -62,6 +65,7 @@ class ApiCalls {
      * @param objId: the id to delete
      * @param token: xAccessToken
      * @param callback to do after task is created
+     * @returns {*|void}
      */
     deleteObject=(objId, token, callback)=>{
         fetchUtil.deleteData(

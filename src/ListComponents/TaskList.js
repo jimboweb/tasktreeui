@@ -20,7 +20,7 @@ class TaskList extends Component {
 
         const taskListData = this.state.addTask?
             this.props.data:
-            this.props.data.addNewTaskTrue();
+            this.addNewTaskTrue(this.props.data);
         return (
             <div className="TaskList" id={this.props.catId + "Tasks"}>
                 {

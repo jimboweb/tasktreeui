@@ -6,3 +6,5 @@ class ModifyNoteListActions extends ModifyListActions{
         super("note",parentId,token,NoteApiCalls,setStateCallback);
     }
 }
+
+export default ModifyNoteListActions;

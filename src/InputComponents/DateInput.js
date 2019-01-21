@@ -8,7 +8,7 @@ class DateInput extends Component{
         super(props);
         this.state={
 
-            value:this.props.value.split('T')[0]
+            value:this.props.value instanceof Date?this.props.value.getDate():new Date(this.props.value).getDate()
         }
     }
 

@@ -15,7 +15,8 @@ class TaskContainer extends Component {
         super(props);
         this.state = {
             displayState: DisplayStates.COLLAPSED,
-            task: undefined
+            task: undefined,
+            taskApiCalls: new TaskApiCalls()
         }
     }
 
@@ -31,14 +32,14 @@ class TaskContainer extends Component {
     };
 
     update = () => {
-        TaskApiCalls.getObject(
+        this.state.taskApiCalls.getObject(
             this.props.id,
             this.props.xAccessToken,
             (returnedTask) => this.setState({task: returnedTask}))
     };
 
     modify =(modifiedTask) =>{
-        TaskApiCalls.modifyObject(modifiedTask,this.props.xAccessToken,(returnedTask) => {
+        this.state.taskApiCalls.modifyObject(modifiedTask,this.props.xAccessToken,(returnedTask) => {
             this.setState({task: returnedTask, displayState: DisplayStates.EXPANDED})
         }
         );
@@ -54,7 +55,6 @@ class TaskContainer extends Component {
     render() {
         if (this.state.task) {
             const modifyListActions = new ModifyTaskListActions(
-                "TaskObject",
                 this.state.task._id,
                 this.props.xAccessToken,
                 this.update

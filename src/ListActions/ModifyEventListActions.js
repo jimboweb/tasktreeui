@@ -6,3 +6,5 @@ class ModifyEventListActions extends ModifyListActions{
         super("event",parentId,token,EventApiCalls,setStateCallback);
     }
 }
+
+export default ModifyEventListActions;

@@ -7,12 +7,11 @@ import Category from "../BranchComponents/Category";
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 import CategoryForm from "../FormComponents/CategoryForm";
+import ModifyCategoryListActions from '../ListActions/ModifyCategoryListActions'
 
 
 //todo 190105: make all the update, add, modify methods in category, task, note
 
-class ModifyCategoryListActions {
-}
 
 class CategoryContainer extends Component {
     constructor(props) {
@@ -36,7 +35,7 @@ class CategoryContainer extends Component {
     };
 
     update=()=>{
-        this.categoryApiCalls.getCategory(
+        this.state.categoryApiCalls.getCategory(
             this.props.id,
             this.props.xAccessToken,
             (returnedCategory)=>this.setState({category:returnedCategory}))

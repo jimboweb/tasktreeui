@@ -21,7 +21,7 @@ class EventList extends Component {
     render() {
         const eventListData = this.state.addNote?
             this.props.data:
-            this.props.data.addNewNoteTrue();
+            this.addNewEventTrue(this.props.data)
         return (
             <div className='eventList' id={this.props.catId + 'EventList'}>
                 {
