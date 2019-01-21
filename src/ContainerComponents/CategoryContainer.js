@@ -10,7 +10,6 @@ import CategoryForm from "../FormComponents/CategoryForm";
 import ModifyCategoryListActions from '../ListActions/ModifyCategoryListActions'
 
 
-//todo 190105: make all the update, add, modify methods in category, task, note
 
 
 class CategoryContainer extends Component {

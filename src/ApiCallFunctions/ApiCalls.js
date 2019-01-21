@@ -1,6 +1,5 @@
 import fetchUtil from '../util/fetchUtil'
 
-//todo 190118: do I really need the children to have their own methods or do I just use the parent ___object methods?
 
 class ApiCalls {
     constructor(routeString){

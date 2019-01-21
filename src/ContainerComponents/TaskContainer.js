@@ -38,6 +38,8 @@ class TaskContainer extends Component {
             (returnedTask) => this.setState({task: returnedTask}))
     };
 
+
+    //fixme 190121: DO FIRST: returnedTask is something different here than what it is in ApiCalls callback. Why?
     modify =(modifiedTask) =>{
         this.state.taskApiCalls.modifyObject(modifiedTask,this.props.xAccessToken,(returnedTask) => {
             this.setState({task: returnedTask, displayState: DisplayStates.EXPANDED})
