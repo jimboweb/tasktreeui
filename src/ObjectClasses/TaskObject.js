@@ -1,20 +1,34 @@
 class TaskObject {
-    constructor() {
-        this.name = "";
-        this.description = "";
-        this.subTasks= [];
-        this.events=[];
-        this.completed="";
-        this.deadline=new Date();
-        this.startDate=new Date();
-        this.notes=[];
-        this.external=false;
-        this.parent=0;
-        this.parentType="";
-        this.prqTask=[];
-        this.prqEvent=[];
-        this.estTime=0;
-        this.accountId="";
+    constructor(name,
+                description,
+                subTasks,
+                events,
+                completed,
+                deadline,
+                startDate,
+                notes,
+                external,
+                parent,
+                parentType,
+                prqTask,
+                prqEvent,
+                estTime,
+                accountId) {
+        this.name = name?name: "";
+        this.description =description?description: "";
+        this.subTasks=subTasks?subTasks: [];
+        this.events=events?events:[];
+        this.completed= completed?completed:"";
+        this.deadline=deadline?deadline:new Date();
+        this.startDate=startDate?startDate:new Date();
+        this.notes=notes?notes:[];
+        this.external=external?external:false;
+        this.parent=parent?parent:0;
+        this.parentType=parentType?parentType:"";
+        this.prqTask=prqTask?prqTask:[];
+        this.prqEvent=prqEvent?prqEvent:[];
+        this.estTime=estTime?estTime:0;
+        this.accountId=accountId?accountId:"";
     }
 
 }

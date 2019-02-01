@@ -11,10 +11,10 @@ function Event(props) {
             <h4>{props.data.name}</h4>
             <div className={props.displayState === DisplayStates.EXPANDED ? 'expanded' : 'collapsed'}>
                 <div className='property'>
-                    Description : {props.data.date}
+                    Date : {props.data.date}
                 </div>
                 <div className='property'>
-                    Completed : {props.data.length}
+                    Length : {props.data.length}
                 </div>
                 <div className='property'>
                     Completed : {props.data.completed}
