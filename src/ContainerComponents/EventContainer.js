@@ -45,7 +45,7 @@ class EventContainer extends Component {
     };
 
     render() {
-        if (this.state.task) {
+        if (this.state.event) {
             const modifyListActions = new ModifyEventListActions(
                 this.state.event._id,
                 this.props.xAccessToken,
@@ -67,7 +67,6 @@ class EventContainer extends Component {
             return <EventForm data={new EventObject()} xAccessToken={this.props.xAccessToken}
                              submitAction = {this.props.modifyListActions.addEvent}/>
         } else {
-            //fixme 190202: endless loop here - this.update() seems to keep calling itself
             this.update();
             return (
                 <LoadingGif/>
