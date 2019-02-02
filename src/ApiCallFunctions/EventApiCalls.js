@@ -1,5 +1,7 @@
 import ApiCalls from "./ApiCalls";
 
+
+//fixme 190201: get event not working (see api)
 class EventApiCalls extends ApiCalls{
     constructor(){
         super('event')
