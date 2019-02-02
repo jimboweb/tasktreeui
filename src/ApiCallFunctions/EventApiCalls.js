@@ -2,7 +2,7 @@ import ApiCalls from "./ApiCalls";
 
 class EventApiCalls extends ApiCalls{
     constructor(){
-        super('event/')
+        super('event')
     }
     getEvent= (eventId,token, callback)=>super.getObject(eventId, token,callback);
     modifyEvent=(modifiedEvent,token,callback)=>super.modifyObject(modifiedEvent,token,callback);

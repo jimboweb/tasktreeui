@@ -12,7 +12,7 @@ class EventObject{
                accoundId){
        this.name = name?name:"";
        this.dateTime = dateTime?dateTime:new Date();
-       this.length = length?tlength:0;
+       this.length = length?length:0;
        this.notes = notes?notes:[];
        this.prqTask = prqTask?prqTask:[];
        this.prqEvents = prqEvents?prqEvents:[];

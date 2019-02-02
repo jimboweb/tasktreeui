@@ -3,7 +3,7 @@ import ApiCalls from "./ApiCalls";
 
 class TaskApiCalls extends ApiCalls{
     constructor(){
-        super('task/');
+        super('task');
     }
     getTask= (taskId,token, callback)=>super.getObject(taskId, token,callback);
     modifyTask=(modifiedTask,token,callback)=>super.modifyObject(modifiedTask,token,callback);
