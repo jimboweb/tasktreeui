@@ -13,6 +13,8 @@ class TaskList extends Component {
     addTask = ()=>this.setState({addTask:true});
     //null taskId will create a new task
     addNewTaskTrue=data=>{
+        //fixme 190203: this doesn't work. sometimes 'data' is non-iterable, probably cause it's null or undefined
+        //also it's putting the form at the bottom of the list no matter what, which isn't what I want
         return [...data, null];
     }
 
