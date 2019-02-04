@@ -16,6 +16,9 @@ class TaskList extends Component {
         if(!data || !data.length)
             return [null];
         //fixme 190203: the line above probably fixes problem with spread operator but not form appearing when it shouldn't
+        //honestly this whole method sucks, using a null like this is a terrible idea. need a new solution.
+        //okay, let's use an empty object. if it has no _id then I know I need to use a form.
+        //todo 190204: change this so instead of null it's an empty object. then if an object has no _id make it a form.
         return [...data, null];
     }
 
