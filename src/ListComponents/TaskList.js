@@ -13,8 +13,9 @@ class TaskList extends Component {
     addTask = ()=>this.setState({addTask:true});
     //null taskId will create a new task
     addNewTaskTrue=data=>{
-        //fixme 190203: this doesn't work. sometimes 'data' is non-iterable, probably cause it's null or undefined
-        //also it's putting the form at the bottom of the list no matter what, which isn't what I want
+        if(!data || !data.length)
+            return [null];
+        //fixme 190203: the line above probably fixes problem with spread operator but not form appearing when it shouldn't
         return [...data, null];
     }
 
