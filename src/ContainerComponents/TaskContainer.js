@@ -73,6 +73,7 @@ class TaskContainer extends Component {
                     />
             )
         } else if(!this.props.id){
+            //fixme 190205: right now the task form is appearing no matter what, why?
             return <TaskForm data={new TaskObject()} xAccessToken={this.props.xAccessToken}
                              submitAction = {this.props.modifyListActions.addTask}/>
         } else {
