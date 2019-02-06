@@ -16,7 +16,6 @@ class EventForm extends Component {
         };
     }
 
-    //fixme: (done?)'external' is "on" when it should be "true"
     submitAction=()=>{
         const form = document.getElementById("form"+this.props.id);
         const formData = formUtil.formInputsToObject(form);
