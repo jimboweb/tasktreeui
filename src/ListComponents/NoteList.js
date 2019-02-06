@@ -17,9 +17,7 @@ class NoteList extends Component {
     }
 
     render() {
-        const noteListData = this.state.addNote?
-            this.props.data:
-            this.addNewNoteTrue(this.props.data);
+        const noteListData = this.state.addNote ? this.addNewNoteTrue(this.props.data) : this.props.data;
         return (
             <div className='noteList' id={this.props.catId + 'NoteList'}>
                 {
