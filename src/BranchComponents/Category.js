@@ -3,7 +3,7 @@ import '../App.css';
 import TaskList from "../ListComponents/TaskList";
 import EventList from "../ListComponents/EventList";
 
-
+//TODO 190206: add expand/collapse button
 function Category(props){
     return(
         <div className="category" id={props.data._id}>
