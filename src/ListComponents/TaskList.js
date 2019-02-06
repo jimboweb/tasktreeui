@@ -12,7 +12,6 @@ class TaskList extends Component {
     }
 
     addTask = ()=>this.setState({addTask:true});
-    //null taskId will create a new task
     addNewTaskTrue=data=>{
         if(!data || !data.length)
             return [new TaskObject()];
