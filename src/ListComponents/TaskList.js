@@ -20,7 +20,6 @@ class TaskList extends Component {
     }
 
     render() {
-        //fixme 190206: the lists alwqys have a 'null' at the end
         const taskListData = this.state.addTask?
             this.addNewTaskTrue(this.props.data):
             this.props.data;
