@@ -32,7 +32,7 @@ class TaskContainer extends Component {
     };
 
     update = () => {
-        this.state.taskApiCalls.getObject(
+        this.state.noteApiCalls.getObject(
             this.props.id,
             this.props.xAccessToken,
             (returnedTask) => this.setState({task: returnedTask}))
@@ -40,7 +40,7 @@ class TaskContainer extends Component {
 
 
     modify =(modifiedTask) =>{
-        this.state.taskApiCalls.modifyObject(modifiedTask,this.props.xAccessToken,(returnedTask) => {
+        this.state.noteApiCalls.modifyObject(modifiedTask,this.props.xAccessToken,(returnedTask) => {
             this.setState({task: returnedTask, displayState: DisplayStates.EXPANDED})
         }
         );

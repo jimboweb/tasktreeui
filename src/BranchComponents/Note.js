@@ -1,10 +1,19 @@
 import React from "react";
-//todo 190105: make note component
+import DisplayStates from "../Enums/DisplayStates";
+
 
 
 function Note(props) {
     return (
-        <div>
+        <div className='note' id={props.data.id}>
+            <div className='dataWrapper'>
+                <div className={props.displayState === DisplayStates.EXPANDED ? 'expanded' : 'collapsed'}>
+                    <div className='property'>
+                        {props.data.dateTime} : {props.data.note}
+                    </div>
+
+                </div>
+            </div>
         </div>
     );
 }

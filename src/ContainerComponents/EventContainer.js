@@ -30,7 +30,7 @@ class EventContainer extends Component {
     };
 
     update = () => {
-        this.state.taskApiCalls.getObject(
+        this.state.noteApiCalls.getObject(
             this.props.id,
             this.props.xAccessToken,
             (returnedEvent) => this.setState({event: returnedEvent}))
@@ -38,7 +38,7 @@ class EventContainer extends Component {
 
 
     modify =(modifiedEvent) =>{
-        this.state.taskApiCalls.modifyObject(modifiedEvent,this.props.xAccessToken,(returnedEvent) => {
+        this.state.noteApiCalls.modifyObject(modifiedEvent,this.props.xAccessToken,(returnedEvent) => {
                 this.setState({task: returnedEvent, displayState: DisplayStates.EXPANDED})
             }
         );
