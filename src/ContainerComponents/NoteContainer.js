@@ -5,7 +5,6 @@ import NoteApiCalls from '../ApiCallFunctions/NoteApiCalls'
 import Note from "../BranchComponents/Note";
 import NoteForm from '../FormComponents/NoteForm'
 import NoteObject from '../ObjectClasses/NoteObject'
-//todo 190105: make note container
 
 class NoteContainer extends Component {
     constructor(props) {
