@@ -4,31 +4,35 @@ import NewParentSearch from "../InputComponents/NewParentSearch";
 import Modal from "./Modal";
 import DeleteModalContent from "./DeleteModalContent";
 
+/**
+ * @param props: !visible, !componentType, !componentName !parentTypes !rebaseChildren()  !deleteChildren()
+ */
+class DeleteModal extends Modal  {
+    constructor(props){
+        super(props);
+        this.state={
+            rebaseChildren : (newParent) => {
+                this.props.rebaseChildren(newParent);
+                this.hide();
+            },
+            deleteChildren:()=>{
+                this.props.deleteChildren();
+                this.hide()
+            },
 
-function DeleteModal(props) {
+            children: <fragment>
+                The {this.props.componentType} {this.props.componentName} that you are deleting contains child Tasks or Events.
+                Do you want to delete the children or assign them to a new parent?
+                <button className="deleteChildren" onClick={this.state.deleteChildren}>Delete Children</button>
+                <button className="cancelDelete">Don't Delete</button>
+                <NewParentSearch parentTypes={this.props.parentTypes} buttonAction = {this.state.rebaseChildren}/>
+            </fragment>,
+        }
 
-
-    const newParentSelectContainerStyle = {
-        display:'none'
     }
 
-    const showRebaseChildren=()=>{
-        document.querySelector('#newParentSelectContainer').style.display='block';
-        document.querySelector("#modal").style.display='none'
-    }
+}
 
-    const rebaseChildren = (newParent) => {
-
-        props.rebaseChildren(newParent);
-    };
-
-
-    //todo 190209: still not doing this right. have to pass this as a component then call it in child. 
-    const children = <DeleteModalContent/>
-
-    return <Modal children = {children} />
-
-    }
 
 
 export default DeleteModal;
