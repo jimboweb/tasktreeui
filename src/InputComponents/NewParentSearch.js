@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './App.css';
 
 //todo 190208: make new parent search input component
 

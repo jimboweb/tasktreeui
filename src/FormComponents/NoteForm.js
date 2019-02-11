@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import '../App.css';
 import InputTypes from "../Enums/InputTypes";
 import formUtil from "../util/formUtil";
 import FormBuilder from "./TaskForm";
@@ -34,6 +34,6 @@ class NoteForm extends Component {
         </div>
     }
 }
-}
+
 
 export default NoteForm;

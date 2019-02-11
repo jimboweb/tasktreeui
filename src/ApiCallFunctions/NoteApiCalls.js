@@ -9,3 +9,5 @@ class NoteApiCalls extends ApiCalls{
     deleteNote=(noteId,token, callback)=>super.deleteObject(noteId,token,callback);
     createNote=(newNote, parentType, parentId, token, callback)=>super.createObject(newNote,parentType,parentId,token,callback);
 }
+
+export default NoteApiCalls;

@@ -5,6 +5,7 @@ import NoteApiCalls from '../ApiCallFunctions/NoteApiCalls'
 import Note from "../BranchComponents/Note";
 import NoteForm from '../FormComponents/NoteForm'
 import NoteObject from '../ObjectClasses/NoteObject'
+import LoadingGif from "../DisplayComponents/LoadingGif";
 
 class NoteContainer extends Component {
     constructor(props) {

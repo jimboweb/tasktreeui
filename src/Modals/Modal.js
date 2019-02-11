@@ -1,6 +1,5 @@
-import React from "react";
 import React, {Component} from 'react';
-import './App.css';
+
 
 /**
  *
@@ -41,11 +40,11 @@ class Modal extends Component  {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%,-50%)',
-        width: props.width?props.width:'600px',
-        maxWidth: props.maxWidth?props.maxWidth:'90%',
-        height: props.height?props.height:'400px',
-        maxHeight: props.maxHeight?props.maxHeight:'90%',
-        display: state.visible?'block':'none',
+        width: this.props.width?this.props.width:'600px',
+        maxWidth: this.props.maxWidth?this.props.maxWidth:'90%',
+        height: this.props.height?this.props.height:'400px',
+        maxHeight: this.props.maxHeight?this.props.maxHeight:'90%',
+        display: this.state.visible?'block':'none',
     };
 
     modalContentStyle = {
@@ -54,10 +53,10 @@ class Modal extends Component  {
         left:'0',
         width:'100%',
         height: '100%',
-        padding: props.padding?props.padding:'20px 50px 20px 20px',
+        padding: this.props.padding?this.props.padding:'20px 50px 20px 20px',
         overflow: 'auto',
-        color:props.color?props.color:'black',
-        backgroundColor:props.backgroundColor?props.backgroundColor:'white',
+        color:this.props.color?this.props.color:'black',
+        backgroundColor:this.props.backgroundColor?this.props.backgroundColor:'white',
 
     };
 

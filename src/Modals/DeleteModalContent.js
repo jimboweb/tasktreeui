@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './App.css';
 import NewParentSearch from "./DeleteModal";
 
 function DeleteModalContent(props) {

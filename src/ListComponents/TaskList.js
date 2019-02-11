@@ -53,7 +53,7 @@ class TaskList extends Component {
                     )
                 }
                 <DeleteModal
-                    visible = false componentType="task"
+                    visible = {false} componentType="task"
                     parentTypes = {['component','task']}
                     componentName = {this.state.taskToDeleteName}
                     rebaseChildren = {this.deleteTaskRebaseChildren}

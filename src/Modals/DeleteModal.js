@@ -1,5 +1,4 @@
 import React from "react";
-import './App.css';
 import NewParentSearch from "../InputComponents/NewParentSearch";
 import Modal from "./Modal";
 import DeleteModalContent from "./DeleteModalContent";
