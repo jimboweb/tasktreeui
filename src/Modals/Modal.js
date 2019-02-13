@@ -34,6 +34,11 @@ class Modal extends Component  {
         this.setState({visible:nextProps.visible})
     };
 
+
+    //fixme: 190213:
+    //TypeError: Cannot read property 'visible' of undefined
+    //at e (Modal.js:47)
+    //at new e (DeleteModal.js:11)
     modalContainerStyle = {
         position: 'fixed',
         zIndex: '1',
