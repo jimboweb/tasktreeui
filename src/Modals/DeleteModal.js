@@ -10,6 +10,7 @@ class DeleteModal extends Modal  {
     constructor(props){
         super(props);
         this.state={
+            visible: false,
             rebaseChildren : (newParent) => {
                 this.props.rebaseChildren(newParent);
                 this.hide();

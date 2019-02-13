@@ -34,7 +34,9 @@ class Modal extends Component  {
         this.setState({visible:nextProps.visible})
     };
 
-
+    // todo 190213: do the modal the way the guy on StackOverflow described it.
+    // it doesn't work this way because there is no state when I'm defining these functions.
+    // also it will load less script because it will only have the modal in the place I need it instead of a bunch of hidden ones.
     //fixme: 190213:
     //TypeError: Cannot read property 'visible' of undefined
     //at e (Modal.js:47)
