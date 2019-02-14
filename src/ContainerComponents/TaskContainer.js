@@ -31,10 +31,6 @@ class TaskContainer extends Component {
         this.setState({displayState: DisplayStates.INPUT});
     };
 
-    //fixme 190213:  also in eventContainer
-    //TypeError: Cannot read property 'getObject' of undefined
-    //at e.a.update (TaskContainer.js:35)
-    //at e.value (TaskContainer.js:82)
     update = () => {
         this.state.taskApiCalls.getObject(
             this.props.id,

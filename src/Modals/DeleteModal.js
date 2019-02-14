@@ -14,11 +14,11 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#userRoot')
+Modal.setAppElement('#root')
 
 
 /**
- * @param props: !visible, !componentType, !componentName !parentTypes !rebaseChildren()  !deleteChildren()
+ * @param props: !modalIsOpen, !componentType, !componentName !parentTypes !rebaseChildren()  !deleteChildren()
  */
 class DeleteModal extends React.Component  {
     constructor(props){

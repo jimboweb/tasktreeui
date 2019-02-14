@@ -9,7 +9,8 @@ class TaskList extends Component {
         super(props);
         this.state = {
             addTask:false,
-            taskToDeleteName: ''
+            taskToDeleteName: '',
+            deleteModalOpen:false,
         };
     }
 
@@ -29,7 +30,7 @@ class TaskList extends Component {
     };
 
     showDeleteModal=(taskId, taskName)=>{
-        //todo 190210: make show delete modal action
+        this.setState({deleteModalOpen:true});
     }
 
 
@@ -53,7 +54,8 @@ class TaskList extends Component {
                     )
                 }
                 <DeleteModal
-                    visible = {false} componentType="task"
+                    modalIsOpen = {this.state.deleteModalOpen}
+                    componentType='task'
                     parentTypes = {['component','task']}
                     componentName = {this.state.taskToDeleteName}
                     rebaseChildren = {this.deleteTaskRebaseChildren}

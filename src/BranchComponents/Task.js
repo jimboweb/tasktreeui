@@ -106,7 +106,7 @@ function Task(props) {
                 <img src='../src/img/edit.svg' />
             </button>
             <button onClick={props.showDeleteModal} className='inputButton'>
-                <img src='../src/img/delete.svg' />
+                <img src='../src/img/trash.png' />
             </button>
         </div>
     </div>
