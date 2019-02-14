@@ -48,7 +48,6 @@ class TaskContainer extends Component {
 
 
 
-    //todo 190118: need to create a delete button that creates a rebase/delete children modal
 
 
 
@@ -72,7 +71,7 @@ class TaskContainer extends Component {
                         displayState={this.state.displayState}
                         xAccessToken = {this.props.xAccessToken}
                         modifyListActions = {modifyListActions}
-                        showDelteModal = {this.props.showDeleteModal}
+                        showDeleteModal = {this.props.showDeleteModal}
                     />
             )
         } else if(!this.props.id){

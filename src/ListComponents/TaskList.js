@@ -30,6 +30,8 @@ class TaskList extends Component {
     };
 
     showDeleteModal=(taskId, taskName)=>{
+        //fixme 190214: method is running but delete isn't showing
+        console.log('showDeleteModal running');
         this.setState({deleteModalOpen:true});
     }
 
