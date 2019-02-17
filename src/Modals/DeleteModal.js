@@ -24,7 +24,6 @@ class DeleteModal extends React.Component  {
     constructor(props){
         super(props);
         this.state={
-            modalIsOpen:false
         }
 
 
@@ -37,12 +36,12 @@ class DeleteModal extends React.Component  {
     render(){
             return <Modal
                 isOpen={this.props.modalIsOpen}
-                onAfterOpen={this.afterOpenModal}
-                onRequestClose={this.closeModal}
+                onAfterOpen={this.props.afterOpenModal}
+                onRequestClose={this.props.closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
             >
-                <button onClick={this.closeModal} id='closeModalButton'>close</button>
+                <button onClick={this.props.closeModal} id='closeModalButton'>close</button>
                 The {this.props.componentType} {this.props.componentName} that you are deleting contains child Tasks or Events.
                 Do you want to delete the children or assign them to a new parent?
                 <button className="deleteChildren" onClick={this.state.deleteChildren}>Delete Children</button>

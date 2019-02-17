@@ -69,6 +69,8 @@ class TaskList extends Component {
                 }
                 <DeleteModal
                     modalIsOpen = {this.state.deleteModalOpen}
+                    closeModal = {this.closeDeleteModal}
+                    onAfterOpen = {this.afterOpenModal}
                     componentType='task'
                     parentTypes = {['component','task']}
                     componentName = {this.state.taskToDeleteName}
