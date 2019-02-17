@@ -45,7 +45,7 @@ class TaskList extends Component {
     }
 
     closeDeleteModal() {
-        this.setState({modalIsOpen: false});
+        this.setState({deleteModalOpen: false});
     }
 
 
