@@ -17,7 +17,8 @@ class CategoryApiCalls extends ApiCalls {
     getCategory= (id,token, callback)=>this.getObject(id, token,callback);
     modifyCategory=(modifiedCategory,token,callback)=>this.modifyObject(modifiedCategory,token,callback);
     //TODO 190216: two delete functions, one to rebase and one to delete children
-    deleteCategory=(categoryId,token, callback)=>this.deleteObject(categoryId,token,callback);
+    deleteCategoryAndChildren=(categoryId,token, callback)=>this.deleteObject(categoryId,token,callback);
+    deleteCategoryRebaseChildren=(categoryId,token,newParentType,newParentId,callback);
     addCategory=(category,token,callback)=>fetchUtil.postData(
         //don't use ApiCalls because category is always child of root so no parentTyoe or parentId
         "category/",

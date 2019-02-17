@@ -64,6 +64,7 @@ class CategoryContainer extends Component {
                         displayState={this.state.displayState}
                         modifyListActions = {modifyListActions}
                         xAccessToken = {this.props.xAccessToken}
+                        update = {this.update}
                     />
             )
         } else {

@@ -3,6 +3,7 @@ import '../App.css';
 import TaskContainer from '../ContainerComponents/TaskContainer';
 import TaskObject from '../ObjectClasses/TaskObject'
 import DeleteModal from "../Modals/DeleteModal";
+import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 
 class TaskList extends Component {
     constructor(props) {
@@ -26,16 +27,15 @@ class TaskList extends Component {
         data.push(new TaskObject())
     }
 
-    deleteTaskRebaseChildren=(taskId, newParent)=>{
-        //todo 190210: create deleteTaskRebaseChildren
+    deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
+        TaskApiCalls.deleteTaskRebaseChildren(taskId, newParentType, newParentId, ()=>this.props.update);
     };
 
     deleteTaskAndChildren=(taskId)=>{
-        //todo 190210: create deleteTaskAndChildren
+        TaskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,()=>this.props.update)
     };
 
     showDeleteModal=(taskId, taskName)=>{
-        //fixme 190214: method is running but delete isn't showing
         this.setState({deleteModalOpen:true});
     }
 

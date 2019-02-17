@@ -16,6 +16,7 @@ function Category(props){
                 catId={props.data._id}
                 modifyListActions = {props.modifyListActions}
                 xAccessToken = {props.xAccessToken}
+                update={props.update}
             />
             <h3 >Events</h3>
             <EventList
@@ -23,7 +24,7 @@ function Category(props){
                 modifyListActions = {props.modifyListActions}
                 catId={props.data._id}
                 xAccessToken = {props.xAccessToken}
-
+                update = props.update
             />
         </div>
     );

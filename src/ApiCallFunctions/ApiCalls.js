@@ -71,6 +71,24 @@ class ApiCalls {
             `${this.routeString}/${objId}`,
             token,
             responseDate=>callback(responseDate))
+    };
+
+    /**
+     * Delete object and rebase children. Only task and category can rebase children.
+     * @param objId: the id to delete
+     * @param token: xAccessToken
+     * @param newParentType: parent type to rebase to
+     * @param newParentId: id to rebase to
+     */
+    deleteObjectRebaseChildren=(objId,token,newParentType,newParentId)=>{
+        //rebase only applies to task and category, otherwise just do regular delete
+        if(this.routeString==='task'||this.routeString==='category'){
+        fetchUtil.deleteData(`${this.routeString}/${objId}/${newParentType}/${parentId}`,
+            token,
+            responseDate=>callback(responseDate));
+        } else {
+            deleteObject(objId,token,callback);
+        }
     }
 
     /**
