@@ -16,7 +16,7 @@ class TaskContainer extends Component {
         this.state = {
             displayState: DisplayStates.COLLAPSED,
             task: undefined,
-            taskApiCalls: new TaskApiCalls()
+            taskApiCalls: new TaskApiCalls(),
         }
     }
 
@@ -46,7 +46,8 @@ class TaskContainer extends Component {
         );
     };
 
-    //todo 190118: need to create a delete button that creates a rebase/delete children modal
+
+
 
 
 
@@ -70,6 +71,7 @@ class TaskContainer extends Component {
                         displayState={this.state.displayState}
                         xAccessToken = {this.props.xAccessToken}
                         modifyListActions = {modifyListActions}
+                        showDeleteModal = {this.props.showDeleteModal}
                     />
             )
         } else if(!this.props.id){
