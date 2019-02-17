@@ -45,7 +45,6 @@ class CategoryContainer extends Component {
             this.props.xAccessToken,
             (returnedCategory)=>this.setState({category:returnedCategory}))
     };
-    //todo 190118: need to create a delete button that creates a rebase/delete children modal
 
 
     render() {

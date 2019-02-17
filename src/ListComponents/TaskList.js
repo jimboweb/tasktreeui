@@ -12,6 +12,11 @@ class TaskList extends Component {
             taskToDeleteName: '',
             deleteModalOpen:false,
         };
+
+        this.showDeleteModal = this.showDeleteModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeDeleteModal = this.closeDeleteModal.bind(this);
+
     }
 
     addTask = ()=>this.setState({addTask:true});
@@ -31,10 +36,17 @@ class TaskList extends Component {
 
     showDeleteModal=(taskId, taskName)=>{
         //fixme 190214: method is running but delete isn't showing
-        console.log('showDeleteModal running');
         this.setState({deleteModalOpen:true});
     }
 
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        this.subtitle.style.color = '#f00';
+    }
+
+    closeDeleteModal() {
+        this.setState({modalIsOpen: false});
+    }
 
 
     render() {
