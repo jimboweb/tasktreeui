@@ -24,7 +24,7 @@ function Category(props){
                 modifyListActions = {props.modifyListActions}
                 catId={props.data._id}
                 xAccessToken = {props.xAccessToken}
-                update = props.update
+                update = {props.update}
             />
         </div>
     );
