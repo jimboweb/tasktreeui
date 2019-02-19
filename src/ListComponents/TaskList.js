@@ -11,9 +11,11 @@ class TaskList extends Component {
         this.state = {
             addTask:false,
             taskToDeleteName: '',
+            taskToDeleteId: 0,
             deleteModalOpen:false,
         };
 
+        this.taskApiCalls = new TaskApiCalls();
         this.showDeleteModal = this.showDeleteModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeDeleteModal = this.closeDeleteModal.bind(this);
@@ -28,14 +30,15 @@ class TaskList extends Component {
     }
 
     deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
-        TaskApiCalls.deleteTaskRebaseChildren(taskId, newParentType, newParentId, ()=>this.props.update);
+        this.taskApiCalls.deleteTaskRebaseChildren(taskId, newParentType, newParentId, ()=>this.props.update);
     };
-    //fixme 190219: two problems: - taskId is undefined and - need to create TaskApiCalls() object
+    //fixme 190219: ok task now deletes but leaves empty task object
     deleteTaskAndChildren=(taskId)=>{
-        TaskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,()=>this.props.update)
+        this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,()=>this.props.update)
     };
 
     showDeleteModal=(taskId, taskName)=>{
+        this.setState({taskToDeleteName: taskName, taskToDeleteId: taskId});
         this.setState({deleteModalOpen:true});
     }
 
@@ -76,6 +79,8 @@ class TaskList extends Component {
                     componentName = {this.state.taskToDeleteName}
                     rebaseChildren = {this.deleteTaskRebaseChildren}
                     deleteChildren = {this.deleteTaskAndChildren}
+                    taskToDeleteName = {this.state.taskToDeleteName}
+                    taskToDeleteId = {this.state.taskToDeleteId}
                 />
             </div>
         );

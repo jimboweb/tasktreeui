@@ -30,12 +30,12 @@ class DeleteModal extends React.Component  {
     }
 
     deleteChildren=()=>{
-      this.props.deleteChildren();
+      this.props.deleteChildren(this.props.taskToDeleteId);
       this.props.closeModal();
     };
 
-    rebaseChildren=()=>{
-        this.props.rebaseChildren();
+    rebaseChildren=(newParentType, newParentId)=>{
+        this.props.rebaseChildren(this.props.taskToDeleteId, newParentType, newParentId);
         this.props.closeModal();
     }
 

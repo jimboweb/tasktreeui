@@ -7,7 +7,9 @@ import NoteList from "../ListComponents/NoteList";
 
 function Task(props) {
 
-
+    const showDeleteModal =  ()=>{
+        props.showDeleteModal(props.data._id,props.data.name);
+    }
     return <div className='task ' id={props.data._id}>
         <div className='collapser'>
             <button onClick={props.buttonAction}>
@@ -105,7 +107,7 @@ function Task(props) {
             <button onClick={props.editAction} className ='inputButton'>
                 <img src='../src/img/edit.svg' />
             </button>
-            <button onClick={props.showDeleteModal} className='inputButton'>
+            <button onClick={showDeleteModal} className='inputButton'>
                 <img src='../src/img/trash.png' />
             </button>
         </div>
