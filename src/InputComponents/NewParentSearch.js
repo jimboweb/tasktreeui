@@ -8,11 +8,11 @@ class NewParentSearch extends Component {
         this.state = {};
     }
 
-
+    //todo 190218: search function in api
     render() {
         return <div>
             Rebase child to parent:
-            //todo 190209: find new parent input
+
         </div>
     }
 }

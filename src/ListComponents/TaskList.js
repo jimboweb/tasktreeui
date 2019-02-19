@@ -30,7 +30,7 @@ class TaskList extends Component {
     deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
         TaskApiCalls.deleteTaskRebaseChildren(taskId, newParentType, newParentId, ()=>this.props.update);
     };
-
+    //fixme 190219: two problems: - taskId is undefined and - need to create TaskApiCalls() object
     deleteTaskAndChildren=(taskId)=>{
         TaskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,()=>this.props.update)
     };
