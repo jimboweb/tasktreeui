@@ -81,6 +81,7 @@ class TaskList extends Component {
                     deleteChildren = {this.deleteTaskAndChildren}
                     taskToDeleteName = {this.state.taskToDeleteName}
                     taskToDeleteId = {this.state.taskToDeleteId}
+                    xAccessToken = {this.props.xAccessToken}
                 />
             </div>
         );

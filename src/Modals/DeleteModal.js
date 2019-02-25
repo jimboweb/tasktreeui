@@ -54,7 +54,7 @@ class DeleteModal extends React.Component  {
                 The {this.props.componentType} {this.props.componentName} that you are deleting contains child Tasks or Events.
                 Do you want to delete the children or assign them to a new parent?
                 <button className="deleteChildren" onClick={this.deleteChildren}>Delete Children</button>
-                <NewParentSearch parentTypes={this.props.parentTypes} buttonAction = {this.state.rebaseChildren}/>
+                <NewParentSearch parentTypes={this.props.parentTypes} buttonAction = {this.state.rebaseChildren} xAccessToken={this.props.xAccessToken}/>
                 <button onClick={this.props.closeModal} id='closeModalButton'>Cancel delete</button>
 
             </Modal>
