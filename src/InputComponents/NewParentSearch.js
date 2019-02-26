@@ -9,6 +9,7 @@ class NewParentSearch extends Component {
     }
 
 
+    //maybe just get all the objects of type on loading and work from there? How many could there be?
 
     searchApiCalls = new SearchApiCalls();
 
