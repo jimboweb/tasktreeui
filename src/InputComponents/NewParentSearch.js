@@ -1,28 +1,42 @@
 import React, {Component} from 'react';
-import Autocomplete from 'react-async-autocomplete'
 import SearchApiCalls from '../ApiCallFunctions/SearchApiCalls'
+import Autosuggest from 'react-autosuggest';
 
 class NewParentSearch extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {suggestions:[]};
     }
+
+
 
     searchApiCalls = new SearchApiCalls();
 
-    search=(types,string)=>{
-        this.searchApiCalls.searchBranchesByString(types,string,this.props.xAccessToken,(rslt)=>{
-            //todo 190225: callback to update search box
-        })
-    };
+    search=(types,string,callback)=>{
+     };
+
+    // todo 190226: figure out how to use this
+    // onSuggestionsFetchRequested = (string)=>this.searchApiCalls.searchBranchesByString(
+    //     this.props.types,
+    //     string,
+    //     this.props.xAccessToken,(rslt)=>{
+    //        this.setState({suggestions:rslt})
+    // })
 
 
 
-    //todo 190225: implement the properties so autocomplete works
+    //todo 190226: implement like this: https://github.com/koliseoapi/react-async-autocomplete/blob/master/test/test.js
     render() {
         return <div>
             Rebase child to parent:
-            <Autocomplete renderItem={} onChange={} onSelect={}/>
+            <Autosuggest
+                suggestions={this.state.suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={renderSuggestion}
+                inputProps={inputProps}
+            />
         </div>
     }
 }
