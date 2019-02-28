@@ -59,6 +59,18 @@ class ApiCalls {
         );
 
     }
+    getAllObjects= (token, callback)=>{
+        const route = `${this.routeString}`;
+        fetchUtil.getData(
+            route,
+            token,
+            responseData => {
+                callback(responseData);
+            }
+
+        );
+
+    }
     /**
      * Delete object
      * @param objId: the id to delete

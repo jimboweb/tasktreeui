@@ -8,36 +8,65 @@ import EventApiCalls from '../ApiCallFunctions/EventApiCalls'
 class NewParentSearch extends Component {
     constructor(props) {
         super(props);
-        this.state = {suggestions:[]};
+        this.state = {
+            value: '',
+            suggestions:[],
+            branches:[]
+        };
+    }
+    apiCalls = {'category':new CategoryApiCalls(),'task':new TaskApiCalls(),'event':new EventApiCalls()}
+
+    getSuggestions = value => {
+        const inputValue = value.trim().toLowerCase();
+        const inputLength = inputValue.length;
+
+        return inputLength === 0 ? [] : this.state.branches.filter(branch =>
+            branch.name.toLowerCase().slice(0, inputLength) === inputValue
+        );
+    };
+
+    componentDidMount() {
+        const branches=this.populateList(this.props.types);
+        this.setState({branches:branches});
     }
 
-    apiCalls = {'category':new CategoryApiCalls(),'task':new TaskApiCalls(),'event':new EventApiCalls()}
 
     populateList=(types)=>{
         return types.map(
-            //todo 190228: if I'm going to do it this way I need to make a route that gets everything
-            // type=>this.apiCalls[type].getObject()
-        )
+            type=>this.apiCalls[type].getAllObjects()
+        ).flat();
     }
-
-    //maybe just get all the objects of type on loading and work from there? How many could there be?
 
     searchApiCalls = new SearchApiCalls();
 
-    search=(types,string,callback)=>{
-     };
+    getSuggestionValue=suggestion=>suggestion.name;
 
-    // todo 190226: figure out how to use this
-    // onSuggestionsFetchRequested = (string)=>this.searchApiCalls.searchBranchesByString(
-    //     this.props.types,
-    //     string,
-    //     this.props.xAccessToken,(rslt)=>{
-    //        this.setState({suggestions:rslt})
-    // })
+    renderSuggestion = suggestion => <div>{suggestion.name}</div>;
+
+    onSuggestionsClearRequested =() => {
+        this.setState({
+            suggestions: []
+        });
+    };
+
+    onChange = (event, newValue)=>{
+        this.setState({value,newValue})
+    };
+
+    onSuggestionsFetchRequested = ({ value }) => {
+        this.setState({
+            suggestions: this.getSuggestions(value)
+        });
+    };
+
+    inputProps={
+        placeholder: 'Type the name of the new parent',
+        value,
+        onChange: this.onChange
+    }
 
 
 
-    //todo 190226: implement like this: https://github.com/koliseoapi/react-async-autocomplete/blob/master/test/test.js
     render() {
         return <div>
             Rebase child to parent:
@@ -45,9 +74,9 @@ class NewParentSearch extends Component {
                 suggestions={this.state.suggestions}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
-                inputProps={inputProps}
+                getSuggestionValue={this.getSuggestionValue}
+                renderSuggestion={this.renderSuggestion}
+                inputProps={this.inputProps}
             />
         </div>
     }
