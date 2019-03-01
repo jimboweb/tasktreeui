@@ -26,18 +26,25 @@ class NewParentSearch extends Component {
     };
 
     componentDidMount() {
-        const branches=this.populateList(this.props.types);
+        const branches=this.populateList(this.props.parentTypes);
         this.setState({branches:branches});
     }
 
 
     populateList=(types)=>{
         return types.map(
-            type=>this.apiCalls[type].getAllObjects()
-        ).flat();
+            type=>{
+                const apiCall = this.apiCalls[type];
+                apiCall.getAllObjects(this.props.xAccessToken,response=>{
+                    this.setState(
+                    {branches: this.state.branches.concat(response)}
+                        )
+                    }
+                )
+            }
+        );
     }
 
-    searchApiCalls = new SearchApiCalls();
 
     getSuggestionValue=suggestion=>suggestion.name;
 
@@ -59,16 +66,15 @@ class NewParentSearch extends Component {
         });
     };
 
-    inputProps={
-        placeholder: 'Type the name of the new parent',
-        //fixme 190301: Uncaught TypeError: Cannot read property 'value' of undefined
-        value:this.state.value,
-        onChange: this.onChange
-    }
 
 
 
     render() {
+        let inputProps={
+            placeholder: 'Type the name of the new parent',
+            value:this.state.value,
+            onChange: this.onChange
+        }
         return <div>
             Rebase child to parent:
             <Autosuggest
@@ -77,7 +83,7 @@ class NewParentSearch extends Component {
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 getSuggestionValue={this.getSuggestionValue}
                 renderSuggestion={this.renderSuggestion}
-                inputProps={this.inputProps}
+                inputProps={inputProps}
             />
         </div>
     }
