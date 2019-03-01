@@ -50,7 +50,7 @@ class NewParentSearch extends Component {
     };
 
     onChange = (event, newValue)=>{
-        this.setState({value,newValue})
+        this.setState({value:newValue})
     };
 
     onSuggestionsFetchRequested = ({ value }) => {
@@ -61,7 +61,8 @@ class NewParentSearch extends Component {
 
     inputProps={
         placeholder: 'Type the name of the new parent',
-        value,
+        //fixme 190301: Uncaught TypeError: Cannot read property 'value' of undefined
+        value:this.state.value,
         onChange: this.onChange
     }
 

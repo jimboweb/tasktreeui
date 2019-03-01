@@ -32,7 +32,6 @@ class TaskList extends Component {
     deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
         this.taskApiCalls.deleteTaskRebaseChildren(taskId, newParentType, newParentId, ()=>this.props.update);
     };
-    //fixme 190219: ok task now deletes but leaves empty task object. but this is an api problem, because task isn't removed from category. 
     deleteTaskAndChildren=(taskId)=>{
         this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,()=>this.props.update)
     };

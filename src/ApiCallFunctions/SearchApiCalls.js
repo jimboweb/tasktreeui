@@ -17,3 +17,5 @@ class SearchApiCalls {
     }
 
 }
+
+export default SearchApiCalls;
