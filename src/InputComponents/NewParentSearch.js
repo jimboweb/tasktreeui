@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import SearchApiCalls from '../ApiCallFunctions/SearchApiCalls'
 import Autosuggest from 'react-autosuggest';
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
@@ -26,12 +25,11 @@ class NewParentSearch extends Component {
     };
 
     componentDidMount() {
-        const branches=this.populateList(this.props.parentTypes);
-        this.setState({branches:branches});
+        this.populateList(this.props.parentTypes)
     }
 
 
-    populateList=(types)=>{
+    populateList= (types)=>{
         return types.map(
             type=>{
                 const apiCall = this.apiCalls[type];
@@ -39,6 +37,7 @@ class NewParentSearch extends Component {
                     this.setState(
                     {branches: this.state.branches.concat(response)}
                         )
+                        console.log("bla");
                     }
                 )
             }
@@ -56,7 +55,7 @@ class NewParentSearch extends Component {
         });
     };
 
-    onChange = (event, newValue)=>{
+    onChange = (event, {newValue})=>{
         this.setState({value:newValue})
     };
 
