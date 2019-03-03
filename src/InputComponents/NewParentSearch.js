@@ -85,6 +85,7 @@ class NewParentSearch extends Component {
                 inputProps={inputProps}
             />
         </div>
+        //todo 190303: create submit button that rebases children to selected parent
     }
 }
 
