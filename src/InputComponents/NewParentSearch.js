@@ -10,7 +10,8 @@ class NewParentSearch extends Component {
         this.state = {
             value: '',
             suggestions:[],
-            branches:[]
+            branches:[],
+            rebaseParent:null
         };
     }
     apiCalls = {'category':new CategoryApiCalls(),'task':new TaskApiCalls(),'event':new EventApiCalls()}
@@ -33,16 +34,17 @@ class NewParentSearch extends Component {
         return types.map(
             type=>{
                 const apiCall = this.apiCalls[type];
-                apiCall.getAllObjects(this.props.xAccessToken,response=>{
-                    this.setState(
-                    {branches: this.state.branches.concat(response)}
-                        )
-                        console.log("bla");
-                    }
+                apiCall.getAllObjects(this.props.xAccessToken,response=>{this.setState(
+                    {branches: this.state.branches.concat(
+                            response
+                                .filter(item=>item._id!==this.props.itemToDeleteId)
+                                .map((item,type)=>Object.assign(item,{type:type}))
+                        )}
+                )}
                 )
             }
         );
-    }
+    };
 
 
     getSuggestionValue=suggestion=>suggestion.name;
@@ -65,15 +67,20 @@ class NewParentSearch extends Component {
         });
     };
 
+    onSuggestionSelected = (event,{suggestion, suggestionValue, suggestionIndex, sectionIndex, method}) =>{
+        this.setState({rebaseParent:suggestion});
+    };
 
-
+    deleteAndRebaseChildren=()=>{
+        this.props.rebaseChildren(this.state.rebaseParent._id,this.state.rebaseParent.type);
+    }
 
     render() {
         let inputProps={
             placeholder: 'Type the name of the new parent',
             value:this.state.value,
             onChange: this.onChange
-        }
+        };
         return <div>
             Rebase child to parent:
             <Autosuggest
@@ -83,9 +90,11 @@ class NewParentSearch extends Component {
                 getSuggestionValue={this.getSuggestionValue}
                 renderSuggestion={this.renderSuggestion}
                 inputProps={inputProps}
+                onSuggestionSelected = {this.onSuggestionSelected}
             />
+            <button disabled={!this.state.rebaseParent} onClick={this.deleteAndRebaseChildren}>Delete and rebase children</button>
         </div>
-        //todo 190303: create submit button that rebases children to selected parent
+
     }
 }
 
