@@ -29,6 +29,8 @@ class TaskList extends Component {
         data.push(new TaskObject())
     }
 
+    //fixme 190304: deletes the children but doesn't rebase, leaves stubs. problem may be here or in API or both
+    //see api task.js line 124
     deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
         this.taskApiCalls.deleteTaskRebaseChildren(taskId, this.props.xAccessToken,newParentType, newParentId, ()=>this.props.update);
     };
