@@ -38,7 +38,7 @@ class NewParentSearch extends Component {
                     {branches: this.state.branches.concat(
                             response
                                 .filter(item=>item._id!==this.props.itemToDeleteId)
-                                .map((item,type)=>Object.assign(item,{type:type}))
+                                .map(item=>Object.assign(item,{type:type}))
                         )}
                 )}
                 )
