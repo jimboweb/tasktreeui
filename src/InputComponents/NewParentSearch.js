@@ -72,8 +72,8 @@ class NewParentSearch extends Component {
     };
 
     deleteAndRebaseChildren=()=>{
-        this.props.rebaseChildren(this.state.rebaseParent._id,this.state.rebaseParent.type);
-    }
+        this.props.rebaseChildren(this.state.rebaseParent.type,this.state.rebaseParent._id);
+    };
 
     render() {
         let inputProps={
