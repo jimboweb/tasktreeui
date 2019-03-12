@@ -57,6 +57,10 @@ class TaskList extends Component {
             this.props.data;
         return (
             <div className="TaskList" id={this.props.catId + "Tasks"}>
+                <div className='addButton'>
+                    <button  onClick={this.addTask}>+</button>
+                </div>
+
                 {
                     taskListData.map(
                         taskId => {
