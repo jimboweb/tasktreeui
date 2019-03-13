@@ -45,9 +45,6 @@ class CategoryContainer extends Component {
             this.props.xAccessToken,
             (returnedCategory)=>this.setState({category:returnedCategory}))
     };
-    addElement = (elementType, element) =>{
-        //todo 1903122: make addElement function in CategoryContainer
-    }
 
 
     render() {
@@ -68,7 +65,6 @@ class CategoryContainer extends Component {
                         modifyListActions = {modifyListActions}
                         xAccessToken = {this.props.xAccessToken}
                         update = {this.update}
-                        addTask = {props.addTask}
                     />
             )
         } else {
