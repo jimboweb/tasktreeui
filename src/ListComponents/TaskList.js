@@ -25,8 +25,8 @@ class TaskList extends Component {
     addTask = ()=>this.setState({addTask:true});
     addNewTaskTrue=data=>{
         if(!data || !data.length)
-            return [new TaskObject()];
-        data.push(new TaskObject())
+            return [0];
+        data.push(0)
     }
 
     deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
@@ -62,6 +62,7 @@ class TaskList extends Component {
                 </div>
 
                 {
+                    //fixme 190314: taskId here is the whole task, not just the id. so when I do `!taskId` in the task component it's not undefined
                     taskListData.map(
                         taskId => {
                             return <TaskContainer
