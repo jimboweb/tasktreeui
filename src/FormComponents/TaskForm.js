@@ -26,6 +26,7 @@ class TaskForm extends Component {
         const form = document.getElementById("form"+this.props.id);
         const formData = formUtil.formInputsToObject(form);
         const taskJson = Object.assign(this.props.data,formData);
+        //fixme 190314: props.submitAction is not a function
         this.props.submitAction(taskJson)
 
     }
