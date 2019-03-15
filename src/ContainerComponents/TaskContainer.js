@@ -6,7 +6,6 @@ import TaskForm from "../FormComponents/TaskForm";
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 import LoadingGif from "../DisplayComponents/LoadingGif";
 import TaskObject from '../ObjectClasses/TaskObject'
-import ModifyTaskListActions from "../ListActions/ModifyTaskListActions";
 
 
 
@@ -56,11 +55,6 @@ class TaskContainer extends Component {
 
     render() {
         if (this.state.task) {
-            const modifyListActions = new ModifyTaskListActions(
-                this.state.task._id,
-                this.props.xAccessToken,
-                this.update
-            )
             return (
                 this.state.displayState === DisplayStates.INPUT ?
                     <TaskForm data={this.state.task} xAccessToken={this.props.xAccessToken} submitAction = {this.modify}/> :
@@ -70,13 +64,12 @@ class TaskContainer extends Component {
                         editAction={this.input}
                         displayState={this.state.displayState}
                         xAccessToken = {this.props.xAccessToken}
-                        modifyListActions = {modifyListActions}
                         showDeleteModal = {this.props.showDeleteModal}
                     />
             )
         } else if(!this.props.id){
             return <TaskForm data={new TaskObject()} xAccessToken={this.props.xAccessToken}
-                             submitAction = {this.props.modifyListActions.addItem}/>
+                             submitAction = {this.props.addTask}/>
         } else {
             this.update();
             return (

@@ -46,7 +46,8 @@ function Task(props) {
                                 data = {props.data.subTasks}
                                 xAccessToken = {props.xAccessToken}
                                 modifyListActions = {props.modifyListActions}
-
+                                parentType = "task"
+                                parentId = {props.data._id}
                             />
                         </div>
                         :''
@@ -58,7 +59,8 @@ function Task(props) {
                             <EventList data = {props.data.events}
                                        xAccessToken = {props.xAccessToken}
                                        modifyListActions = {props.modifyListActions}
-
+                                       parentType = "task"
+                                       parentId = {props.data._id}
                             />
                         </div>
                         :''
@@ -96,6 +98,8 @@ function Task(props) {
                                 data = {props.data.notes}
                                 xAccessToken = {props.xAccessToken}
                                 modifyListActions = {props.modifyListActions}
+                                parentType = "task"
+                                parentId = {props.data._id}
 
                             />
                         </div>

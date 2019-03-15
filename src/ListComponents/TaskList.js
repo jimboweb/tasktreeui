@@ -9,7 +9,7 @@ class TaskList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            addTask:false,
+            newTask:false,
             taskToDeleteName: '',
             taskToDeleteId: 0,
             deleteModalOpen:false,
@@ -22,11 +22,15 @@ class TaskList extends Component {
 
     }
 
-    addTask = ()=>this.setState({addTask:true});
+    newTask = ()=>this.setState({newTask:true});
     addNewTaskTrue=data=>{
         if(!data || !data.length)
             return [0];
         data.push(0)
+    };
+
+    addTask =(task)=>{
+        this.taskApiCalls.createTask(task, this.props.parentType, this.props.parentId, this.props.xAccessToken, this.props.update)
     }
 
     deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
@@ -52,13 +56,13 @@ class TaskList extends Component {
 
 
     render() {
-        const taskListData = this.state.addTask?
+        const taskListData = this.state.newTask?
             this.addNewTaskTrue(this.props.data):
             this.props.data;
         return (
             <div className="TaskList" id={this.props.catId + "Tasks"}>
                 <div className='addButton'>
-                    <button  onClick={this.addTask}>+</button>
+                    <button  onClick={this.newTask}>+</button>
                 </div>
 
                 {
@@ -68,8 +72,8 @@ class TaskList extends Component {
                             return <TaskContainer
                                 id={taskId}
                                 xAccessToken = {this.props.xAccessToken}
-                                modifyListActions = {this.props.modifyListActions}
                                 showDeleteModal = {this.showDeleteModal}
+                                addTask = {this.addTask}
                             />
                         }
                     )

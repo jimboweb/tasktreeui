@@ -12,7 +12,8 @@ function Category(props){
             <h3>Tasks</h3>
             <TaskList
                 data = {props.data.tasks}
-                catId={props.data._id}
+                parentType = "category"
+                parentId={props.data._id}
                 modifyListActions = {props.modifyListActions}
                 xAccessToken = {props.xAccessToken}
                 update={props.update}
@@ -20,8 +21,9 @@ function Category(props){
             <h3 >Events</h3>
             <EventList
                 data={props.data.events} catId={props.data._id}
+                parentType = "category"
                 modifyListActions = {props.modifyListActions}
-                catId={props.data._id}
+                parentId={props.data._id}
                 xAccessToken = {props.xAccessToken}
                 update = {props.update}
             />

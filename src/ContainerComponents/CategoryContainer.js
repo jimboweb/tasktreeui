@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
 import DisplayStates from "../Enums/DisplayStates";
-import TaskForm from "../FormComponents/TaskForm";
-import fetchUtil from "../util/fetchUtil";
 import LoadingGif from "../DisplayComponents/LoadingGif";
 import Category from "../BranchComponents/Category";
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
-import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 import CategoryForm from "../FormComponents/CategoryForm";
-import ModifyCategoryListActions from '../ListActions/ModifyCategoryListActions'
 
 
 
@@ -40,7 +36,7 @@ class CategoryContainer extends Component {
             (returnedCategory)=>this.setState({category:returnedCategory}))
     };
     modify=(modifiedCategory)=> {
-        this.categoryApiCalls.modifyCategory(
+        this.state.categoryApiCalls.modifyCategory(
             modifiedCategory,
             this.props.xAccessToken,
             (returnedCategory)=>this.setState({category:returnedCategory}))
@@ -49,11 +45,6 @@ class CategoryContainer extends Component {
 
     render() {
         if(this.state.category) {
-            const modifyListActions = new ModifyCategoryListActions(
-                this.state.category._id,
-                this.props.xAccessToken,
-                this.update
-            )
             return (
                 this.state.displayState === DisplayStates.INPUT ?
                     <CategoryForm data={this.props.data} submitAction = {this.modify}/> :
@@ -62,7 +53,6 @@ class CategoryContainer extends Component {
                         buttonAction={this.expandCollapse}
                         editAction={this.input}
                         displayState={this.state.displayState}
-                        modifyListActions = {modifyListActions}
                         xAccessToken = {this.props.xAccessToken}
                         update = {this.update}
                     />

@@ -4,7 +4,6 @@ import DisplayStates from '../Enums/DisplayStates'
 import Event from "../BranchComponents/Event";
 import EventForm from "../FormComponents/EventForm";
 import LoadingGif from "../DisplayComponents/LoadingGif";
-import ModifyEventListActions from "../ListActions/ModifyEventListActions";
 import EventApiCalls from "../ApiCallFunctions/EventApiCalls";
 import EventObject from '../ObjectClasses/EventObject'
 
@@ -46,11 +45,6 @@ class EventContainer extends Component {
 
     render() {
         if (this.state.event) {
-            const modifyListActions = new ModifyEventListActions(
-                this.state.event._id,
-                this.props.xAccessToken,
-                this.update
-            )
             return (
                 this.state.displayState === DisplayStates.INPUT ?
                     <EventForm data={this.state.event} xAccessToken={this.props.xAccessToken} submitAction = {this.modify}/> :
@@ -60,7 +54,6 @@ class EventContainer extends Component {
                         editAction={this.input}
                         displayState={this.state.displayState}
                         xAccessToken = {this.props.xAccessToken}
-                        modifyListActions = {modifyListActions}
                     />
             )
         } else if(!this.props.id){
