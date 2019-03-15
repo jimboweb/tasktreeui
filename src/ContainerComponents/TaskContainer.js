@@ -76,7 +76,7 @@ class TaskContainer extends Component {
             )
         } else if(!this.props.id){
             return <TaskForm data={new TaskObject()} xAccessToken={this.props.xAccessToken}
-                             submitAction = {this.props.modifyListActions.addTask}/>
+                             submitAction = {this.props.modifyListActions.addItem}/>
         } else {
             this.update();
             return (
