@@ -13,7 +13,7 @@ function Task(props) {
     return <div className='task ' id={props.data._id}>
         <div className='collapser'>
             <button onClick={props.buttonAction}>
-                {props.displayState === DisplayStates.EXPANDED ? '-' : '+'}
+                {props.displayState === DisplayStates.EXPANDED ? 'V' : '>'}
             </button>
         </div>
 
@@ -48,6 +48,7 @@ function Task(props) {
                                 modifyListActions = {props.modifyListActions}
                                 parentType = "task"
                                 parentId = {props.data._id}
+                                update = {props.update}
                             />
                         </div>
                         :''

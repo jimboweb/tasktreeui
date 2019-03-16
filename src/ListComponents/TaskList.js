@@ -26,7 +26,8 @@ class TaskList extends Component {
     addNewTaskTrue=data=>{
         if(!data || !data.length)
             return [0];
-        data.push(0)
+        if(data.indexOf(0)===-1)
+            data.push(0)
         return data;
     };
 

@@ -65,6 +65,7 @@ class TaskContainer extends Component {
                         displayState={this.state.displayState}
                         xAccessToken = {this.props.xAccessToken}
                         showDeleteModal = {this.props.showDeleteModal}
+                        update = {this.update}
                     />
             )
         } else if(!this.props.id){
