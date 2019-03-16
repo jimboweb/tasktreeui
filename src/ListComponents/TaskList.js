@@ -3,39 +3,47 @@ import '../App.css';
 import TaskContainer from '../ContainerComponents/TaskContainer';
 import TaskObject from '../ObjectClasses/TaskObject'
 import DeleteModal from "../Modals/DeleteModal";
+import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 
 class TaskList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            addTask:false,
+            newTask:false,
             taskToDeleteName: '',
+            taskToDeleteId: 0,
             deleteModalOpen:false,
         };
 
+        this.taskApiCalls = new TaskApiCalls();
         this.showDeleteModal = this.showDeleteModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeDeleteModal = this.closeDeleteModal.bind(this);
 
     }
 
-    addTask = ()=>this.setState({addTask:true});
+    newTask = ()=>this.setState({newTask:true});
     addNewTaskTrue=data=>{
         if(!data || !data.length)
-            return [new TaskObject()];
-        data.push(new TaskObject())
-    }
-
-    deleteTaskRebaseChildren=(taskId, newParent)=>{
-        //todo 190210: create deleteTaskRebaseChildren
+            return [0];
+        if(data.indexOf(0)===-1)
+            data.push(0)
+        return data;
     };
 
+    addTask =(task)=>{
+        this.taskApiCalls.createTask(task, this.props.parentType, this.props.parentId, this.props.xAccessToken, this.props.update)
+    }
+
+    deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
+        this.taskApiCalls.deleteTaskRebaseChildren(taskId, this.props.xAccessToken,newParentType, newParentId, ()=>this.props.update);
+    };
     deleteTaskAndChildren=(taskId)=>{
-        //todo 190210: create deleteTaskAndChildren
+        this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,()=>this.props.update)
     };
 
     showDeleteModal=(taskId, taskName)=>{
-        //fixme 190214: method is running but delete isn't showing
+        this.setState({taskToDeleteName: taskName, taskToDeleteId: taskId});
         this.setState({deleteModalOpen:true});
     }
 
@@ -50,19 +58,24 @@ class TaskList extends Component {
 
 
     render() {
-        const taskListData = this.state.addTask?
+        const taskListData = this.state.newTask?
             this.addNewTaskTrue(this.props.data):
             this.props.data;
         return (
             <div className="TaskList" id={this.props.catId + "Tasks"}>
+                <div className='addButton'>
+                    <button  onClick={this.newTask}>+</button>
+                </div>
+
                 {
+                    //fixme 190314: taskId here is the whole task, not just the id. so when I do `!taskId` in the task component it's not undefined
                     taskListData.map(
                         taskId => {
                             return <TaskContainer
                                 id={taskId}
                                 xAccessToken = {this.props.xAccessToken}
-                                modifyListActions = {this.props.modifyListActions}
                                 showDeleteModal = {this.showDeleteModal}
+                                addTask = {this.addTask}
                             />
                         }
                     )
@@ -72,10 +85,13 @@ class TaskList extends Component {
                     closeModal = {this.closeDeleteModal}
                     onAfterOpen = {this.afterOpenModal}
                     componentType='task'
-                    parentTypes = {['component','task']}
+                    parentTypes = {['category','task']}
                     componentName = {this.state.taskToDeleteName}
                     rebaseChildren = {this.deleteTaskRebaseChildren}
                     deleteChildren = {this.deleteTaskAndChildren}
+                    taskToDeleteName = {this.state.taskToDeleteName}
+                    taskToDeleteId = {this.state.taskToDeleteId}
+                    xAccessToken = {this.props.xAccessToken}
                 />
             </div>
         );

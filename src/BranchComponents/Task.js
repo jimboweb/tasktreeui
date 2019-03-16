@@ -7,11 +7,13 @@ import NoteList from "../ListComponents/NoteList";
 
 function Task(props) {
 
-
+    const showDeleteModal =  ()=>{
+        props.showDeleteModal(props.data._id,props.data.name);
+    }
     return <div className='task ' id={props.data._id}>
         <div className='collapser'>
             <button onClick={props.buttonAction}>
-                {props.displayState === DisplayStates.EXPANDED ? '-' : '+'}
+                {props.displayState === DisplayStates.EXPANDED ? 'V' : '>'}
             </button>
         </div>
 
@@ -44,7 +46,9 @@ function Task(props) {
                                 data = {props.data.subTasks}
                                 xAccessToken = {props.xAccessToken}
                                 modifyListActions = {props.modifyListActions}
-
+                                parentType = "task"
+                                parentId = {props.data._id}
+                                update = {props.update}
                             />
                         </div>
                         :''
@@ -56,7 +60,8 @@ function Task(props) {
                             <EventList data = {props.data.events}
                                        xAccessToken = {props.xAccessToken}
                                        modifyListActions = {props.modifyListActions}
-
+                                       parentType = "task"
+                                       parentId = {props.data._id}
                             />
                         </div>
                         :''
@@ -94,6 +99,8 @@ function Task(props) {
                                 data = {props.data.notes}
                                 xAccessToken = {props.xAccessToken}
                                 modifyListActions = {props.modifyListActions}
+                                parentType = "task"
+                                parentId = {props.data._id}
 
                             />
                         </div>
@@ -105,7 +112,7 @@ function Task(props) {
             <button onClick={props.editAction} className ='inputButton'>
                 <img src='../src/img/edit.svg' />
             </button>
-            <button onClick={props.showDeleteModal} className='inputButton'>
+            <button onClick={showDeleteModal} className='inputButton'>
                 <img src='../src/img/trash.png' />
             </button>
         </div>

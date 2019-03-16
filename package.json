@@ -16,6 +16,7 @@
     "nodejscore": "^0.5.0",
     "path": "^0.12.7",
     "react": "^16.5.2",
+    "react-autosuggest": "^9.4.3",
     "react-dom": "^16.5.2",
     "react-modal": "^3.8.1",
     "react-scripts": "^2.1.5",

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import DisplayStates from "../Enums/DisplayStates";
-import ModifyTaskListActions from "../ListActions/ModifyTaskListActions";
 import NoteApiCalls from '../ApiCallFunctions/NoteApiCalls'
 import Note from "../BranchComponents/Note";
 import NoteForm from '../FormComponents/NoteForm'
@@ -40,12 +39,7 @@ class NoteContainer extends Component {
 
     render() {
         if (this.state.task) {
-            const modifyListActions = new ModifyTaskListActions(
-                this.state.task._id,
-                this.props.xAccessToken,
-                this.update
-            )
-            return (
+             return (
                 this.state.displayState === DisplayStates.INPUT ?
                     <NoteForm data={this.state.note} xAccessToken={this.props.xAccessToken} submitAction = {this.modify}/> :
                     <Note

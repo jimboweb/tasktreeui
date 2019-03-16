@@ -27,6 +27,7 @@ function Event(props) {
                                 data = {props.data.prqTasks}
                                 xAccessToken = {props.xAccessToken}
                                 modifyListActions = {props.modifyListActions}
+
                             />
                         </div>
                         :''

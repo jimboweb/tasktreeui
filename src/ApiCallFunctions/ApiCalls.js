@@ -59,6 +59,18 @@ class ApiCalls {
         );
 
     }
+    getAllObjects= (token, callback)=>{
+        const route = `${this.routeString}`;
+        fetchUtil.getData(
+            route,
+            token,
+            responseData => {
+                callback(responseData);
+            }
+
+        );
+
+    }
     /**
      * Delete object
      * @param objId: the id to delete
@@ -71,6 +83,24 @@ class ApiCalls {
             `${this.routeString}/${objId}`,
             token,
             responseDate=>callback(responseDate))
+    };
+
+    /**
+     * Delete object and rebase children. Only task and category can rebase children.
+     * @param objId: the id to delete
+     * @param token: xAccessToken
+     * @param newParentType: parent type to rebase to
+     * @param newParentId: id to rebase to
+     */
+    deleteObjectRebaseChildren=(objId,token,newParentType,newParentId, callback)=>{
+        //rebase only applies to task and category, otherwise just do regular delete
+        if(this.routeString==='task'||this.routeString==='category'){
+        fetchUtil.deleteData(`${this.routeString}/${objId}/${newParentType}/${newParentId}`,
+            token,
+            responseDate=>callback(responseDate));
+        } else {
+            this.deleteObject(objId,token,callback);
+        }
     }
 
     /**
