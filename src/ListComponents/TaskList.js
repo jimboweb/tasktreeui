@@ -31,12 +31,10 @@ class TaskList extends Component {
     };
 
     deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
-        this.taskApiCalls.deleteTaskRebaseChildren(taskId, this.props.xAccessToken,newParentType, newParentId, ()=>this.props.update);
-        this.props.update();
+        this.taskApiCalls.deleteTaskRebaseChildren(taskId, this.props.xAccessToken,newParentType, newParentId, this.props.update);
     };
     deleteTaskAndChildren=(taskId)=>{
-        this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,()=>this.props.update);
-        this.props.update();
+        this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,this.props.update);
     };
 
     showDeleteModal=(taskId, taskName)=>{
