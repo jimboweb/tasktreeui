@@ -57,7 +57,7 @@ class TaskContainer extends Component {
         if (this.state.task) {
             return (
                 this.state.displayState === DisplayStates.INPUT ?
-                    <TaskForm data={this.state.task} xAccessToken={this.props.xAccessToken} submitAction = {this.modify}/> :
+                    <TaskForm id = {this.props.id} display = 'block' data={this.state.task} xAccessToken={this.props.xAccessToken} submitAction = {this.modify}/> :
                     <Task
                         data={this.state.task}
                         buttonAction={this.expandCollapse}
@@ -68,9 +68,9 @@ class TaskContainer extends Component {
                         update = {this.update}
                     />
             )
-        } else if(!this.props.id){
-            return <TaskForm data={new TaskObject()} xAccessToken={this.props.xAccessToken}
-                             submitAction = {this.props.addTask}/>
+        } else if(this.props.newTask){
+            return <TaskForm display = {this.props.display} data={new TaskObject()} xAccessToken={this.props.xAccessToken}
+                             submitAction = {this.props.addTask} id={this.props.id}/>
         } else {
             this.update();
             return (

@@ -32,7 +32,7 @@ class TaskForm extends Component {
 
 
     render() {
-        return <div className="taskInput" id={"form"+this.props.id}>
+        return <div style = {{display:this.props.display?this.props.display:'block'}} className="taskInput" id={"form"+this.props.id}>
             <FormBuilder
                 inputFields={this.state.inputFields}
                 handlers = {this.state.handlers}
