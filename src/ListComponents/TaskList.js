@@ -4,6 +4,7 @@ import TaskContainer from '../ContainerComponents/TaskContainer';
 import TaskObject from '../ObjectClasses/TaskObject'
 import DeleteModal from "../Modals/DeleteModal";
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
+import TaskForm from "../FormComponents/TaskForm";
 
 class TaskList extends Component {
     constructor(props) {
@@ -23,23 +24,19 @@ class TaskList extends Component {
     }
 
     newTask = ()=>this.setState({newTask:true});
-    addNewTaskTrue=data=>{
-        if(!data || !data.length)
-            return [0];
-        if(data.indexOf(0)===-1)
-            data.push(0)
-        return data;
-    };
 
     addTask =(task)=>{
         this.taskApiCalls.createTask(task, this.props.parentType, this.props.parentId, this.props.xAccessToken, this.props.update)
-    }
+        this.state.newTask = false;
+    };
 
     deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
         this.taskApiCalls.deleteTaskRebaseChildren(taskId, this.props.xAccessToken,newParentType, newParentId, ()=>this.props.update);
+        this.props.update();
     };
     deleteTaskAndChildren=(taskId)=>{
-        this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,()=>this.props.update)
+        this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,()=>this.props.update);
+        this.props.update();
     };
 
     showDeleteModal=(taskId, taskName)=>{
@@ -58,18 +55,12 @@ class TaskList extends Component {
 
 
     render() {
-        const taskListData = this.state.newTask?
-            this.addNewTaskTrue(this.props.data):
-            this.props.data;
         return (
             <div className="TaskList" id={this.props.catId + "Tasks"}>
-                <div className='addButton'>
-                    <button  onClick={this.newTask}>+</button>
-                </div>
 
                 {
                     //fixme 190314: taskId here is the whole task, not just the id. so when I do `!taskId` in the task component it's not undefined
-                    taskListData.map(
+                    this.props.data.map(
                         taskId => {
                             return <TaskContainer
                                 id={taskId}
@@ -80,6 +71,16 @@ class TaskList extends Component {
                         }
                     )
                 }
+                <TaskContainer display = {this.state.newTask?'block':'none'}
+                               id={`NewTaskCat${this.props.parentId}`}
+                               xAccessToken = {this.props.xAccessToken}
+                               showDeleteModal = {this.showDeleteModal}
+                               addTask = {this.addTask}
+                               newTask = {true}
+                />
+                <div style = {{display:this.state.newTask?'none':'block'}} className='addButton'>
+                    <button  onClick={this.newTask}>+</button>
+                </div>
                 <DeleteModal
                     modalIsOpen = {this.state.deleteModalOpen}
                     closeModal = {this.closeDeleteModal}
