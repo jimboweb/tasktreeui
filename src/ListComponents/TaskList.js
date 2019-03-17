@@ -31,14 +31,12 @@ class TaskList extends Component {
     };
 
     deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
-        this.taskApiCalls.deleteTaskRebaseChildren(taskId, this.props.xAccessToken,newParentType, newParentId, ()=>this.props.update);
-        this.props.update();
+        this.taskApiCalls.deleteTaskRebaseChildren(taskId, this.props.xAccessToken,newParentType, newParentId, this.props.update);
     };
 
     //fixme 190316: delete works but doesn't remove deleted task from page.
     deleteTaskAndChildren=(taskId)=>{
-        this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,()=>this.props.update);
-        this.props.update();
+        this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,this.props.update);
     };
 
     showDeleteModal=(taskId, taskName)=>{
