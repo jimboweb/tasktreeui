@@ -5,6 +5,7 @@ import TaskObject from '../ObjectClasses/TaskObject'
 import DeleteModal from "../Modals/DeleteModal";
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
 import TaskForm from "../FormComponents/TaskForm";
+import CategoryContainer from "./CategoryList";
 
 class TaskList extends Component {
     constructor(props) {
