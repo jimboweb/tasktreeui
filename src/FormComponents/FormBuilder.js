@@ -16,6 +16,7 @@ class FormBuilder extends Component {
 
                 this.props.inputFields.map(input=>{
                     const propsWithKey = Object.assign({
+                        //fixme 190319: cannot read property 'id' of undefined
                         key:"" + this.props.data._id + input.props.name,
                         value: this.props.data[input.props.name]}
                         ,input.props);
