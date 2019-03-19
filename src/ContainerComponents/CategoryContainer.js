@@ -4,8 +4,7 @@ import LoadingGif from "../DisplayComponents/LoadingGif";
 import Category from "../BranchComponents/Category";
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
 import CategoryForm from "../FormComponents/CategoryForm";
-
-
+import CategoryObject from '../ObjectClasses/CategoryObject'
 
 
 class CategoryContainer extends Component {
@@ -57,7 +56,10 @@ class CategoryContainer extends Component {
                         update = {this.update}
                     />
             )
-        } else {
+        } else if(this.props.newCategory){
+            return <CategoryForm display = {this.props.display} data={new CategoryObject()} xAccessToken={this.props.xAccessToken}
+                             submitAction = {this.props.addCategory} id={this.props.id}/>
+        }else {
             this.update();
             return <LoadingGif/>
         }

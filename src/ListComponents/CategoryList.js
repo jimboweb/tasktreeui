@@ -5,6 +5,7 @@ import LoadingGif from "../DisplayComponents/LoadingGif";
 import CategoryContainer from "../ContainerComponents/CategoryContainer";
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
 import TaskContainer from "./TaskList";
+import DeleteModal from "../Modals/DeleteModal";
 
 //TODO 181231: I want to change this so this component doesn't get the categories, the user component does. But I'll have to change the API to do that.
 
@@ -19,6 +20,7 @@ class CategoryList extends Component {
             headers: new Headers({
                 'x-access-token': this.props['xAccessToken']
             }),
+            newCategory: false,
             categoryToDeleteName:'',
             categoryToDeleteId:'',
             deleteModalOpen: false
@@ -39,15 +41,15 @@ class CategoryList extends Component {
 
 
     addCategory = (category) =>{
-        const newCategory = this.categoryApiCalls.addCategory(category, this.props.xAccessToken,this.update)
+        this.categoryApiCalls.addCategory(category, this.props.xAccessToken,this.update)
     };
 
     deleteAndRebase = (categoryId,newParentType, newParentId) => {
-        const deletedCategory = this.categoryApiCalls.deleteCategoryRebaseChildren(categoryId,this.props.xAccessToken, newParentType,newParentId,this.update)
+        this.categoryApiCalls.deleteCategoryRebaseChildren(categoryId,this.props.xAccessToken, newParentType,newParentId,this.update)
     };
 
     deleteWithChildren=(categoryId)=>{
-        const deletedCategory = this.categoryApiCalls.deleteCategoryAndChildren(categoryId,this.props.xAccessToken,this.update)
+        this.categoryApiCalls.deleteCategoryAndChildren(categoryId,this.props.xAccessToken,this.update)
     };
     showDeleteModal = (categoryName, categoryId) => {
         this.setState({categoryToDeleteName: categoryName, categoryToDeleteId: categoryId});
@@ -96,25 +98,24 @@ class CategoryList extends Component {
                                    addCategory= {this.addCategory()}
                                    newCategory = {true}
                     />
-                    <div style = {{display:this.state.newTask?'none':'block'}} className='addButton'>
+                    <div style = {{display:this.state.newCategory?'none':'block'}} className='addButton'>
                         <button  onClick={this.newCategory}>+</button>
                     </div>
                     <DeleteModal
                         modalIsOpen = {this.state.deleteModalOpen}
                         closeModal = {this.closeDeleteModal}
                         onAfterOpen = {this.afterOpenModal}
-                        componentType='task'
+                        componentType='category'
                         parentTypes = {['category','task']}
                         componentName = {this.state.categoryToDeleteName}
-                        rebaseChildren = {this.deleteAndRebase()}
-                        deleteChildren = {this.deleteWithChildren()}
+                        rebaseChildren = {this.deleteAndRebase}
+                        deleteChildren = {this.deleteWithChildren}
                         categoryToDeleteName = {this.state.categoryToDeleteName}
                         categoryToDeleteId = {this.state.categoryToDeleteId}
                         xAccessToken = {this.props.xAccessToken}
                     />
                 </div>
 
-                </div>
             );
         }
     }

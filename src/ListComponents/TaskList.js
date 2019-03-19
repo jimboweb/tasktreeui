@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import TaskContainer from '../ContainerComponents/TaskContainer';
-import TaskObject from '../ObjectClasses/TaskObject'
 import DeleteModal from "../Modals/DeleteModal";
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
-import TaskForm from "../FormComponents/TaskForm";
-import CategoryContainer from "./CategoryList";
 
 class TaskList extends Component {
     constructor(props) {
@@ -35,7 +32,6 @@ class TaskList extends Component {
         this.taskApiCalls.deleteTaskRebaseChildren(taskId, this.props.xAccessToken,newParentType, newParentId, this.props.update);
     };
 
-    //fixme 190316: delete works but doesn't remove deleted task from page.
     deleteTaskAndChildren=(taskId)=>{
         this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,this.props.update);
     };
@@ -60,7 +56,6 @@ class TaskList extends Component {
             <div className="TaskList" id={this.props.catId + "Tasks"}>
 
                 {
-                    //fixme 190314: taskId here is the whole task, not just the id. so when I do `!taskId` in the task component it's not undefined
                     this.props.data.map(
                         taskId => {
                             return <TaskContainer
