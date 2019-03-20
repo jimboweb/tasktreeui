@@ -57,7 +57,8 @@ class CategoryContainer extends Component {
                     />
             )
         } else if(this.props.newCategory){
-            return <CategoryForm display = {this.props.display} data={new CategoryObject()} xAccessToken={this.props.xAccessToken}
+            const newCategory = new CategoryObject();
+            return <CategoryForm display = {this.props.display} data={newCategory} xAccessToken={this.props.xAccessToken}
                              submitAction = {this.props.addCategory} id={this.props.id}/>
         }else {
             this.update();

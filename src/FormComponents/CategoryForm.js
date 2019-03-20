@@ -33,7 +33,7 @@ class CategoryForm extends Component {
             <FormBuilder
                 inputFields={this.state.inputFields}
                 handlers = {this.state.handlers}
-                data = {this.props.category}
+                data = {this.props.data}
             />
         </div>
     }
