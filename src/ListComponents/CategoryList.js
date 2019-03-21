@@ -95,7 +95,7 @@ class CategoryList extends Component {
                                    id={`NewCat`}
                                    xAccessToken = {this.props.xAccessToken}
                                    showDeleteModal = {this.showDeleteModal}
-                                   addCategory= {this.addCategory()}
+                                   addCategory= {this.addCategory}
                                    newCategory = {true}
                     />
                     <div style = {{display:this.state.newCategory?'none':'block'}} className='addButton'>
