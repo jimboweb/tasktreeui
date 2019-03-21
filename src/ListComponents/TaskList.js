@@ -56,7 +56,6 @@ class TaskList extends Component {
             <div className="TaskList" id={this.props.catId + "Tasks"}>
 
                 {
-                    //fixme 190320: cannot read poperty 'map' of undefined
                     this.props.data.map(
                         taskId => {
                             return <TaskContainer
