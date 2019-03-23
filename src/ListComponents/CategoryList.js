@@ -41,6 +41,7 @@ class CategoryList extends Component {
 
 
     addCategory = (category) =>{
+        //fixme 190323: sends payload as '[object Object]'
         this.categoryApiCalls.addCategory(category, this.props.xAccessToken,this.update)
     };
 

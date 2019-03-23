@@ -58,7 +58,6 @@ class CategoryContainer extends Component {
             )
         } else if(this.props.newCategory){
             const newCategory = new CategoryObject();
-            //fixme 190321: the form doesn't hae a submit button and also is doing default behavior like `?name=lang`
             return <CategoryForm display = {this.props.display} data={newCategory} xAccessToken={this.props.xAccessToken}
                              submitAction = {this.props.addCategory} id={this.props.id}/>
         }else {
