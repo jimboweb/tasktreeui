@@ -28,6 +28,7 @@ function Category(props){
                 update = {props.update}
             />
         </div>
+        //todo 190323: put in edit and delete buttons
     );
 }
 
