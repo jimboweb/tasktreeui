@@ -113,10 +113,9 @@ class CategoryList extends Component {
                         componentType='category'
                         parentTypes = {['category','task']}
                         componentName = {this.state.categoryToDeleteName}
+                        componentId = {this.state.categoryToDeleteId}
                         rebaseChildren = {this.deleteAndRebase}
                         deleteChildren = {this.deleteWithChildren}
-                        categoryToDeleteName = {this.state.categoryToDeleteName}
-                        categoryToDeleteId = {this.state.categoryToDeleteId}
                         xAccessToken = {this.props.xAccessToken}
                     />
                 </div>

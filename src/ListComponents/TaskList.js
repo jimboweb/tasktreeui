@@ -84,10 +84,9 @@ class TaskList extends Component {
                     componentType='task'
                     parentTypes = {['category','task']}
                     componentName = {this.state.taskToDeleteName}
+                    componentId = {this.state.taskToDeleteId}
                     rebaseChildren = {this.deleteTaskRebaseChildren}
                     deleteChildren = {this.deleteTaskAndChildren}
-                    taskToDeleteName = {this.state.taskToDeleteName}
-                    taskToDeleteId = {this.state.taskToDeleteId}
                     xAccessToken = {this.props.xAccessToken}
                 />
             </div>
