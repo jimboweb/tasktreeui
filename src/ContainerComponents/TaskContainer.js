@@ -45,6 +45,13 @@ class TaskContainer extends Component {
         );
     };
 
+    complete=()=>{
+        const completedTask = Object.assign(this.state.task,{completed: true});
+        this.state.taskApiCalls.modifyObject(completedTask,this.props.xAccessToken,(returnedTask) => {
+            this.setState({task: returnedTask, displayState: DisplayStates.EXPANDED})
+        })
+    }
+
 
 
 
@@ -66,6 +73,7 @@ class TaskContainer extends Component {
                         xAccessToken = {this.props.xAccessToken}
                         showDeleteModal = {this.props.showDeleteModal}
                         update = {this.update}
+                        complete = {this.complete}
                     />
             )
         } else if(this.props.newTask){

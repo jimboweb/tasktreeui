@@ -115,6 +115,9 @@ function Task(props) {
             <button onClick={showDeleteModal} className='inputButton'>
                 <img src='../src/img/trash.png' />
             </button>
+            <button onClick={props.complete} className='inputButton'>
+                &#10003;
+            </button>
         </div>
     </div>
 }
