@@ -51,17 +51,17 @@ class CategoryList extends Component {
     deleteWithChildren=(categoryId)=>{
         this.categoryApiCalls.deleteCategoryAndChildren(categoryId,this.props.xAccessToken,this.update)
     };
-    showDeleteModal = (categoryName, categoryId) => {
+    showDeleteModal = (categoryId, categoryName) => {
         this.setState({categoryToDeleteName: categoryName, categoryToDeleteId: categoryId});
         this.state.deleteModalOpen = true;
     };
 
-    afterOpenModal() {
+    afterOpenModal=() => {
         // references are now sync'd and can be accessed.
         this.subtitle.style.color = '#f00';
     }
 
-    closeDeleteModal() {
+    closeDeleteModal=() =>{
         this.setState({deleteModalOpen: false});
     }
 
@@ -86,7 +86,12 @@ class CategoryList extends Component {
                         this.state.categories.map(
                             cat=>{
                                 return (
-                                    <CategoryContainer id = {cat._id} xAccessToken = {this.props.xAccessToken}/>
+                                    <CategoryContainer
+                                        id = {cat._id}
+                                        xAccessToken = {this.props.xAccessToken}
+                                        showDeleteModal = {this.showDeleteModal}
+                                        addCategory = {this.addCategory}
+                                    />
                                 )
                             }
                         )

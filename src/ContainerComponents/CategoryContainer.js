@@ -5,6 +5,7 @@ import Category from "../BranchComponents/Category";
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
 import CategoryForm from "../FormComponents/CategoryForm";
 import CategoryObject from '../ObjectClasses/CategoryObject'
+import Task from "./TaskContainer";
 
 
 class CategoryContainer extends Component {
@@ -53,6 +54,7 @@ class CategoryContainer extends Component {
                         editAction={this.input}
                         displayState={this.state.displayState}
                         xAccessToken = {this.props.xAccessToken}
+                        showDeleteModal = {this.props.showDeleteModal}
                         update = {this.update}
                     />
             )
