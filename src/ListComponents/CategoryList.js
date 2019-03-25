@@ -4,8 +4,8 @@ import fetchUtil from '../util/fetchUtil';
 import LoadingGif from "../DisplayComponents/LoadingGif";
 import CategoryContainer from "../ContainerComponents/CategoryContainer";
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
-import TaskContainer from "./TaskList";
 import DeleteModal from "../Modals/DeleteModal";
+import VisibleTaskOptions from '../Enums/VisibleTaskOptions'
 
 //TODO 181231: I want to change this so this component doesn't get the categories, the user component does. But I'll have to change the API to do that.
 
@@ -23,7 +23,8 @@ class CategoryList extends Component {
             newCategory: false,
             categoryToDeleteName:'',
             categoryToDeleteId:'',
-            deleteModalOpen: false
+            deleteModalOpen: false,
+            visibleTasks: VisibleTaskOptions.INCOMPLETE
         };
 
         this.categoryApiCalls = new CategoryApiCalls();
@@ -63,6 +64,11 @@ class CategoryList extends Component {
 
     closeDeleteModal=() =>{
         this.setState({deleteModalOpen: false});
+    };
+
+    setVisibleTasks=()=>{
+        const visibleTaskOption = document.getElementById('visibleTasks').value;
+        this.setState({visibleTasks:visibleTaskOption});
     }
 
 
@@ -73,7 +79,7 @@ class CategoryList extends Component {
                 'category/',
                 this.props.xAccessToken,
                 responseData => {
-                    this.setState({categories:responseData})
+                    this.setState({categories:responseData, display:'allTasks'})
                 }
             );
             return (
@@ -81,7 +87,13 @@ class CategoryList extends Component {
             )
         } else {
             return (
-                <div className="categoryList" id="categoryRoot">
+                <div className="categoryList" id="categoryRoot">]
+                    Display:
+                    <select id='visibleTasks' onChange = {this.setVisibleTasks}>
+                        <option value = {VisibleTaskOptions.ALL}>All Tasks</option>
+                        <option value={VisibleTaskOptions.INCOMPLETE}>Incomplete Tasks</option>
+                        {/*<option value = VisibleTaskOptions.URGENT>Urgent Tasks</option>*/}
+                    </select>
                     {
                         this.state.categories.map(
                             cat=>{
