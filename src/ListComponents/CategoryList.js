@@ -38,8 +38,7 @@ class CategoryList extends Component {
                 this.setState({categories:responseData})
             }
         );
-    }
-
+    };
 
     addCategory = (category) =>{
         this.categoryApiCalls.addCategory(category, this.props.xAccessToken,this.update)
@@ -67,8 +66,9 @@ class CategoryList extends Component {
     };
 
     setVisibleTasks=()=>{
-        const visibleTaskOption = document.getElementById('visibleTasks').value;
-        this.setState({visibleTasks:visibleTaskOption});
+        const visibleTaskOptionInput = document.getElementById('visibleTasks');
+        const visibleTaskOption = visibleTaskOptionInput.value;
+        this.setState({visibleTasks:VisibleTaskOptions[visibleTaskOption]});
     }
 
 
@@ -90,9 +90,9 @@ class CategoryList extends Component {
                 <div className="categoryList" id="categoryRoot">]
                     Display:
                     <select id='visibleTasks' onChange = {this.setVisibleTasks}>
+                        <option value='INCOMPLETE' selected={true}>Incomplete Tasks</option>
                         <option value = 'ALL'>All Tasks</option>
-                        <option value='INCOMPLETE'>Incomplete Tasks</option>
-                        <option value = 'URGENT'>Urgent</option>
+                        <option value = 'URGENT' >Urgent</option>
                     </select>
                     {
                         this.state.categories.map(
@@ -103,6 +103,7 @@ class CategoryList extends Component {
                                         xAccessToken = {this.props.xAccessToken}
                                         showDeleteModal = {this.showDeleteModal}
                                         addCategory = {this.addCategory}
+                                        visibleTasks={this.state.visibleTasks}
                                     />
                                 )
                             }
@@ -114,6 +115,8 @@ class CategoryList extends Component {
                                    showDeleteModal = {this.showDeleteModal}
                                    addCategory= {this.addCategory}
                                    newCategory = {true}
+                                   visibleTasks={this.state.visibleTasks}
+
                     />
                     <div style = {{display:this.state.newCategory?'none':'block'}} className='addButton'>
                         <button  onClick={this.newCategory}>+</button>

@@ -57,6 +57,7 @@ class TaskList extends Component {
 
                 {
                     this.props.data
+                    //fixme 190326: this won't work because data is only the taskIds, not the tasks
                         .filter(this.props.visibleTasks)
                         .map(
                         taskId => {
