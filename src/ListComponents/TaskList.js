@@ -60,7 +60,6 @@ class TaskList extends Component {
                     //fixme 190326: this won't work because data is only the taskIds, not the tasks
                     //fixme 190326: maybe have to change all the lists to get the tasks rather than the containers,
                         //OR maybe I can have an 'included' value in the JSX object that can be filtered?
-                        .filter(this.props.visibleTasks)
                         .map(
                         taskId => {
                             return <TaskContainer

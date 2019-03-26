@@ -62,6 +62,9 @@ class TaskContainer extends Component {
 
     render() {
         if (this.state.task) {
+            if(!this.props.visibleTasks(this.state.task)){
+                return null;
+            }
             return (
                 this.state.displayState === DisplayStates.INPUT ?
                     <TaskForm id = {this.props.id} display = 'block' data={this.state.task} xAccessToken={this.props.xAccessToken} submitAction = {this.modify}/> :
