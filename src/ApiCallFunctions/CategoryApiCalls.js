@@ -22,7 +22,7 @@ class CategoryApiCalls extends ApiCalls {
         //don't use ApiCalls because category is always child of root so no parentTyoe or parentId
         "category/",
         token,
-        category,
+        JSON.stringify(category),
         returnedData=>callback(returnedData)
     )
 

@@ -57,8 +57,13 @@ button {
 .inputButton{
   width:25px;
   margin:10px;
+  font-size: 18px;
 }
 
 .inputButton img{
   width:15px;
+}
+
+.completedTaskName{
+  text-decoration: line-through;
 }

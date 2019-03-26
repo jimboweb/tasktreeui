@@ -18,13 +18,13 @@ function Task(props) {
         </div>
 
         <div className='dataWrapper'>
-            <h4>{props.data.name}</h4>
+            <h4 className = {props.data.completed?'completedTaskName':'taskName'}>{props.data.name}</h4>
             <div className={props.displayState === DisplayStates.EXPANDED ? 'expanded' : 'collapsed'}>
                 <div className='property'>
                     Description : {props.data.description}
                 </div>
                 <div className='property'>
-                    Completed : {props.data.completed}
+                    Completed : {props.data.completed.toString()}
                 </div>
                 <div className='property'>
                     Deadline : {props.data.deadline}
@@ -49,6 +49,7 @@ function Task(props) {
                                 parentType = "task"
                                 parentId = {props.data._id}
                                 update = {props.update}
+                                visibleTasks = {props.visibleTasks}
                             />
                         </div>
                         :''
@@ -114,6 +115,9 @@ function Task(props) {
             </button>
             <button onClick={showDeleteModal} className='inputButton'>
                 <img src='../src/img/trash.png' />
+            </button>
+            <button onClick={props.complete} className='inputButton'>
+                &#10003;
             </button>
         </div>
     </div>

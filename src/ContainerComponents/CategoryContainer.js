@@ -4,8 +4,8 @@ import LoadingGif from "../DisplayComponents/LoadingGif";
 import Category from "../BranchComponents/Category";
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
 import CategoryForm from "../FormComponents/CategoryForm";
-
-
+import CategoryObject from '../ObjectClasses/CategoryObject'
+import Task from "./TaskContainer";
 
 
 class CategoryContainer extends Component {
@@ -54,10 +54,16 @@ class CategoryContainer extends Component {
                         editAction={this.input}
                         displayState={this.state.displayState}
                         xAccessToken = {this.props.xAccessToken}
+                        showDeleteModal = {this.props.showDeleteModal}
                         update = {this.update}
+                        visibleTasks = {this.props.visibleTasks}
                     />
             )
-        } else {
+        } else if(this.props.newCategory){
+            const newCategory = new CategoryObject();
+            return <CategoryForm display = {this.props.display} data={newCategory} xAccessToken={this.props.xAccessToken}
+                             submitAction = {this.props.addCategory} id={this.props.id}/>
+        }else {
             this.update();
             return <LoadingGif/>
         }

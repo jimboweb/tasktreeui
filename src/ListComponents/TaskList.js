@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import TaskContainer from '../ContainerComponents/TaskContainer';
-import TaskObject from '../ObjectClasses/TaskObject'
 import DeleteModal from "../Modals/DeleteModal";
 import TaskApiCalls from '../ApiCallFunctions/TaskApiCalls'
-import TaskForm from "../FormComponents/TaskForm";
 
 class TaskList extends Component {
     constructor(props) {
@@ -33,6 +31,7 @@ class TaskList extends Component {
     deleteTaskRebaseChildren=(taskId, newParentType, newParentId)=>{
         this.taskApiCalls.deleteTaskRebaseChildren(taskId, this.props.xAccessToken,newParentType, newParentId, this.props.update);
     };
+
     deleteTaskAndChildren=(taskId)=>{
         this.taskApiCalls.deleteTaskAndChildren(taskId,this.props.xAccessToken,this.props.update);
     };
@@ -57,14 +56,19 @@ class TaskList extends Component {
             <div className="TaskList" id={this.props.catId + "Tasks"}>
 
                 {
-                    //fixme 190314: taskId here is the whole task, not just the id. so when I do `!taskId` in the task component it's not undefined
-                    this.props.data.map(
+                    this.props.data
+                    //fixme 190326: this won't work because data is only the taskIds, not the tasks
+                    //fixme 190326: maybe have to change all the lists to get the tasks rather than the containers,
+                        //OR maybe I can have an 'included' value in the JSX object that can be filtered?
+                        .filter(this.props.visibleTasks)
+                        .map(
                         taskId => {
                             return <TaskContainer
                                 id={taskId}
                                 xAccessToken = {this.props.xAccessToken}
                                 showDeleteModal = {this.showDeleteModal}
                                 addTask = {this.addTask}
+                                visibleTasks = {this.props.visibleTasks}
                             />
                         }
                     )
@@ -75,6 +79,7 @@ class TaskList extends Component {
                                showDeleteModal = {this.showDeleteModal}
                                addTask = {this.addTask}
                                newTask = {true}
+                               visibleTasks = {this.props.visibleTasks}
                 />
                 <div style = {{display:this.state.newTask?'none':'block'}} className='addButton'>
                     <button  onClick={this.newTask}>+</button>
@@ -86,10 +91,9 @@ class TaskList extends Component {
                     componentType='task'
                     parentTypes = {['category','task']}
                     componentName = {this.state.taskToDeleteName}
+                    componentId = {this.state.taskToDeleteId}
                     rebaseChildren = {this.deleteTaskRebaseChildren}
                     deleteChildren = {this.deleteTaskAndChildren}
-                    taskToDeleteName = {this.state.taskToDeleteName}
-                    taskToDeleteId = {this.state.taskToDeleteId}
                     xAccessToken = {this.props.xAccessToken}
                 />
             </div>

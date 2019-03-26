@@ -9,6 +9,7 @@ class CategoryForm extends Component {
         this.state = {
             inputFields: [
                 {props: {name: 'name',}, type: InputTypes.TEXT},
+                {props: {name: 'Done', action: this.submitAction}, type: InputTypes.SUBMIT}
             ],
 
 
@@ -22,7 +23,7 @@ class CategoryForm extends Component {
     submitAction=()=>{
         const form = document.getElementById("form"+this.props.id);
         const formData = formUtil.formInputsToObject(form);
-        const categoryJson = Object.assign(this.props.category, formData);
+        const categoryJson = Object.assign(this.props.data, formData);
         this.props.submitAction(categoryJson)
 
     }
@@ -33,7 +34,7 @@ class CategoryForm extends Component {
             <FormBuilder
                 inputFields={this.state.inputFields}
                 handlers = {this.state.handlers}
-                data = {this.props.category}
+                data = {this.props.data}
             />
         </div>
     }
