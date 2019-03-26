@@ -56,6 +56,7 @@ class CategoryContainer extends Component {
                         xAccessToken = {this.props.xAccessToken}
                         showDeleteModal = {this.props.showDeleteModal}
                         update = {this.update}
+                        visibleTasks = {this.props.visibleTasks}
                     />
             )
         } else if(this.props.newCategory){

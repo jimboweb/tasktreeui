@@ -49,6 +49,7 @@ function Task(props) {
                                 parentType = "task"
                                 parentId = {props.data._id}
                                 update = {props.update}
+                                visibleTasks = {props.visibleTasks}
                             />
                         </div>
                         :''

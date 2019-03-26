@@ -56,13 +56,16 @@ class TaskList extends Component {
             <div className="TaskList" id={this.props.catId + "Tasks"}>
 
                 {
-                    this.props.data.map(
+                    this.props.data
+                        .filter(this.props.visibleTasks)
+                        .map(
                         taskId => {
                             return <TaskContainer
                                 id={taskId}
                                 xAccessToken = {this.props.xAccessToken}
                                 showDeleteModal = {this.showDeleteModal}
                                 addTask = {this.addTask}
+                                visibleTasks = {this.props.visibleTasks}
                             />
                         }
                     )
@@ -73,6 +76,7 @@ class TaskList extends Component {
                                showDeleteModal = {this.showDeleteModal}
                                addTask = {this.addTask}
                                newTask = {true}
+                               visibleTasks = {this.props.visibleTasks}
                 />
                 <div style = {{display:this.state.newTask?'none':'block'}} className='addButton'>
                     <button  onClick={this.newTask}>+</button>

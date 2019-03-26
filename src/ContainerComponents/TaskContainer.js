@@ -74,6 +74,7 @@ class TaskContainer extends Component {
                         showDeleteModal = {this.props.showDeleteModal}
                         update = {this.update}
                         complete = {this.complete}
+                        visibleTasks = {props.visibleTasks}
                     />
             )
         } else if(this.props.newTask){

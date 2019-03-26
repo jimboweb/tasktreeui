@@ -28,6 +28,7 @@ function Category(props){
                     modifyListActions = {props.modifyListActions}
                     xAccessToken = {props.xAccessToken}
                     update={props.update}
+                    visibleTasks = {props.visibleTasks}
                 />
                 <h3 >Events</h3>
                 <EventList

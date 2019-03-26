@@ -90,9 +90,9 @@ class CategoryList extends Component {
                 <div className="categoryList" id="categoryRoot">]
                     Display:
                     <select id='visibleTasks' onChange = {this.setVisibleTasks}>
-                        <option value = {VisibleTaskOptions.ALL}>All Tasks</option>
-                        <option value={VisibleTaskOptions.INCOMPLETE}>Incomplete Tasks</option>
-                        {/*<option value = VisibleTaskOptions.URGENT>Urgent Tasks</option>*/}
+                        <option value = 'ALL'>All Tasks</option>
+                        <option value='INCOMPLETE'>Incomplete Tasks</option>
+                        <option value = 'URGENT'>Urgent</option>
                     </select>
                     {
                         this.state.categories.map(
@@ -129,6 +129,7 @@ class CategoryList extends Component {
                         rebaseChildren = {this.deleteAndRebase}
                         deleteChildren = {this.deleteWithChildren}
                         xAccessToken = {this.props.xAccessToken}
+                        visibleTasks = {this.state.visibleTasks}
                     />
                 </div>
 
