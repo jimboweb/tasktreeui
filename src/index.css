@@ -29,6 +29,8 @@ button {
 }
 
 .category{
+  display: flex;
+  align-items: flex-start;
 
 }
 
@@ -36,6 +38,8 @@ button {
   display: flex;
   align-items: flex-start;
 }
+
+
 
 .collapser {
   flex-basis: auto;
