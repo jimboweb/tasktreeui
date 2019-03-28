@@ -5,9 +5,8 @@ import Category from "../BranchComponents/Category";
 import CategoryApiCalls from '../ApiCallFunctions/CategoryApiCalls'
 import CategoryForm from "../FormComponents/CategoryForm";
 import CategoryObject from '../ObjectClasses/CategoryObject'
-import Task from "./TaskContainer";
 
-
+//fixme 190328: when reloaded, doesn't show right category names
 class CategoryContainer extends Component {
     constructor(props) {
         super(props);
@@ -35,11 +34,12 @@ class CategoryContainer extends Component {
             this.props.xAccessToken,
             (returnedCategory)=>this.setState({category:returnedCategory}))
     };
+
     modify=(modifiedCategory)=> {
         this.state.categoryApiCalls.modifyCategory(
             modifiedCategory,
             this.props.xAccessToken,
-            (returnedCategory)=>this.setState({category:returnedCategory}))
+            (returnedCategory)=>this.setState({category:returnedCategory, displayState:DisplayStates.EXPANDED}))
     };
 
 
