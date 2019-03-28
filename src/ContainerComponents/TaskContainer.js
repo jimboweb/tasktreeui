@@ -78,6 +78,7 @@ class TaskContainer extends Component {
                         update = {this.update}
                         complete = {this.complete}
                         visibleTasks = {this.props.visibleTasks}
+                        deleteTask = {this.props.deleteTask}
                     />
             )
         } else if(this.props.newTask){
