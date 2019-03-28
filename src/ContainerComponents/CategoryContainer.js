@@ -47,7 +47,7 @@ class CategoryContainer extends Component {
         if(this.state.category) {
             return (
                 this.state.displayState === DisplayStates.INPUT ?
-                    <CategoryForm data={this.props.data} submitAction = {this.modify}/> :
+                    <CategoryForm data={this.state.category} submitAction = {this.modify}/> :
                     <Category
                         data={this.state.category}
                         buttonAction={this.expandCollapse}
