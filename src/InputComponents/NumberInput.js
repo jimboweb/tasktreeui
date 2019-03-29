@@ -22,7 +22,7 @@ class NumberInput extends Component{
                     {this.props.name}:
                     <input
                         type='number'
-                        name={this.props.name.toLowerCase()}
+                        name={this.props.name}
                         value={this.state.value}
                         onChange={this.handleChange.bind(this)}
                         {...this.props.attributes}
