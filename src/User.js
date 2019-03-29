@@ -21,9 +21,22 @@ class User extends Component {
         this.login=this.login.bind(this);
     }
 
-    componentDidMount(){
 
+    componentDidMount () {
+        const persistState = localStorage.getItem('userState');
+
+        if (persistState) {
+            try {
+                this.setState(JSON.parse(persistState));
+            } catch (e) {
+                console.log("user state is not JSON")
+            }
+        }
     }
+
+    componentWillUnmount () {
+    }
+
 
 
     login(username, password){
@@ -39,6 +52,7 @@ class User extends Component {
             data,
             responseData=>{
                 this.setState({xAccessToken:responseData.token});
+                localStorage.setItem('userState', JSON.stringify(this.state));
             }
         );
 
