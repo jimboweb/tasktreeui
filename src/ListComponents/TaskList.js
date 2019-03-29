@@ -68,6 +68,7 @@ class TaskList extends Component {
                                 showDeleteModal = {this.showDeleteModal}
                                 addTask = {this.addTask}
                                 visibleTasks = {this.props.visibleTasks}
+                                deleteTask = {this.deleteTaskAndChildren}
                             />
                         }
                     )
@@ -79,6 +80,7 @@ class TaskList extends Component {
                                addTask = {this.addTask}
                                newTask = {true}
                                visibleTasks = {this.props.visibleTasks}
+                               deleteTask = {this.deleteTaskAndChildren}
                 />
                 <div style = {{display:this.state.newTask?'none':'block'}} className='addButton'>
                     <button  onClick={this.newTask}>+</button>

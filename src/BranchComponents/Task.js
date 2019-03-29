@@ -7,8 +7,12 @@ import NoteList from "../ListComponents/NoteList";
 
 function Task(props) {
 
-    const showDeleteModal =  ()=>{
-        props.showDeleteModal(props.data._id,props.data.name);
+    const deleteOrShowModal =  ()=>{
+        if((props.data.tasks && props.data.tasks.length>0) || (props.data.events&&props.data.events.length>0)){
+            props.showDeleteModal(props.data._id,props.data.name);
+        } else {
+            props.deleteTask(props.data._id);
+        }
     }
     return <div className='task ' id={props.data._id}>
         <div className='collapser'>
@@ -113,7 +117,7 @@ function Task(props) {
             <button onClick={props.editAction} className ='inputButton'>
                 <img src='../src/img/edit.svg' />
             </button>
-            <button onClick={showDeleteModal} className='inputButton'>
+            <button onClick={deleteOrShowModal} className='inputButton'>
                 <img src='../src/img/trash.png' />
             </button>
             <button onClick={props.complete} className='inputButton'>

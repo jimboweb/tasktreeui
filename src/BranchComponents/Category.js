@@ -20,26 +20,29 @@ function Category(props){
                 <h2 className = "catName">
                     {props.data.name}
                 </h2>
-                <h3>Tasks</h3>
-                <TaskList
-                    data = {props.data.tasks}
-                    parentType = "category"
-                    parentId={props.data._id}
-                    modifyListActions = {props.modifyListActions}
-                    xAccessToken = {props.xAccessToken}
-                    update={props.update}
-                    visibleTasks = {props.visibleTasks}
-                />
-                <h3 >Events</h3>
-                <EventList
-                    data={props.data.events} catId={props.data._id}
-                    parentType = "category"
-                    modifyListActions = {props.modifyListActions}
-                    parentId={props.data._id}
-                    xAccessToken = {props.xAccessToken}
-                    update = {props.update}
-                />
+                <div className={props.displayState === DisplayStates.EXPANDED ? 'expanded' : 'collapsed'}>
+                    <h3>Tasks</h3>
+                    <TaskList
+                        data={props.data.tasks}
+                        parentType="category"
+                        parentId={props.data._id}
+                        modifyListActions={props.modifyListActions}
+                        xAccessToken={props.xAccessToken}
+                        update={props.update}
+                        visibleTasks={props.visibleTasks}
+                    />
+                    <h3>Events</h3>
+                    <EventList
+                        data={props.data.events} catId={props.data._id}
+                        parentType="category"
+                        modifyListActions={props.modifyListActions}
+                        parentId={props.data._id}
+                        xAccessToken={props.xAccessToken}
+                        update={props.update}
+                    />
+                </div>
             </div>
+
             <div className='editDeleteButton'>
                 <button onClick={props.editAction} className ='inputButton'>
                     <img src='../src/img/edit.svg' />
