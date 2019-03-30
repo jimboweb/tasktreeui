@@ -105,6 +105,7 @@ function Task(props) {
                             modifyListActions = {props.modifyListActions}
                             parentType = "task"
                             parentId = {props.data._id}
+                            update = {props.update}
 
                         />
                     </div>

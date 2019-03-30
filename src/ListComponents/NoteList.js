@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
 import NoteContainer from "../ContainerComponents/NoteContainer";
+import NoteApiCalls from '../ApiCallFunctions/NoteApiCalls'
 
 class NoteList extends Component {
     constructor(props) {
@@ -8,9 +9,14 @@ class NoteList extends Component {
         this.state = {
             addNote: false,
         };
+        this.noteApiCalls = new NoteApiCalls();
     }
 
-    addNote = ()=>this.setState({addNote:true});
+    addNote = (note)=>{
+        this.noteApiCalls.createNote(note, this.props.parentType, this.props.parentId, this.props.xAccessToken, this.props.update)
+        this.state.newNote = false;
+
+    }
 
     render() {
         return (

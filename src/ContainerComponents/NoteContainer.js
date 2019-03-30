@@ -54,7 +54,7 @@ class NoteContainer extends Component {
             )
         } else if(this.props.newNote){
             return <NoteForm data={new NoteObject()} xAccessToken={this.props.xAccessToken}
-                             submitAction = {this.props.addNote}/>
+                             submitAction = {this.props.addNote} id={this.props.id}/>
         } else {
             this.update();
             return (

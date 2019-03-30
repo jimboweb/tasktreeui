@@ -9,6 +9,7 @@ class NoteForm extends Component {
         this.state = {
             inputFields: [
                 {props: {name: 'Note',}, type: InputTypes.TEXT},
+                {props: {name: 'Done', action: this.submitAction}, type: InputTypes.SUBMIT}
             ],
 
 
@@ -30,7 +31,7 @@ class NoteForm extends Component {
                 inputFields={this.state.inputFields}
                 handlers = {this.state.handlers}
                 data = {this.props.data}
-
+                id={this.props.id}
             />
         </div>
     }
