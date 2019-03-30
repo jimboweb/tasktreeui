@@ -44,6 +44,7 @@ class NoteContainer extends Component {
     render() {
         if (this.state.note) {
              return (
+                 //fixme 190330: err you are not allowed to retrieve that note - must be in api
                 this.state.displayState === DisplayStates.INPUT ?
                     <NoteForm data={this.state.note} xAccessToken={this.props.xAccessToken} submitAction = {this.modify}/> :
                     <Note

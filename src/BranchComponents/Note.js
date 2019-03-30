@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function Note(props) {
     return (
         <div className='note' id={props.data.id}>
