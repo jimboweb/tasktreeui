@@ -11,7 +11,7 @@ class NoteContainer extends Component {
         super(props);
         this.state = {
             displayState: DisplayStates.COLLAPSED,
-            task: undefined,
+            note: undefined,
             noteApiCalls: new NoteApiCalls()
         }
     }
@@ -25,33 +25,36 @@ class NoteContainer extends Component {
         this.state.noteApiCalls.getObject(
             this.props.id,
             this.props.xAccessToken,
-            (returnedNote) => this.setState({task: returnedNote}))
+            (returnedNote) => this.setState({note: returnedNote}))
     };
 
 
     modify =(modifyNote) =>{
         this.state.noteApiCalls.modifyObject(modifyNote,this.props.xAccessToken,(returnedNote) => {
-                this.setState({task: returnedNote, displayState: DisplayStates.EXPANDED})
+                this.setState({note: returnedNote, displayState: DisplayStates.EXPANDED})
             }
         );
     };
 
+    delete = ()=>{
+        this.state.noteApiCalls.deleteNote(this.state.data._id, this.props.xAccessToken, this.props.update)
+    }
+
 
     render() {
-        if (this.state.task) {
+        if (this.state.note) {
              return (
                 this.state.displayState === DisplayStates.INPUT ?
                     <NoteForm data={this.state.note} xAccessToken={this.props.xAccessToken} submitAction = {this.modify}/> :
                     <Note
-                        data={this.state.task}
+                        data={this.state.note}
                         editAction={this.input}
-                        displayState={this.state.displayState}
-                        xAccessToken = {this.props.xAccessToken}
+                        delete = {this.delete}
                     />
             )
-        } else if(!this.props.id){
+        } else if(this.props.newNote){
             return <NoteForm data={new NoteObject()} xAccessToken={this.props.xAccessToken}
-                             submitAction = {this.props.modifyListActions.addNote}/>
+                             submitAction = {this.props.addNote}/>
         } else {
             this.update();
             return (

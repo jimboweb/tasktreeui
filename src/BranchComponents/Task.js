@@ -97,20 +97,18 @@ function Task(props) {
                         :''
                 }
                 {
-                    props.data.notes?
-                        <div className='sublist'>
-                            <h5>Notes:</h5>
-                            <NoteList
-                                data = {props.data.notes}
-                                xAccessToken = {props.xAccessToken}
-                                modifyListActions = {props.modifyListActions}
-                                parentType = "task"
-                                parentId = {props.data._id}
+                    <div className='sublist'>
+                        <h5>Notes:</h5>
+                        <NoteList
+                            data = {props.data.notes}
+                            xAccessToken = {props.xAccessToken}
+                            modifyListActions = {props.modifyListActions}
+                            parentType = "task"
+                            parentId = {props.data._id}
 
-                            />
-                        </div>
-                        :''
-                }
+                        />
+                    </div>
+            }
             </div>
         </div>
         <div className='editDeleteButton'>

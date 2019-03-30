@@ -6,31 +6,34 @@ class NoteList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            addNote: false
+            addNote: false,
         };
     }
 
     addNote = ()=>this.setState({addNote:true});
-    //null eventId will create a new event
-    addNewNoteTrue= data=>{
-        return [...data, null];
-    }
 
     render() {
-        const noteListData = this.state.addNote ? this.addNewNoteTrue(this.props.data) : this.props.data;
         return (
             <div className='noteList' id={this.props.catId + 'NoteList'}>
                 {
-                    noteListData.map(
+                    this.props.data.map(
                         noteId => {
                             return <NoteContainer
                                 id={noteId}
                                 xAccessToken = {this.props.xAccessToken}
-                                modifyListActions = {this.props.modifyListActions}
+                                newNote = {false}
                             />
                         }
                     )
                 }
+                <NoteContainer display = {this.state.newNote?'block':'none'}
+                               id={`NewNoteCat${this.props.parentId}`}
+                               xAccessToken = {this.props.xAccessToken}
+                               showDeleteModal = {this.showDeleteModal}
+                               addNote = {this.addNote}
+                               newNote = {true}
+                />
+
             </div>
         )
     }

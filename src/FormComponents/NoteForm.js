@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import '../App.css';
 import InputTypes from "../Enums/InputTypes";
 import formUtil from "../util/formUtil";
-import FormBuilder from "./TaskForm";
+import FormBuilder from './FormBuilder';
 class NoteForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             inputFields: [
-                {props: {Note: 'name',}, type: InputTypes.TEXT},
+                {props: {name: 'Note',}, type: InputTypes.TEXT},
             ],
 
 
@@ -30,6 +30,7 @@ class NoteForm extends Component {
                 inputFields={this.state.inputFields}
                 handlers = {this.state.handlers}
                 data = {this.props.data}
+
             />
         </div>
     }

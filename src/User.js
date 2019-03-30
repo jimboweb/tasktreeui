@@ -21,13 +21,22 @@ class User extends Component {
         this.login=this.login.bind(this);
     }
 
+    //check to see if token from local storage is up to date
+    testToken(){
+        fetchUtil.getData('user',this.state.xAccessToken,
+                res=>{if(!res.userName){
+                    this.setState({xAccessToken:undefined});
+                    localStorage.setItem('userState', JSON.stringify(this.state));
+                }}
+            )
+    }
 
     componentDidMount () {
         const persistState = localStorage.getItem('userState');
 
         if (persistState) {
             try {
-                this.setState(JSON.parse(persistState));
+                this.setState(JSON.parse(persistState),this.testToken);
             } catch (e) {
                 console.log("user state is not JSON")
             }
@@ -37,6 +46,9 @@ class User extends Component {
     componentWillUnmount () {
     }
 
+    refreshToken(){
+        this.setState({xAccessToken:null});
+    }
 
 
     login(username, password){
@@ -66,7 +78,10 @@ class User extends Component {
           return(
               <div id='userRoot'>
                   <UserProvider value = {this.state.xAccessToken}>
-                    <CategoryList xAccessToken = {this.state.xAccessToken}/>
+                    <CategoryList
+                        xAccessToken = {this.state.xAccessToken}
+                        refreshToken = {this.refreshToken}
+                    />
                   </UserProvider>
               </div>)
         } else {
