@@ -5,7 +5,7 @@ function Note(props) {
         <div className='note' id={props.data.id}>
             <div className='dataWrapper'>
                     <div className='property'>
-                        {props.data.dateTime} : {props.data.note}
+                        {props.data.dateStamp} : {props.data.note}
                     </div>
 
              </div>
