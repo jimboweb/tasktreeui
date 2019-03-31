@@ -36,21 +36,17 @@ class NoteContainer extends Component {
         );
     };
 
-    delete = ()=>{
-        this.state.noteApiCalls.deleteNote(this.state.data._id, this.props.xAccessToken, this.props.update)
-    }
 
 
     render() {
         if (this.state.note) {
              return (
-                 //fixme 190330: err you are not allowed to retrieve that note - must be in api
                 this.state.displayState === DisplayStates.INPUT ?
                     <NoteForm data={this.state.note} xAccessToken={this.props.xAccessToken} submitAction = {this.modify}/> :
                     <Note
                         data={this.state.note}
                         editAction={this.input}
-                        delete = {this.delete}
+                        delete = {this.props.deleteNote}
                     />
             )
         } else if(this.props.newNote){

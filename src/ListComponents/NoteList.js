@@ -16,7 +16,12 @@ class NoteList extends Component {
         this.noteApiCalls.createNote(note, this.props.parentType, this.props.parentId, this.props.xAccessToken, this.props.update)
         this.state.newNote = false;
 
+    };
+
+    deleteNote = (noteId)=>{
+        this.noteApiCalls.deleteNote(noteId, this.props.xAccessToken, this.props.update)
     }
+
 
     render() {
         return (
@@ -28,6 +33,7 @@ class NoteList extends Component {
                                 id={noteId}
                                 xAccessToken = {this.props.xAccessToken}
                                 newNote = {false}
+                                deleteNote = {this.deleteNote}
                             />
                         }
                     )
@@ -38,6 +44,7 @@ class NoteList extends Component {
                                showDeleteModal = {this.showDeleteModal}
                                addNote = {this.addNote}
                                newNote = {true}
+                               deleteNote = {this.deleteNote}
                 />
 
             </div>
