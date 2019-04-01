@@ -21,12 +21,17 @@ class User extends Component {
         this.login=this.login.bind(this);
     }
 
-    //check to see if token from local storage is up to date
+    saveState(state){
+        localStorage.setItem('userState', JSON.stringify(state))
+    };
+
+        //check to see if token from local storage is up to date
     testToken(){
         fetchUtil.getData('user',this.state.xAccessToken,
                 res=>{if(!res.userName){
+                    //save the state first because callback doesn't fire for some reason
+                    this.saveState(Object.assign(this.state,{xAccessToken:undefined}))
                     this.setState({xAccessToken:undefined});
-                    localStorage.setItem('userState', JSON.stringify(this.state));
                 }}
             )
     }
@@ -63,8 +68,10 @@ class User extends Component {
             null,
             data,
             responseData=>{
+                //save the state first because callback doesn't fire for some reason
+                this.saveState(Object.assign(this.state,{xAccessToken:responseData.token}));
                 this.setState({xAccessToken:responseData.token});
-                localStorage.setItem('userState', JSON.stringify(this.state));
+
             }
         );
 
