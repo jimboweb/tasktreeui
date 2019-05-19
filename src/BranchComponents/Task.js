@@ -28,6 +28,7 @@ function Task(props) {
                     Description : {props.data.description}
                 </div>
                 <div className='property'>
+                    //fixme 190519: cannot read property toString of undefined
                     Completed : {props.data.completed.toString()}
                 </div>
                 <div className='property'>
