@@ -28,7 +28,9 @@ function Task(props) {
                     Description : {props.data.description}
                 </div>
                 <div className='property'>
-                    //fixme 190519: cannot read property toString of undefined
+                    //fixme 190519: cannot read property toString of undefined on "progress bars" ends in 4a48
+                    //ok it was a child ref to no child which probably came from screwing around with db in dev mode
+                    //probably there will be others
                     Completed : {props.data.completed.toString()}
                 </div>
                 <div className='property'>
