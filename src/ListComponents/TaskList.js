@@ -53,7 +53,7 @@ class TaskList extends Component {
 
     render() {
         return (
-            <div className="TaskList" id={this.props.catId + "Tasks"}>
+            <div className="TaskList" id={this.props.parentId + "Tasks"}>
 
                 {
                     this.props.data
