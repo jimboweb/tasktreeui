@@ -8,14 +8,14 @@ import {UserProvider} from './UserContext';
 //TODO 181013: persist local storage like here: https://stackoverflow.com/questions/45111159/how-can-i-use-localstorage-to-maintain-state-after-a-page-refresh-in-react
 class User extends Component {
 
-   
+
 
     constructor(props){
         super(props);
         this.state={
             username: undefined,
             xAccessToken: undefined,
-            apiUrl: "http://localhost:3434",//"https://insolent-preclude.herokuapp.com",
+            apiUrl: "https://insolent-preclude.herokuapp.com",
             uiUrl: 'http://localhost:8080'
         };
         this.login=this.login.bind(this);
