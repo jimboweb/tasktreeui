@@ -43,20 +43,18 @@ function Task(props) {
                     Estimated Time : {props.data.estTime}
                 </div>
                 {
-                    props.data.subTasks?
-                        <div className='sublist'>
-                            <h5>SubTasks:</h5>
-                            <TaskList
-                                data = {props.data.subTasks}
-                                xAccessToken = {props.xAccessToken}
-                                modifyListActions = {props.modifyListActions}
-                                parentType = "task"
-                                parentId = {props.data._id}
-                                update = {props.update}
-                                visibleTasks = {props.visibleTasks}
-                            />
-                        </div>
-                        :''
+                    <div className='sublist'>
+                        <h5>SubTasks:</h5>
+                        <TaskList
+                            data = {props.data.subTasks}
+                            xAccessToken = {props.xAccessToken}
+                            modifyListActions = {props.modifyListActions}
+                            parentType = "task"
+                            parentId = {props.data._id}
+                            update = {props.update}
+                            visibleTasks = {props.visibleTasks}
+                        />
+                    </div>
                 }
                 {
                     props.data.events?

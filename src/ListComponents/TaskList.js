@@ -56,20 +56,22 @@ class TaskList extends Component {
             <div className="TaskList" id={this.props.parentId + "Tasks"}>
 
                 {
-                    this.props.data
-                        .map(
-                        taskId => {
-                            return <TaskContainer
-                                id={taskId}
-                                xAccessToken = {this.props.xAccessToken}
-                                showDeleteModal = {this.showDeleteModal}
-                                addTask = {this.addTask}
-                                visibleTasks = {this.props.visibleTasks}
-                                deleteTask = {this.deleteTaskAndChildren}
-                            />
-                        }
-                    )
+                    this.props.data?
+                        this.props.data
+                            .map(
+                            taskId => {
+                                return <TaskContainer
+                                    id={taskId}
+                                    xAccessToken = {this.props.xAccessToken}
+                                    showDeleteModal = {this.showDeleteModal}
+                                    addTask = {this.addTask}
+                                    visibleTasks = {this.props.visibleTasks}
+                                    deleteTask = {this.deleteTaskAndChildren}
+                                />
+                            }
+                        ):''
                 }
+                {/*For this one the subtask  list is null for some reason, need to fix it*/}
                 <TaskContainer display = {this.state.newTask?'block':'none'}
                                id={`NewTaskCat${this.props.parentId}`}
                                xAccessToken = {this.props.xAccessToken}
