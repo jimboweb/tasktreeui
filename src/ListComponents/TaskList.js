@@ -71,7 +71,6 @@ class TaskList extends Component {
                             }
                         ):''
                 }
-                {/*For this one the subtask  list is null for some reason, need to fix it*/}
                 <TaskContainer display = {this.state.newTask?'block':'none'}
                                id={`NewTaskCat${this.props.parentId}`}
                                xAccessToken = {this.props.xAccessToken}

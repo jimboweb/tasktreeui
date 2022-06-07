@@ -45,6 +45,7 @@ function Task(props) {
                 {
                     <div className='sublist'>
                         <h5>SubTasks:</h5>
+                        {/*subtasks not showing for some reason. is it not loading or just not showing?*/}
                         <TaskList
                             data = {props.data.subTasks}
                             xAccessToken = {props.xAccessToken}

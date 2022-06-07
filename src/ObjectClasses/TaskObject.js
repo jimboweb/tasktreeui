@@ -1,3 +1,5 @@
+import ApiCalls from "../ApiCallFunctions/TaskApiCalls";
+
 class TaskObject {
     constructor(name,
                 description,
@@ -16,7 +18,7 @@ class TaskObject {
                 accountId) {
         this.name = name?name: "";
         this.description =description?description: "";
-        this.subTasks=subTasks?subTasks: [];
+        this.subTasks=[];
         this.events=events?events:[];
         this.completed= completed?completed:"";
         this.deadline=deadline?deadline:new Date();
