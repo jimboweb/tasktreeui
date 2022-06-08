@@ -47,7 +47,7 @@ function Task(props) {
                         <h5>SubTasks:</h5>
                         {/*subtasks not showing for some reason. is it not loading or just not showing?*/}
                         <TaskList
-                            data = {props.data.subTasks}
+                            data = {props.data.subtasks}
                             xAccessToken = {props.xAccessToken}
                             modifyListActions = {props.modifyListActions}
                             parentType = "task"
