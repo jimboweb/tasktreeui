@@ -7,4 +7,6 @@ class NoteObject{
     }
 }
 
+
+
 export default NoteObject;
